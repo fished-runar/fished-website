@@ -395,7 +395,8 @@
     }
 
     .testimonial-card {
-      background: var(--white);
+      background: #edf1fa;
+      border: 1px solid rgba(80,96,219,0.12);
       border-radius: var(--radius);
       padding: 36px 32px;
       display: flex;
@@ -405,7 +406,7 @@
     }
 
     .testimonial-card:hover {
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      box-shadow: 0 16px 48px rgba(80,96,219,0.14);
       transform: translateY(-4px);
     }
 
