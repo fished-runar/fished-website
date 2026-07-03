@@ -1272,6 +1272,83 @@
 
 .location-card a:hover { gap: 10px; }
 
+/* ═══ Offices map layout ════════════════════════════════════════════════ */
+
+.offices-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 40px;
+  margin-top: 48px;
+  align-items: stretch;
+}
+
+.offices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.office-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid rgba(80,96,219,0.15);
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.office-item:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 16px rgba(80,96,219,0.12);
+  transform: translateX(4px);
+}
+
+.office-pin {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue);
+}
+
+.office-pin svg {
+  width: 16px;
+  height: 16px;
+}
+
+.office-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.office-item span {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.offices-map {
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 360px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+
+@media (max-width: 800px) {
+  .offices-layout { grid-template-columns: 1fr; }
+  .offices-map { min-height: 280px; }
+}
+
 @media (max-width: 900px) {
   .locations-grid { grid-template-columns: 1fr 1fr; }
   .subhero { min-height: 30vh; }
