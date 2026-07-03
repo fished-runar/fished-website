@@ -29,18 +29,28 @@
      *      -> why-choose (white) -> testimonials (blue-light)
      *      -> marquee (white) -> contact (blue)
      *
-     *  Logo backdrop rule
-     *    Most logos use dark-coloured marks. Some (e.g. Frigocare) also
-     *    contain white elements. Rules:
-     *      - Never place logos on --navy / any very dark bg
-     *        (dark marks become invisible)
-     *      - Never place logos directly on --white where any logo has
-     *        white elements (applies to the marquee section which hosts
-     *        the full customer list including Frigocare)
-     *      - Safe direct backdrop for marquee/integrations: --blue-light
-     *      - Testimonial card logos (Hofseth, Siguna, Nordic Wildfish) are
-     *        all dark-mark with no white elements — white cards are safe
-     *        for those specific logos
+     *  ABSOLUTE RULES — logo backdrops
+     *    Before changing any background where a logo appears, open the
+     *    actual image file and check its colours. Logo files often exist
+     *    in multiple variants (e.g. hofseth.svg = WHITE text for dark bg;
+     *    hofseth.png = DARK text for light bg). Never assume.
+     *
+     *    Rule 1: No logo on --navy or any very dark bg unless the logo
+     *            file is confirmed to have light/white marks only.
+     *    Rule 2: No logo on --white unless the logo file is confirmed to
+     *            have NO white or near-white elements (e.g. Frigocare has
+     *            white in it — do not place on white bg).
+     *    Rule 3: --blue-light is the safest universal backdrop: light
+     *            enough for dark marks, distinct enough from white for
+     *            logos with white elements. Use it for sections/cards
+     *            hosting the full logo set (marquee, integrations).
+     *    Rule 4: For testimonial cards (Hofseth PNG, Siguna, Nordic
+     *            Wildfish) white cards on a blue-light section are
+     *            acceptable because none of those specific files contain
+     *            white elements. Always re-verify if logos are swapped.
+     *    Rule 5: Never use an SVG logo variant without checking its fills.
+     *            hofseth.svg = #FFFFFF fills (white-only, dark-bg variant).
+     *            hofseth.png = near-black fills (coloured, light-bg variant).
      * ============================================================
      */
     :root {
