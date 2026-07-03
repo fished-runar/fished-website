@@ -8,7 +8,7 @@
      * ============================================================
      *
      *  Primary
-     *    --blue        #5060db   Brand blue  — buttons, accents, active nav
+     *    --blue        #5060db   Brand blue — buttons, accents, active nav
      *    --blue-dark   #3a4bbf   Hover/pressed state for --blue
      *    --blue-light  #DDE1F8   Tinted section bg, cards on white sections
      *
@@ -18,13 +18,29 @@
      *    --text        #1a1a2e   Body copy (near-black)
      *    --text-muted  #555555   Secondary / captions
      *
+     *  Section alternation rule
+     *    Adjacent sections must never share the same background colour.
+     *    The two light section backgrounds are --white and --blue-light;
+     *    they must strictly alternate. --navy is used only for hero/subhero,
+     *    cta-strip, and footer. --blue is used only for the contact section.
+     *
+     *    index.html section sequence:
+     *      hero (navy) -> intro (white) -> customer-driven (blue-light)
+     *      -> why-choose (white) -> testimonials (blue-light)
+     *      -> marquee (white) -> contact (blue)
+     *
      *  Logo backdrop rule
-     *    Logos across the site have dark-coloured text/marks (not white).
-     *    Some logos (e.g. Frigocare) also contain white elements.
-     *    Therefore: never place logos on --navy/#000 (dark kills dark marks)
-     *    and never on --white/#fff (white elements disappear).
-     *    Safe backdrops: --blue-light (#DDE1F8) or --blue (#5060db) with
-     *    white-version logos only.
+     *    Most logos use dark-coloured marks. Some (e.g. Frigocare) also
+     *    contain white elements. Rules:
+     *      - Never place logos on --navy / any very dark bg
+     *        (dark marks become invisible)
+     *      - Never place logos directly on --white where any logo has
+     *        white elements (applies to the marquee section which hosts
+     *        the full customer list including Frigocare)
+     *      - Safe direct backdrop for marquee/integrations: --blue-light
+     *      - Testimonial card logos (Hofseth, Siguna, Nordic Wildfish) are
+     *        all dark-mark with no white elements — white cards are safe
+     *        for those specific logos
      * ============================================================
      */
     :root {
@@ -410,7 +426,7 @@
     .why-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Testimonials &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
-    .testimonials-section { background: var(--white); }
+    .testimonials-section { background: var(--blue-light); }
 
     .testimonials-track {
       display: grid;
@@ -420,7 +436,7 @@
     }
 
     .testimonial-card {
-      background: var(--blue-light);
+      background: var(--white);
       border-radius: var(--radius);
       padding: 36px 32px;
       display: flex;
