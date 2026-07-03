@@ -384,12 +384,6 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    const nav = document.querySelector('.nav');
-    const trigger = document.querySelector('.cta-strip');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('hidden', trigger && window.scrollY >= trigger.offsetTop);
-    });
-
   </script>
 
 </body>
