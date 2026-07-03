@@ -509,7 +509,7 @@
       transform: translateY(-3px);
     }
 
-    .testimonial-logo { height: 44px; width: auto; max-width: 140px; object-fit: contain; }
+    .testimonial-logo { width: 120px; height: 44px; object-fit: contain; }
 
     .testimonial-quote {
       font-size: 14px;
