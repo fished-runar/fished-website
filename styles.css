@@ -1307,13 +1307,13 @@
   pointer-events: none;
 }
 
-/* Right gradient */
+/* Right gradient — mirrors left */
 .offices-overlay::after {
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0;
-  width: 12%;
-  background: linear-gradient(to left, rgba(26,35,64,0.7) 0%, transparent 100%);
+  width: 42%;
+  background: linear-gradient(to left, #1a2340 0%, #1a2340 32%, rgba(26,35,64,0.75) 60%, transparent 100%);
   pointer-events: none;
 }
 
