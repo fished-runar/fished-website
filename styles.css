@@ -682,11 +682,10 @@
     }
 
     .customer-logos-grid img {
-      height: 44px;
-      width: auto;
-      max-width: 160px;
+      width: 140px;
+      height: 60px;
       object-fit: contain;
-      opacity: 0.8;
+      opacity: 0.85;
       transition: opacity 0.2s;
     }
 
