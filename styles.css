@@ -1276,7 +1276,7 @@
 
 .offices-section {
   position: relative;
-  height: 640px;
+  height: 740px;
   overflow: hidden;
 }
 
@@ -1290,17 +1290,39 @@
 .offices-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, #1a2340 0%, #1a2340 38%, rgba(26,35,64,0.85) 52%, rgba(26,35,64,0) 68%),
-              linear-gradient(to left,  #1a2340 0%, #1a2340 5%,  rgba(26,35,64,0.7)  18%, rgba(26,35,64,0) 32%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 56px 5%;
-  max-width: 560px;
   pointer-events: none;
 }
 
-.offices-overlay > * { pointer-events: auto; }
+/* Left gradient */
+.offices-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 60%;
+  background: linear-gradient(to right, #1a2340 0%, #1a2340 42%, rgba(26,35,64,0.85) 60%, rgba(26,35,64,0) 100%);
+  pointer-events: none;
+}
+
+/* Right gradient */
+.offices-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 22%;
+  background: linear-gradient(to left, #1a2340 0%, rgba(26,35,64,0.75) 45%, transparent 100%);
+  pointer-events: none;
+}
+
+.offices-overlay > * {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  pointer-events: auto;
+}
 
 .offices-overlay .section-label.light { color: rgba(255,255,255,0.55); margin-bottom: 8px; }
 
