@@ -25,7 +25,7 @@
      *    cta-strip, and footer. --blue is used only for the contact section.
      *
      *    index.html:    navy -> white -> blue-light -> white -> navy -> white -> blue
-     *    customers.html: navy -> white -> navy
+     *    customers.html: navy -> blue-light -> white -> navy
      *    features.html:  navy -> blue-light -> navy
      *    about.html:     navy -> white -> blue-light -> navy
      *    integrations.html: navy -> white -> navy
@@ -563,6 +563,28 @@
     }
 
     .integrations-logos img:hover { opacity: 1; filter: none; }
+
+    /* Customer logos grid (customers.html) */
+    .customer-logos-section { background: var(--blue-light); }
+
+    .customer-logos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px 48px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    .customer-logos-grid img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .customer-logos-grid img:hover { opacity: 1; }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Elfsight carousel fade wrapper &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
     .carousel-fade-wrap {
