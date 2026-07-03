@@ -223,10 +223,10 @@
     .btn-outline-light {
       background: transparent;
       color: var(--white);
-      border: 2px solid rgba(255,255,255,0.5);
+      border: 2px solid var(--white);
     }
     .btn-outline-light:hover {
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.15);
       border-color: var(--white);
     }
 
