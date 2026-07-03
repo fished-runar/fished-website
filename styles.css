@@ -103,7 +103,7 @@
       z-index: 100;
       background: transparent;
       border-bottom: 1px solid transparent;
-      transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+      transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease, transform 0.35s ease;
     }
 
     .nav.scrolled {
@@ -111,6 +111,11 @@
       border-bottom-color: rgba(0, 0, 0, 0.07);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav.hidden {
+      transform: translateY(-100%);
+      pointer-events: none;
     }
 
     .nav-inner {

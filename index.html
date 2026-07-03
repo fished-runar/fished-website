@@ -710,14 +710,21 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // &#9472;&#9472; Smooth nav highlight &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
-    // Nav scroll state
+    // -- Smooth nav highlight --------------------------
+    // Nav scroll state + hide at footer
     const nav = document.querySelector('.nav');
+    const footer = document.querySelector('.footer');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        nav.classList.add('scrolled');
+      const atFooter = footer && window.scrollY + window.innerHeight >= footer.getBoundingClientRect().top + window.scrollY;
+      if (atFooter) {
+        nav.classList.add('hidden');
       } else {
-        nav.classList.remove('scrolled');
+        nav.classList.remove('hidden');
+        if (window.scrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
       }
     });
 
