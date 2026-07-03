@@ -31,26 +31,30 @@
      *
      *  ABSOLUTE RULES — logo backdrops
      *    Before changing any background where a logo appears, open the
-     *    actual image file and check its colours. Logo files often exist
-     *    in multiple variants (e.g. hofseth.svg = WHITE text for dark bg;
-     *    hofseth.png = DARK text for light bg). Never assume.
+     *    actual image file and check its pixel colours. Logo files often
+     *    exist in multiple variants (e.g. hofseth.svg = WHITE fills for
+     *    dark bg; hofseth.png = near-black fills for light bg). Never assume.
      *
      *    Rule 1: No logo on --navy or any very dark bg unless the logo
      *            file is confirmed to have light/white marks only.
-     *    Rule 2: No logo on --white unless the logo file is confirmed to
-     *            have NO white or near-white elements (e.g. Frigocare has
-     *            white in it — do not place on white bg).
-     *    Rule 3: --blue-light is the safest universal backdrop: light
-     *            enough for dark marks, distinct enough from white for
-     *            logos with white elements. Use it for sections/cards
-     *            hosting the full logo set (marquee, integrations).
-     *    Rule 4: For testimonial cards (Hofseth PNG, Siguna, Nordic
-     *            Wildfish) white cards on a blue-light section are
-     *            acceptable because none of those specific files contain
-     *            white elements. Always re-verify if logos are swapped.
-     *    Rule 5: Never use an SVG logo variant without checking its fills.
+     *    Rule 2: No logo directly on --white if any element in the file
+     *            is white (Frigocare has white — avoid white bg for it).
+     *    Rule 3: No logo on --blue-light if the logo has a similar light-
+     *            blue colour (Siguna is sky blue — similar hue to blue-light,
+     *            low contrast). Siguna needs a neutral or dark backdrop.
+     *    Rule 4: --blue-light (#DDE1F8) is the standard card backdrop for
+     *            testimonials. It works for Hofseth PNG (near-black marks)
+     *            and Nordic Wildfish (dark navy marks). Siguna (sky blue)
+     *            has enough lightness difference vs #DDE1F8 to remain readable.
+     *    Rule 5: Never use an SVG logo without checking its fill values.
      *            hofseth.svg = #FFFFFF fills (white-only, dark-bg variant).
      *            hofseth.png = near-black fills (coloured, light-bg variant).
+     *
+     *  Section alternation — testimonials
+     *    index.html: section-dark (--navy) + blue-light cards = maximum
+     *      contrast, cards really stand out. Alternation: white → navy → white ✓
+     *    customers.html: white section + blue-light cards = clean contrast.
+     *      Alternation: navy → white → navy ✓ (sandwiched between two navy)
      * ============================================================
      */
     :root {
@@ -348,6 +352,7 @@
 
     .section-title.light { color: var(--white); }
     .section-title.dark  { color: var(--navy); }
+    .section-label.light { color: rgba(255,255,255,0.65); }
 
     .section-body {
       font-size: 16px;
@@ -436,7 +441,7 @@
     .why-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Testimonials &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
-    .testimonials-section { background: var(--blue-light); }
+    .testimonials-section { background: var(--white); }
 
     .testimonials-track {
       display: grid;
@@ -446,7 +451,8 @@
     }
 
     .testimonial-card {
-      background: var(--white);
+      background: var(--blue-light);
+      border-top: 3px solid var(--blue);
       border-radius: var(--radius);
       padding: 36px 32px;
       display: flex;
@@ -456,7 +462,7 @@
     }
 
     .testimonial-card:hover {
-      box-shadow: 0 16px 48px rgba(80,96,219,0.18);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.22);
       transform: translateY(-4px);
     }
 
