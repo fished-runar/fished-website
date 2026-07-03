@@ -217,14 +217,15 @@
           gestureHandling: 'cooperative'
         });
 
-        // Immediately hide the "Ctrl + scroll" toast whenever Google injects it
+        // Intercept wheel events in capture phase before Google's handler fires.
+        // Without Ctrl: stop propagation so Google never sees the scroll and
+        // never triggers the "Use Ctrl + scroll" overlay. Page still scrolls normally.
+        // With Ctrl: let the event through so the map zooms.
         (function() {
           var canvas = document.getElementById('offices-map-canvas');
-          var obs = new MutationObserver(function() {
-            var toasts = canvas.querySelectorAll('[class*="gm-style-pbc"]');
-            toasts.forEach(function(el) { el.style.cssText = 'display:none!important'; });
-          });
-          obs.observe(canvas, { childList: true, subtree: true });
+          canvas.addEventListener('wheel', function(e) {
+            if (!e.ctrlKey) { e.stopPropagation(); }
+          }, { capture: true, passive: true });
         })();
 
         OFFICES.forEach(function(office) {
