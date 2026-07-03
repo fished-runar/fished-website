@@ -257,9 +257,9 @@
 
       </div>
 
-      <div class="testimonials-track">
+      <div class="testimonials-track testimonial-carousel" id="testimonial-carousel">
 
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card">
 
           <img class="testimonial-logo" src="assets/customers/png/hofseth.png" alt="Hofseth" />
 
@@ -287,7 +287,7 @@
 
         </div>
 
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card">
 
           <img class="testimonial-logo" src="assets/customers/png/siguna.png" alt="Siguna" />
 
@@ -709,6 +709,43 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // -- Testimonial carousel -------------------------
+    (function () {
+      const carousel = document.getElementById('testimonial-carousel');
+      if (!carousel) return;
+      const cards = Array.from(carousel.querySelectorAll('.testimonial-card'));
+      if (cards.length < 2) return;
+      let current = 0;
+      cards[0].classList.add('active');
+
+      // Dot indicators
+      const dotsWrap = document.createElement('div');
+      dotsWrap.className = 'testimonial-dots';
+      cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Show testimonial ' + (i + 1));
+        dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+        dotsWrap.appendChild(dot);
+      });
+      carousel.after(dotsWrap);
+
+      function goTo(next) {
+        if (next === current) return;
+        cards[current].classList.remove('active');
+        current = next;
+        cards[current].classList.add('active');
+        dotsWrap.querySelectorAll('.testimonial-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      let timer = setInterval(() => goTo((current + 1) % cards.length), 5000);
+      function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo((current + 1) % cards.length), 5000); }
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', resetTimer);
+    })();
 
     // -- Smooth nav highlight --------------------------
     // Nav scroll state + hide when contact section is in view
