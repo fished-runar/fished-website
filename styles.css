@@ -25,10 +25,10 @@
      *    cta-strip, and footer. --blue is used only for the contact section.
      *
      *    index.html:    navy -> white -> blue-light -> white -> navy -> white -> blue
-     *    customers.html: navy -> blue-light -> white -> navy
-     *    features.html:  navy -> blue-light -> navy
-     *    about.html:     navy -> white -> blue-light -> navy
-     *    integrations.html: navy -> white -> navy
+     *    customers.html: navy -> blue-light -> white -> blue -> navy
+     *    features.html:  navy -> blue-light -> blue -> navy
+     *    about.html:     navy -> white -> blue-light -> blue -> navy
+     *    integrations.html: navy -> white -> blue -> navy
      *
      *  ABSOLUTE RULES — logo backdrops
      *    Before changing any background where a logo appears, open the
@@ -1092,7 +1092,7 @@
 
 /* &#9472;&#9472;&#9472; CTA strip &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .cta-strip {
-  background: var(--navy);
+  background: var(--blue);
   padding: 80px 0;
   text-align: center;
 }
