@@ -675,7 +675,7 @@
     .customer-logos-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px 32px;
+      gap: 36px 56px;
       align-items: center;
       justify-content: center;
       margin-top: 48px;
