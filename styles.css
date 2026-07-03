@@ -1302,7 +1302,7 @@
   content: '';
   position: absolute;
   top: 0; left: 0; bottom: 0;
-  width: 42%;
+  width: 35%;
   background: linear-gradient(to right, #1a2340 0%, #1a2340 32%, rgba(26,35,64,0.75) 60%, transparent 100%);
   pointer-events: none;
 }
@@ -1312,7 +1312,7 @@
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0;
-  width: 42%;
+  width: 35%;
   background: linear-gradient(to left, #1a2340 0%, #1a2340 32%, rgba(26,35,64,0.75) 60%, transparent 100%);
   pointer-events: none;
 }
