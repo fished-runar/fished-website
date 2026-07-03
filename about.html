@@ -217,24 +217,6 @@
           gestureHandling: 'cooperative'
         });
 
-        // Shorten the "Ctrl + scroll to zoom" toast to ~800 ms
-        (function() {
-          var canvas = document.getElementById('offices-map-canvas');
-          var obs = new MutationObserver(function(mutations) {
-            mutations.forEach(function(m) {
-              m.addedNodes.forEach(function(node) {
-                if (node.nodeType === 1 && node.className && node.className.indexOf('gm-style-pbc') !== -1) {
-                  setTimeout(function() {
-                    node.style.transition = 'opacity 0.3s';
-                    node.style.opacity = '0';
-                  }, 500);
-                }
-              });
-            });
-          });
-          obs.observe(canvas, { childList: true, subtree: true });
-        })();
-
         OFFICES.forEach(function(office) {
           var marker = new google.maps.Marker({
             position: { lat: office.lat, lng: office.lng },
