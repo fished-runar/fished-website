@@ -454,8 +454,13 @@
     .testimonials-track {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 24px;
       margin-top: 56px;
+    }
+
+    /* 3-column grid on customers.html */
+    .testimonials-track.three-col {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     /* Carousel variant — index.html only: two slots side by side,
@@ -492,26 +497,52 @@
       background: var(--blue-light);
       border-top: 3px solid var(--blue);
       border-radius: var(--radius);
-      padding: 36px 32px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 14px;
       transition: box-shadow 0.25s, transform 0.25s;
     }
 
     .testimonial-card:hover {
-      box-shadow: 0 20px 56px rgba(0,0,0,0.22);
-      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.16);
+      transform: translateY(-3px);
     }
 
-    .testimonial-logo { height: 52px; width: auto; object-fit: contain; }
+    .testimonial-logo { height: 44px; width: auto; max-width: 140px; object-fit: contain; }
 
     .testimonial-quote {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.8;
+      line-height: 1.7;
       flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+
+    /* Full quote in modal - no clamp */
+    .testimonial-quote.full {
+      display: block;
+      -webkit-line-clamp: unset;
+      overflow: visible;
+      font-size: 15px;
+    }
+
+    .btn-read-more {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      margin-top: -6px;
+      transition: color 0.2s;
+    }
+    .btn-read-more:hover { color: var(--blue-dark); }
 
     .testimonial-photo {
       width: 100%;
@@ -523,22 +554,96 @@
     .testimonial-author {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       border-top: 1px solid rgba(0,0,0,0.10);
-      padding-top: 16px;
+      padding-top: 12px;
+      margin-top: auto;
     }
 
     .testimonial-author strong {
       display: block;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--navy);
     }
 
     .testimonial-author span {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
     }
+
+    /* --- Testimonial modal --- */
+    .t-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(10,16,40,0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .t-modal-overlay.open { display: flex; }
+
+    .t-modal {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+      animation: modal-in 0.3s ease;
+    }
+
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)  scale(1); }
+    }
+
+    .t-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--text-muted);
+      line-height: 1;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .t-modal-close:hover { background: var(--blue-light); color: var(--navy); }
+
+    .t-modal-logo { height: 48px; width: auto; max-width: 180px; object-fit: contain; margin-bottom: 20px; }
+
+    .t-modal-photo {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .t-modal-quote {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .t-modal-authors { border-top: 1px solid rgba(0,0,0,0.10); padding-top: 16px; }
+    .t-modal-author {
+      margin-bottom: 6px;
+    }
+    .t-modal-author strong { font-size: 15px; font-weight: 700; color: var(--navy); display: block; }
+    .t-modal-author span { font-size: 13px; color: var(--text-muted); }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Integration logos &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
     .integrations-logos {
@@ -1010,7 +1115,7 @@
       .split, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .split.reverse { direction: ltr; }
       .why-grid { grid-template-columns: 1fr 1fr; }
-      .testimonials-track { grid-template-columns: 1fr; }
+      .testimonials-track, .testimonials-track.three-col { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
       .contact-card { padding: 40px 32px; }
