@@ -682,8 +682,8 @@
     }
 
     .customer-logos-grid img {
-      width: 140px;
-      height: 60px;
+      width: 180px;
+      height: 72px;
       object-fit: contain;
       opacity: 0.85;
       transition: opacity 0.2s;
