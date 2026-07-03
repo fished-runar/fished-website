@@ -570,15 +570,15 @@
     .customer-logos-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px 48px;
+      gap: 20px 32px;
       align-items: center;
       justify-content: center;
       margin-top: 48px;
     }
 
     .customer-logos-grid img {
-      height: 40px;
-      width: auto;
+      width: 140px;
+      height: 56px;
       object-fit: contain;
       opacity: 0.8;
       transition: opacity 0.2s;
