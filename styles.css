@@ -151,7 +151,7 @@
       color: var(--white);
       position: relative;
       padding-bottom: 2px;
-      transition: color 0.2s;
+      transition: color 0.35s ease;
     }
 
     .nav-links a::after {
@@ -171,6 +171,7 @@
     .nav.scrolled .nav-links a { color: var(--text); }
 
     .nav-links a:hover { color: var(--blue); }
+    .nav.scrolled .nav-links a:hover { color: var(--blue); }
 
     .nav .btn-primary {
       background: var(--blue);
