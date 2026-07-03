@@ -1,0 +1,13 @@
+# Cloudflare Pages _headers
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+# Long-lived cache for all versioned assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Security headers for all pages
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
