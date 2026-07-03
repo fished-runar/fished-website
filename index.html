@@ -711,12 +711,12 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // -- Smooth nav highlight --------------------------
-    // Nav scroll state + hide at footer
+    // Nav scroll state + hide when contact section is in view
     const nav = document.querySelector('.nav');
-    const footer = document.querySelector('.footer');
+    const contactSection = document.querySelector('#contact');
     window.addEventListener('scroll', () => {
-      const atFooter = footer && window.scrollY + window.innerHeight >= footer.getBoundingClientRect().top + window.scrollY;
-      if (atFooter) {
+      const atContact = contactSection && window.scrollY >= contactSection.offsetTop;
+      if (atContact) {
         nav.classList.add('hidden');
       } else {
         nav.classList.remove('hidden');

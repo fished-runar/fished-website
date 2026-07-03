@@ -462,10 +462,9 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     const nav = document.querySelector('.nav');
-    const footer = document.querySelector('.footer');
+    const trigger = document.querySelector('.cta-strip');
     window.addEventListener('scroll', () => {
-      const atFooter = footer && window.scrollY + window.innerHeight >= footer.getBoundingClientRect().top + window.scrollY;
-      nav.classList.toggle('hidden', atFooter);
+      nav.classList.toggle('hidden', trigger && window.scrollY >= trigger.offsetTop);
     });
 
   </script>
