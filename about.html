@@ -217,6 +217,16 @@
           gestureHandling: 'cooperative'
         });
 
+        // Immediately hide the "Ctrl + scroll" toast whenever Google injects it
+        (function() {
+          var canvas = document.getElementById('offices-map-canvas');
+          var obs = new MutationObserver(function() {
+            var toasts = canvas.querySelectorAll('[class*="gm-style-pbc"]');
+            toasts.forEach(function(el) { el.style.cssText = 'display:none!important'; });
+          });
+          obs.observe(canvas, { childList: true, subtree: true });
+        })();
+
         OFFICES.forEach(function(office) {
           var marker = new google.maps.Marker({
             position: { lat: office.lat, lng: office.lng },

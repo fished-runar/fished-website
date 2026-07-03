@@ -1383,7 +1383,8 @@
 #offices-map-canvas .gm-style-cc,
 #offices-map-canvas a[href*='maps.google.com/maps'],
 #offices-map-canvas .gmnoprint:not(.gm-bundled-control),
-#offices-map-canvas .gm-style-pbc { display: none !important; }
+#offices-map-canvas .gm-style-pbc,
+#offices-map-canvas [class*="gm-style-pbc"] { display: none !important; }
 
 @media (max-width: 700px) {
   .offices-section { height: auto; }
