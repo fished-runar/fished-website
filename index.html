@@ -259,60 +259,66 @@
 
       <div class="testimonials-track testimonial-carousel" id="testimonial-carousel">
 
-        <div class="testimonial-card">
+        <!-- Left slot: Hofseth, Nordic Wildfish (Roaldsnes) -->
+        <div class="testimonial-slot">
 
-          <img class="testimonial-logo" src="assets/customers/png/hofseth.png" alt="Hofseth" />
-
-          <img class="testimonial-photo" src="assets/photos/testimonial-hofseth.webp" alt="Hofseth team" />
-
-          <p class="testimonial-quote">
-
-            "We couldn't be more pleased! Short story, the solution is developed by the users, for the users.
-
-            That's why we are so pleased. Because the system meets the needs of the individual customer!"
-
-          </p>
-
-          <div class="testimonial-author">
-
-            <div>
-
+          <div class="testimonial-card">
+            <img class="testimonial-logo" src="assets/customers/png/hofseth.png" alt="Hofseth" />
+            <img class="testimonial-photo" src="assets/photos/testimonial-hofseth.webp" alt="Hofseth team" />
+            <p class="testimonial-quote">
+              "We couldn't be more pleased! Short story, the solution is developed by the users, for the users.
+              That's why we are so pleased. Because the system meets the needs of the individual customer!"
+            </p>
+            <div class="testimonial-author"><div>
               <strong>Roger Hofseth</strong>
+              <span>CCO, Hofseth</span>
+            </div></div>
+          </div>
 
-              <span>CCO</span>
-
-            </div>
-
+          <div class="testimonial-card">
+            <img class="testimonial-logo" src="assets/customers/png/nordic-wildfish.png" alt="Nordic Wildfish" />
+            <img class="testimonial-photo" src="assets/photos/testimonial-nordicwildfish.webp" alt="Nordic Wildfish team" />
+            <p class="testimonial-quote">
+              "We are very satisfied with the entire planning and implementation of Fished. The team at Fished
+              has very good insight and experience to understand and solve our needs."
+            </p>
+            <div class="testimonial-author"><div>
+              <strong>Jon Hallvard Roaldsnes</strong>
+              <span>CEO, Nordic Wildfish</span>
+            </div></div>
           </div>
 
         </div>
 
-        <div class="testimonial-card">
+        <!-- Right slot: Siguna, Nordic Wildfish (Myklebust) -->
+        <div class="testimonial-slot">
 
-          <img class="testimonial-logo" src="assets/customers/png/siguna.png" alt="Siguna" />
-
-          <img class="testimonial-photo" src="assets/photos/testimonial-siguna.jpg" alt="Siguna team" />
-
-          <p class="testimonial-quote">
-
-            "We have chosen Fished as our order management provider because they offer a modern and flexible
-
-            solution tailored to the needs of the seafood industry, while also giving us better oversight,
-
-            traceability, and more efficient work processes."
-
-          </p>
-
-          <div class="testimonial-author">
-
-            <div>
-
+          <div class="testimonial-card">
+            <img class="testimonial-logo" src="assets/customers/png/siguna.png" alt="Siguna" />
+            <img class="testimonial-photo" src="assets/photos/testimonial-siguna.jpg" alt="Siguna team" />
+            <p class="testimonial-quote">
+              "We have chosen Fished as our order management provider because they offer a modern and flexible
+              solution tailored to the needs of the seafood industry, while also giving us better oversight,
+              traceability, and more efficient work processes."
+            </p>
+            <div class="testimonial-author"><div>
               <strong>Evgenia Kozlova</strong>
+              <span>CEO, Siguna</span>
+            </div></div>
+          </div>
 
-              <span>CEO</span>
-
-            </div>
-
+          <div class="testimonial-card">
+            <img class="testimonial-logo" src="assets/customers/png/nordic-wildfish.png" alt="Nordic Wildfish" />
+            <img class="testimonial-photo" src="assets/photos/testimonial-nordicwildfish.webp" alt="Nordic Wildfish team" />
+            <p class="testimonial-quote">
+              "Fished works great &#8212; it's both intuitive and functional. My favourite features are the universal
+              search field, pallet tracking and the ability to easily correct my own mistakes &#8212; all of which
+              make my daily work more efficient."
+            </p>
+            <div class="testimonial-author"><div>
+              <strong>Elisabeth Myklebust</strong>
+              <span>Logistics &amp; Export Coordinator, Nordic Wildfish</span>
+            </div></div>
           </div>
 
         </div>
@@ -711,40 +717,39 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // -- Testimonial carousel -------------------------
+    // Two slots side by side; swap one card every 5s, alternating L then R.
+    // Slot 0 (left):  Hofseth → Nordic Wildfish (Roaldsnes)
+    // Slot 1 (right): Siguna  → Nordic Wildfish (Myklebust)
     (function () {
       const carousel = document.getElementById('testimonial-carousel');
       if (!carousel) return;
-      const cards = Array.from(carousel.querySelectorAll('.testimonial-card'));
-      if (cards.length < 2) return;
-      let current = 0;
-      cards[0].classList.add('active');
+      const slots = Array.from(carousel.querySelectorAll('.testimonial-slot'));
+      if (slots.length < 2) return;
 
-      // Dot indicators
-      const dotsWrap = document.createElement('div');
-      dotsWrap.className = 'testimonial-dots';
-      cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Show testimonial ' + (i + 1));
-        dot.addEventListener('click', () => { goTo(i); resetTimer(); });
-        dotsWrap.appendChild(dot);
-      });
-      carousel.after(dotsWrap);
+      const slotCards = slots.map(s => Array.from(s.querySelectorAll('.testimonial-card')));
+      const idxs = [0, 0];
+      let swapSide = 0; // 0 = swap left next, 1 = swap right next
 
-      function goTo(next) {
-        if (next === current) return;
-        cards[current].classList.remove('active');
-        current = next;
-        cards[current].classList.add('active');
-        dotsWrap.querySelectorAll('.testimonial-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      // Activate first card in each slot
+      slotCards.forEach(cards => cards[0].classList.add('active'));
+
+      function swapSlot(side) {
+        const cards = slotCards[side];
+        cards[idxs[side]].classList.remove('active');
+        idxs[side] = (idxs[side] + 1) % cards.length;
+        cards[idxs[side]].classList.add('active');
       }
 
-      let timer = setInterval(() => goTo((current + 1) % cards.length), 5000);
-      function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo((current + 1) % cards.length), 5000); }
+      let timer = setInterval(() => {
+        swapSlot(swapSide);
+        swapSide = 1 - swapSide;
+      }, 5000);
 
       // Pause on hover
       carousel.addEventListener('mouseenter', () => clearInterval(timer));
-      carousel.addEventListener('mouseleave', resetTimer);
+      carousel.addEventListener('mouseleave', () => {
+        timer = setInterval(() => { swapSlot(swapSide); swapSide = 1 - swapSide; }, 5000);
+      });
     })();
 
     // -- Smooth nav highlight --------------------------
