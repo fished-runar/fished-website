@@ -2,6 +2,31 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { margin: 0; padding: 0; }
 
+    /*
+     * ============================================================
+     * COLOUR PALETTE
+     * ============================================================
+     *
+     *  Primary
+     *    --blue        #5060db   Brand blue  — buttons, accents, active nav
+     *    --blue-dark   #3a4bbf   Hover/pressed state for --blue
+     *    --blue-light  #DDE1F8   Tinted section bg, cards on white sections
+     *
+     *  Neutral
+     *    --navy        #1a2340   Dark sections — subhero, cta-strip, footer
+     *    --white       #ffffff   Light section backgrounds
+     *    --text        #1a1a2e   Body copy (near-black)
+     *    --text-muted  #555555   Secondary / captions
+     *
+     *  Logo backdrop rule
+     *    Logos across the site have dark-coloured text/marks (not white).
+     *    Some logos (e.g. Frigocare) also contain white elements.
+     *    Therefore: never place logos on --navy/#000 (dark kills dark marks)
+     *    and never on --white/#fff (white elements disappear).
+     *    Safe backdrops: --blue-light (#DDE1F8) or --blue (#5060db) with
+     *    white-version logos only.
+     * ============================================================
+     */
     :root {
       --blue:       #5060db;
       --blue-dark:  #3a4bbf;
@@ -385,7 +410,7 @@
     .why-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Testimonials &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
-    .testimonials-section { background: var(--blue-light); }
+    .testimonials-section { background: var(--white); }
 
     .testimonials-track {
       display: grid;
@@ -395,8 +420,7 @@
     }
 
     .testimonial-card {
-      background: #edf1fa;
-      border: 1px solid rgba(80,96,219,0.12);
+      background: var(--blue-light);
       border-radius: var(--radius);
       padding: 36px 32px;
       display: flex;
@@ -406,7 +430,7 @@
     }
 
     .testimonial-card:hover {
-      box-shadow: 0 16px 48px rgba(80,96,219,0.14);
+      box-shadow: 0 16px 48px rgba(80,96,219,0.18);
       transform: translateY(-4px);
     }
 
