@@ -8,6 +8,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.13",
     "@astrojs/node": "^9.5.5",
     "@tinacms/astro": "^0.5.1",
     "astro": "^5.0.0",
