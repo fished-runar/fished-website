@@ -50,7 +50,7 @@ export default function TestimonialsSection({ data, query, variables }: Props) {
         {testimonials.map((t) => {
           const firstAuthor = t!.authors?.[0] ?? {};
           return (
-            <div key={t!.id} className="testimonial-card reveal">
+            <div key={t!.id} className="testimonial-card reveal visible">
               <img
                 className="testimonial-logo"
                 src={t!.logo ?? ''}

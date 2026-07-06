@@ -22,7 +22,7 @@ export default function TeamSection({ data, query, variables }: Props) {
   return (
     <div className="team-grid">
       {team.map((m) => (
-        <div key={m!.id} className="team-card reveal">
+        <div key={m!.id} className="team-card reveal visible">
           <img
             className="team-card-photo"
             src={m!.photo ?? ''}

@@ -16,7 +16,7 @@ export default function CustomerLogosSection({ data, query, variables }: Props) 
     .sort((a, b) => (a!.order ?? 99) - (b!.order ?? 99));
 
   return (
-    <div className="customer-logos-grid reveal">
+    <div className="customer-logos-grid reveal visible">
       {customers.map((c) => (
         <img
           key={c!.id}
