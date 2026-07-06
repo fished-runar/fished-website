@@ -1,0 +1,12 @@
+{
+  "company": "Nordic Group",
+  "order": 7,
+  "logo": "/assets/customers/png/nordic-group.png",
+  "quote": "Fished is a highly user-friendly system with almost endless possibilities. What impresses us the most is how receptive the team is to feedback, and how quickly they work to further develop solutions. The search functions and overviews make it easy to find information quickly, which significantly streamlines everyday work. The transition to Fished has been a very positive experience, and it is a decision we are very happy with. We look forward to what's ahead.",
+  "previewQuote": "Fished is a highly user-friendly system with almost endless possibilities. What impresses us the most is how receptive the team is to feedback, and how quickly they work to further develop solutions.",
+  "authors": [
+    { "name": "Marina Thomassen", "title": "Logistics Backoffice, Nordic Group" },
+    { "name": "Stefan Hansen", "title": "Økonomisjef og leder backoffice, Nordic Group" },
+    { "name": "Erling Johannes Strøm", "title": "Logistics, Nordic Group" }
+  ]
+}

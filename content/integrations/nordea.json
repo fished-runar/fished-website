@@ -1,0 +1,6 @@
+{
+  "name": "Nordea",
+  "order": 9,
+  "logo": "/assets/integrations/svg/nordea.svg",
+  "category": "Banking"
+}
