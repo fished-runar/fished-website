@@ -2,9 +2,12 @@
   "company": "Golden Atlantic",
   "order": 8,
   "logo": "/assets/customers/png/golden-atlantic.png",
-  "quote": "More and more features are coming that make my everyday life easier, and we like that. It looks like it's going to be an extremely hectic year, so the fact that we're already starting to find a good flow in Fished is crucial.",
-  "previewQuote": "More and more features are coming that make my everyday life easier, and we like that. It looks like it's going to be an extremely hectic year, so the fact that we're already starting to find a good flow in Fished is crucial.",
+  "quote": "More and more features are coming that make my everyday life easier, and we like that. It looks like it's going to be an extremely hectic year, so the fact that we're already starting to find a good flow in Fished is crucial",
+  "previewQuote": "More and more features are coming that make my everyday life easier, and we like that. It looks like it's going to be an extremely hectic year, so the fact that we're already starting to find a good flow in Fished is crucial",
   "authors": [
-    { "name": "Kristian Alfredsen Fossum", "title": "Operational Manager, Golden Atlantic" }
+    {
+      "name": "Kristian Alfredsen Fossum",
+      "title": "Operational Manager, Golden Atlantic"
+    }
   ]
 }
