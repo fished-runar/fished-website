@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
+import react from '@astrojs/react';
 import tina from '@tinacms/astro/integration';
 import { tinaAdminDevRedirect } from '@tinacms/astro/vite';
 
@@ -8,7 +9,7 @@ export default defineConfig({
   site: 'https://fished-website.pages.dev',
   output: 'server',
   adapter: cloudflare({ mode: 'directory' }),
-  integrations: [tina()],
+  integrations: [react(), tina()],
   vite: {
     plugins: [tinaAdminDevRedirect()],
     ssr: {
