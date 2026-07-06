@@ -940,7 +940,8 @@
       margin-bottom: 16px;
     }
 
-    .footer-brand-logo svg { height: 56px; width: 56px; flex-shrink: 0; }
+    .footer-brand-logo-icon { height: 52px; width: 52px; flex-shrink: 0; }
+    .footer-brand-logo-text { height: 32px; width: auto; }
 
     .footer-brand-name {
       font-family: var(--font-body);
