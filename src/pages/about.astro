@@ -9,6 +9,8 @@ const officesGlob = import.meta.glob('../../content/offices/*.json', { eager: tr
 const offices = (Object.values(officesGlob) as any[]).sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 const officesData = offices.map((o: any) => ({ lat: o.lat, lng: o.lng, title: o.city, url: o.mapsUrl }));
 ---
+
+<BaseLayout
   title="Fished &#8211; About Us"
   description="Built from the ground up for the seafood industry. Meet the team and find our offices across Norway."
   canonical="https://fished.com/about"
