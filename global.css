@@ -1129,7 +1129,7 @@
 /* &#9472;&#9472;&#9472; Sub-page hero &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .subhero {
   background: var(--navy);
-  min-height: 40vh;
+  min-height: 46vh;
   display: flex;
   align-items: center;
   padding-top: 80px; /* clear fixed nav */
@@ -1138,7 +1138,7 @@
 .subhero-inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 64px 24px;
+  padding: 80px 24px;
   width: 100%;
 }
 
@@ -1393,7 +1393,7 @@
 
 @media (max-width: 900px) {
   .locations-grid { grid-template-columns: 1fr 1fr; }
-  .subhero { min-height: 30vh; }
+  .subhero { min-height: 38vh; }
 }
 
 /* ═══ Team Cards ═══════════════════════════════════════════════════════════ */
