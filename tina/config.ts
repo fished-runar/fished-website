@@ -34,6 +34,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: true, delete: true },
           defaultItem: () => ({ order: 99 }),
+          router: () => '/about',
         },
         fields: [
           { type: "string",  name: "name",       label: "Full name",     required: true, isTitle: true },
@@ -55,6 +56,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: true, delete: true },
           defaultItem: () => ({ order: 99 }),
+          router: () => '/customers',
         },
         fields: [
           { type: "string",  name: "company",    label: "Company name",  required: true, isTitle: true },
@@ -86,6 +88,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: true, delete: true },
           defaultItem: () => ({ order: 99 }),
+          router: () => '/customers',
         },
         fields: [
           { type: "string", name: "name",  label: "Company name", required: true, isTitle: true },
@@ -103,6 +106,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: true, delete: true },
           defaultItem: () => ({ order: 99 }),
+          router: () => '/integrations',
         },
         fields: [
           { type: "string", name: "name",     label: "Integration name",  required: true, isTitle: true },
@@ -121,6 +125,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: true, delete: true },
           defaultItem: () => ({ order: 99 }),
+          router: () => '/about',
         },
         fields: [
           { type: "string", name: "city",  label: "City name",       required: true, isTitle: true },
