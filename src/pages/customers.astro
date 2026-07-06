@@ -1,13 +1,12 @@
 ---
-export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaStrip from '../components/CtaStrip.astro';
-import CustomerLogosSection from '../components/tina/CustomerLogosSection';
-import TestimonialsSection from '../components/tina/TestimonialsSection';
-import { client } from '../../tina/__generated__/client';
 
-const customersResponse = await client.queries.customerConnection();
-const testimonialsResponse = await client.queries.testimonialConnection();
+const custGlob = import.meta.glob('../../content/customers/*.json', { eager: true });
+const customers = (Object.values(custGlob) as any[]).sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+
+const testimonialsGlob = import.meta.glob('../../content/testimonials/*.json', { eager: true });
+const testimonials = (Object.values(testimonialsGlob) as any[]).sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 ---
 
 <BaseLayout
@@ -32,12 +31,11 @@ const testimonialsResponse = await client.queries.testimonialConnection();
         <p class="section-label">Our customers</p>
         <h2 class="section-title">Companies That Trust Fished</h2>
       </div>
-      <CustomerLogosSection
-        data={customersResponse.data}
-        query={customersResponse.query}
-        variables={customersResponse.variables}
-        client:only="react"
-      />
+      <div class="customer-logos-grid reveal">
+        {customers.map((c: any) => (
+          <img src={c.logo} alt={c.name} loading="lazy" />
+        ))}
+      </div>
     </div>
   </section>
 
@@ -48,14 +46,39 @@ const testimonialsResponse = await client.queries.testimonialConnection();
         <p class="section-label">What customers say</p>
         <h2 class="section-title">Trusted by the Industry</h2>
       </div>
-      <TestimonialsSection
-        data={testimonialsResponse.data}
-        query={testimonialsResponse.query}
-        variables={testimonialsResponse.variables}
-        client:only="react"
-      />
+      <div class="testimonials-track three-col">
+        {testimonials.map((t: any) => {
+          const firstAuthor = t.authors?.[0] ?? {};
+          const authorsStr = (t.authors ?? []).map((a: any) => `${a.name}|${a.title}`).join(';;');
+          return (
+            <div class="testimonial-card reveal"
+              data-logo={t.logo}
+              data-logo-alt={t.company}
+              data-photo={t.photo || undefined}
+              data-photo-alt={t.photo ? t.company : undefined}
+              data-quote={`\u201c${t.quote}\u201d`}
+              data-authors={authorsStr}>
+              <img class="testimonial-logo" src={t.logo} alt={t.company} />
+              <p class="testimonial-quote">&ldquo;{t.previewQuote}&rdquo;</p>
+              <button class="btn-read-more">Read more &rarr;</button>
+              <div class="testimonial-author"><div><strong>{firstAuthor.name}</strong><span>{firstAuthor.title}</span></div></div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   </section>
+
+  <!-- Modal -->
+  <div class="t-modal-overlay" id="t-modal-overlay" role="dialog" aria-modal="true">
+    <div class="t-modal" id="t-modal">
+      <button class="t-modal-close" id="t-modal-close" aria-label="Close">&times;</button>
+      <img class="t-modal-logo" id="t-modal-logo" src="" alt="" />
+      <img class="t-modal-photo" id="t-modal-photo" src="" alt="" style="display:none" />
+      <p class="t-modal-quote" id="t-modal-quote"></p>
+      <div class="t-modal-authors" id="t-modal-authors"></div>
+    </div>
+  </div>
 
   <CtaStrip />
 
@@ -68,4 +91,38 @@ const testimonialsResponse = await client.queries.testimonialConnection();
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const overlay = document.getElementById('t-modal-overlay');
+  const modalLogo = document.getElementById('t-modal-logo') as HTMLImageElement;
+  const modalPhoto = document.getElementById('t-modal-photo') as HTMLImageElement;
+  const modalQuote = document.getElementById('t-modal-quote');
+  const modalAuthors = document.getElementById('t-modal-authors');
+
+  function openModal(card: HTMLElement) {
+    modalLogo.src = card.dataset.logo || '';
+    modalLogo.alt = card.dataset.logoAlt || '';
+    const photo = card.dataset.photo;
+    if (photo) { modalPhoto.src = photo; modalPhoto.alt = card.dataset.photoAlt || ''; modalPhoto.style.display = ''; }
+    else { modalPhoto.style.display = 'none'; }
+    modalQuote.innerHTML = card.dataset.quote || '';
+    const authors = (card.dataset.authors || '').split(';;');
+    modalAuthors.innerHTML = authors.map(a => {
+      const [name, role] = a.split('|');
+      return `<div class="t-modal-author"><strong>${name}</strong><span>${role || ''}</span></div>`;
+    }).join('');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.btn-read-more').forEach(btn => {
+    btn.addEventListener('click', () => openModal((btn as HTMLElement).closest('.testimonial-card') as HTMLElement));
+  });
+  document.getElementById('t-modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
