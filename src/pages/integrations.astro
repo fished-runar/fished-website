@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaStrip from '../components/CtaStrip.astro';
+import IntegrationsSection from '../components/tina/IntegrationsSection';
+import { client } from '../../tina/__generated__/client';
 
-const intGlob = import.meta.glob('../../content/integrations/*.json', { eager: true });
-const integrations = (Object.values(intGlob) as any[]).sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+const integrationsResponse = await client.queries.integrationConnection();
 ---
 
 <BaseLayout
@@ -32,11 +33,12 @@ const integrations = (Object.values(intGlob) as any[]).sort((a, b) => (a.order ?
       </div>
     </div>
     <div class="container">
-      <div class="customer-logos-grid reveal">
-        {integrations.map((i: any) => (
-          <img src={i.logo} alt={i.name} loading="lazy" />
-        ))}
-      </div>
+      <IntegrationsSection
+        data={integrationsResponse.data}
+        query={integrationsResponse.query}
+        variables={integrationsResponse.variables}
+        client:only="react"
+      />
     </div>
   </section>
 
