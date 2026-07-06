@@ -380,7 +380,6 @@ export type Integration = Node & Document & {
   name: Scalars['String']['output'];
   order?: Maybe<Scalars['Float']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
-  category?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -390,7 +389,6 @@ export type IntegrationFilter = {
   name?: InputMaybe<StringFilter>;
   order?: InputMaybe<NumberFilter>;
   logo?: InputMaybe<ImageFilter>;
-  category?: InputMaybe<StringFilter>;
 };
 
 export type IntegrationConnectionEdges = {
@@ -603,7 +601,6 @@ export type IntegrationMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   order?: InputMaybe<Scalars['Float']['input']>;
   logo?: InputMaybe<Scalars['String']['input']>;
-  category?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type OfficeMutation = {
@@ -620,7 +617,7 @@ export type TestimonialPartsFragment = { __typename: 'Testimonial', company: str
 
 export type CustomerPartsFragment = { __typename: 'Customer', name: string, order?: number | null, logo?: string | null };
 
-export type IntegrationPartsFragment = { __typename: 'Integration', name: string, order?: number | null, logo?: string | null, category?: string | null };
+export type IntegrationPartsFragment = { __typename: 'Integration', name: string, order?: number | null, logo?: string | null };
 
 export type OfficePartsFragment = { __typename: 'Office', city: string, order?: number | null, lat?: number | null, lng?: number | null, mapsUrl?: string | null };
 
@@ -686,7 +683,7 @@ export type IntegrationQueryVariables = Exact<{
 }>;
 
 
-export type IntegrationQuery = { __typename?: 'Query', integration: { __typename: 'Integration', id: string, name: string, order?: number | null, logo?: string | null, category?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type IntegrationQuery = { __typename?: 'Query', integration: { __typename: 'Integration', id: string, name: string, order?: number | null, logo?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type IntegrationConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -698,7 +695,7 @@ export type IntegrationConnectionQueryVariables = Exact<{
 }>;
 
 
-export type IntegrationConnectionQuery = { __typename?: 'Query', integrationConnection: { __typename?: 'IntegrationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'IntegrationConnectionEdges', cursor: string, node?: { __typename: 'Integration', id: string, name: string, order?: number | null, logo?: string | null, category?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type IntegrationConnectionQuery = { __typename?: 'Query', integrationConnection: { __typename?: 'IntegrationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'IntegrationConnectionEdges', cursor: string, node?: { __typename: 'Integration', id: string, name: string, order?: number | null, logo?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type OfficeQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -761,7 +758,6 @@ export const IntegrationPartsFragmentDoc = gql`
   name
   order
   logo
-  category
 }
     `;
 export const OfficePartsFragmentDoc = gql`
