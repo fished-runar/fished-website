@@ -1,6 +1,5 @@
-{
-  "name": "Tolletaten",
-  "order": 16,
-  "logo": "/assets/integrations/svg/tolletaten.svg",
-  "category": "Government"
+﻿{
+    "name":  "Tolletaten",
+    "order":  16,
+    "logo":  "/assets/integrations/svg/tolletaten.svg"
 }

@@ -1,6 +1,5 @@
-{
-  "name": "Tradeblock",
-  "order": 26,
-  "logo": "/assets/integrations/png/tradeblock.png",
-  "category": "Marketplace"
+﻿{
+    "name":  "Tradeblock",
+    "order":  26,
+    "logo":  "/assets/integrations/png/tradeblock.png"
 }

@@ -1,6 +1,5 @@
-{
-  "name": "Business NXT",
-  "order": 6,
-  "logo": "/assets/integrations/svg/business-nxt.svg",
-  "category": "Accounting"
+﻿{
+    "name":  "Business NXT",
+    "order":  6,
+    "logo":  "/assets/integrations/svg/business-nxt.svg"
 }

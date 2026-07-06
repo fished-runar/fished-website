@@ -1,6 +1,5 @@
-{
-  "name": "ZUGFeRD",
-  "order": 22,
-  "logo": "/assets/integrations/svg/zugferd.svg",
-  "category": "Data Exchange"
+﻿{
+    "name":  "ZUGFeRD",
+    "order":  22,
+    "logo":  "/assets/integrations/svg/zugferd.svg"
 }

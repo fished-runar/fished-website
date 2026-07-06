@@ -1,6 +1,5 @@
-{
-  "name": "PowerOffice GO",
-  "order": 8,
-  "logo": "/assets/integrations/png/poweroffice-go.png",
-  "category": "Accounting"
+﻿{
+    "name":  "PowerOffice GO",
+    "order":  8,
+    "logo":  "/assets/integrations/png/poweroffice-go.png"
 }

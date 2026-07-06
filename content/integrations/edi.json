@@ -1,6 +1,5 @@
-{
-  "name": "EDI",
-  "order": 21,
-  "logo": "/assets/integrations/svg/edi.svg",
-  "category": "Data Exchange"
+﻿{
+    "name":  "EDI",
+    "order":  21,
+    "logo":  "/assets/integrations/svg/edi.svg"
 }

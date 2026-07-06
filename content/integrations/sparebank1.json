@@ -1,6 +1,5 @@
-{
-  "name": "SpareBank 1",
-  "order": 10,
-  "logo": "/assets/integrations/svg/sparebank1.svg",
-  "category": "Banking"
+﻿{
+    "name":  "SpareBank 1",
+    "order":  10,
+    "logo":  "/assets/integrations/svg/sparebank1.svg"
 }

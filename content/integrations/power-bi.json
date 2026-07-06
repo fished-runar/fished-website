@@ -1,6 +1,5 @@
-{
-  "name": "Power BI",
-  "order": 23,
-  "logo": "/assets/integrations/png/power-bi.png",
-  "category": "Analytics"
+﻿{
+    "name":  "Power BI",
+    "order":  23,
+    "logo":  "/assets/integrations/png/power-bi.png"
 }

@@ -1,6 +1,5 @@
-{
-  "name": "Marel",
-  "order": 17,
-  "logo": "/assets/integrations/svg/marel.svg",
-  "category": "Machinery"
+﻿{
+    "name":  "Marel",
+    "order":  17,
+    "logo":  "/assets/integrations/svg/marel.svg"
 }

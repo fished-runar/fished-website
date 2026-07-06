@@ -109,10 +109,9 @@ export default defineConfig({
           router: () => '/integrations',
         },
         fields: [
-          { type: "string", name: "name",     label: "Integration name",  required: true, isTitle: true },
-          { type: "number", name: "order",    label: "Display order" },
-          { type: "image",  name: "logo",     label: "Logo" },
-          { type: "string", name: "category", label: "Category (Accounting, Banking, Government…)" },
+          { type: "string", name: "name",  label: "Integration name", required: true, isTitle: true },
+          { type: "number", name: "order", label: "Display order" },
+          { type: "image",  name: "logo",  label: "Logo" },
         ],
       },
 
