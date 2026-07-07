@@ -1276,9 +1276,7 @@
 
 .offices-section {
   position: relative;
-  height: 100vh;
-  min-height: 620px;
-  max-height: 780px;
+  height: 740px;
   overflow: hidden;
 }
 
@@ -1295,7 +1293,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 88px 5% 56px;
+  padding: 56px 5%;
   pointer-events: none;
 }
 
