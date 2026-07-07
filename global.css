@@ -415,13 +415,14 @@
       padding: 48px 32px;
       border: 1px solid rgba(80,96,221,0.12);
       text-align: center;
-      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      transition: background 0.25s, box-shadow 0.25s, transform 0.25s, border-color 0.25s;
     }
 
     .why-card:hover {
-      box-shadow: 0 12px 40px rgba(80,96,221,0.18);
+      background: #5060db;
+      box-shadow: 0 12px 40px rgba(80,96,221,0.28);
       transform: translateY(-6px);
-      border-color: var(--blue);
+      border-color: #5060db;
     }
 
     .why-card-media {
@@ -440,7 +441,10 @@
       height: 200px;
       border-radius: 50%;
       background: var(--blue-light);
+      transition: background 0.25s;
     }
+
+    .why-card:hover .why-card-media::before { background: rgba(255,255,255,0.15); }
 
     .why-card-media img {
       position: relative;
@@ -456,9 +460,12 @@
       text-transform: uppercase;
       color: var(--navy);
       margin-bottom: 10px;
+      transition: color 0.25s;
     }
 
-    .why-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+    .why-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; transition: color 0.25s; }
+
+    .why-card:hover h4, .why-card:hover p { color: #fff; }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Testimonials &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
     /* .testimonials-section has no background: index.html adds .section-dark
