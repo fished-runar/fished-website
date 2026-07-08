@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: Fished — Seafood Industry Software
 description: Fished is cloud-based software built for the seafood industry. Manage purchase orders, warehouse operations, invoicing and integrations in one platform.
+canonical: /
 permalink: /index.html
 ---
 {% from "components/why-card.njk" import whyCard %}
@@ -130,7 +131,6 @@ permalink: /index.html
     {% include "components/contact-form.njk" %}
   </div>
 </section>
-{% set pageScripts %}true{% endset %}
 <script>
   (function () {
     const e = document.getElementById("testimonial-carousel");
