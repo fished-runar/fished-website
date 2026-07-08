@@ -194,14 +194,12 @@ permalink: /index.html
     btn.textContent = "Sending\u2026";
     fb.style.display = "none";
     try {
-      await fetch(
-        "https://default6082089d91e94a8595ff1019563dbc.2e.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/08/workflows/7259ba4b4c7046768614c134a36133be/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=aFc_4j9XsP_InhkwUtP_BtdVlSbXR7TMQ6cdMKBoZY0",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        },
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Request failed");
       fb.textContent = "Thank you! We will be in touch shortly.";
       fb.style.color = "var(--blue)";
       fb.style.display = "block";
