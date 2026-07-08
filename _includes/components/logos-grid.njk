@@ -1,0 +1,5 @@
+{% macro logosGrid(logos) %}
+<div class="customer-logos-grid reveal">
+  {% for logo in logos %}<img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy" />{% endfor %}
+</div>
+{% endmacro %}

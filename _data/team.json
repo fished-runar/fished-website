@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Kristian Hoff",
+    "role": "CEO",
+    "photo": "/assets/photos/team/kristian-hoff.jpg",
+    "phone": "+4799335450",
+    "email": "kristian@fished.com",
+    "linkedin": "https://www.linkedin.com/in/kristian-hoff-37a2a4/"
+  },
+  {
+    "name": "Robert Oldeide",
+    "role": "CCO",
+    "photo": "/assets/photos/team/robert-oldeide.jpg",
+    "phone": "+4793203880",
+    "email": "robert@fished.com",
+    "linkedin": "https://www.linkedin.com/in/robert-oldeide-97a149b7/"
+  },
+  {
+    "name": "James McRedmond",
+    "role": "CTO",
+    "photo": "/assets/photos/team/james-mcredmond.jpg",
+    "phone": "+4790751092",
+    "email": "james@fished.com",
+    "linkedin": "https://www.linkedin.com/in/james-mcredmond/"
+  },
+  {
+    "name": "Jørgen Urnes",
+    "role": "CPO",
+    "photo": "/assets/photos/team/jorgen-urnes.jpg",
+    "phone": "+4794000490",
+    "email": "jorgen@fished.com",
+    "linkedin": "https://www.linkedin.com/in/jorgen-urnes/"
+  },
+  {
+    "name": "Kai Freddy Evensen",
+    "role": "Sales Manager",
+    "photo": "/assets/photos/team/kai-freddy-evensen.jpg",
+    "phone": "+4748068351",
+    "email": "kai@fished.com",
+    "linkedin": "https://www.linkedin.com/in/kai-freddy-evensen-42ab37248/"
+  }
+]

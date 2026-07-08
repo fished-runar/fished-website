@@ -1,0 +1,79 @@
+[
+  {
+    "tab": "Order Management",
+    "img": "/assets/graphics/Dashboard-amico.png",
+    "title": "From purchase to delivery,<br>in one flow",
+    "desc": "Handle purchase and sales orders with certifications, catch certificates and export documentation — all managed in a single, connected workflow.",
+    "list": [
+      "Purchase & sales orders in one platform",
+      "Catch certificates and export documentation",
+      "Real-time status across the supply chain"
+    ]
+  },
+  {
+    "tab": "Warehouse",
+    "img": "/assets/graphics/Logistics-bro.png",
+    "title": "Real-time control<br>on the floor",
+    "desc": "Inventory control built for terminals and floor staff, directly connected to orders and invoicing. No double-entry, no blind spots.",
+    "list": [
+      "Live inventory across all locations",
+      "Mobile-ready for terminal and floor staff",
+      "Linked to orders and outbound invoices"
+    ]
+  },
+  {
+    "tab": "Reporting & Analytics",
+    "img": "/assets/graphics/Report-pana.png",
+    "title": "Data that drives<br>better decisions",
+    "desc": "Live data on sales, margins, volume and costs. Drill down by customer, category or period and export directly to your tools of choice.",
+    "list": [
+      "Sales and margin dashboards",
+      "Filter by customer, category or date",
+      "Export to Excel, PDF and integrations"
+    ]
+  },
+  {
+    "tab": "Inbound Invoice",
+    "img": "/assets/graphics/Invoice-bro.png",
+    "title": "Invoices matched<br>automatically",
+    "desc": "Fished reads, interprets and matches inbound invoices to your purchase orders automatically. You approve — we handle the rest.",
+    "list": [
+      "Automatic invoice reading and matching",
+      "Exception flagging for manual review",
+      "Full audit trail per invoice"
+    ]
+  },
+  {
+    "tab": "Traceability",
+    "img": "/assets/graphics/trawl fishing-bro.png",
+    "title": "From vessel to customer,<br>fully traceable",
+    "desc": "Full traceability across every transaction. Search by batch, product or order and pinpoint origin information in seconds — ready for audits or recalls.",
+    "list": [
+      "End-to-end batch traceability",
+      "Search by product, vessel or date",
+      "Audit and recall ready"
+    ]
+  },
+  {
+    "tab": "Automations",
+    "img": "/assets/graphics/customer-driven.png",
+    "title": "Your rules,<br>running automatically",
+    "desc": "Build workflow rules without writing a line of code. Trigger approvals, notifications and system actions on any platform event.",
+    "list": [
+      "Visual rule builder, no code required",
+      "Trigger on any platform event",
+      "Notifications, approvals and system actions"
+    ]
+  },
+  {
+    "tab": "CRM",
+    "img": "/assets/graphics/Customer relationship management-bro.png",
+    "title": "Customer relations,<br>tied to every order",
+    "desc": "Track customer history, quotes and activity — connected directly to your orders and invoices. Build lasting relationships backed by real data.",
+    "list": [
+      "Customer activity and history timeline",
+      "Quotes linked directly to orders",
+      "Connected to invoicing and documents"
+    ]
+  }
+]

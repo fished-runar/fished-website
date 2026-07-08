@@ -1,0 +1,219 @@
+---
+layout: layouts/base.njk
+title: Fished — Seafood Industry Software
+description: Fished is cloud-based software built for the seafood industry. Manage purchase orders, warehouse operations, invoicing and integrations in one platform.
+permalink: /index.html
+---
+{% from "components/why-card.njk" import whyCard %}
+{% from "components/testimonial-card.njk" import testimonialCard %}
+<section class="hero">
+  <div class="hero-video">
+    <iframe
+      src="https://customer-99mkqqxjmk8osig7.cloudflarestream.com/5bf9f604ea3bf8eaef7a345235db4b15/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-99mkqqxjmk8osig7.cloudflarestream.com%2F5bf9f604ea3bf8eaef7a345235db4b15%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+      allowfullscreen
+      title="Fished hero video"
+    ></iframe>
+  </div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>A Comprehensive Solution<br /><span>For the Seafood Industry</span></h1>
+      <p>
+        Fished brings purchase orders, inventory, warehouse management, invoicing and integrations
+        together on one platform &#8212; simplifying your entire operation.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Contact us</a>
+        <a href="features.html" class="btn btn-outline-light">See Features</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="split reveal">
+      <div>
+        <p class="section-label">What we do</p>
+        <h2 class="section-title dark">Built for the Seafood Industry,<br />From the Ground Up</h2>
+        <p class="section-body">
+          Fished is a cloud-based platform that connects purchase orders, warehouse management,
+          invoicing and integrations in one place &#8212; built in close collaboration with the
+          industry, for the industry.
+        </p>
+      </div>
+      <div class="split-image" style="background: transparent">
+        <img src="/assets/graphics/Collaboration-cuate.png" alt="Collaboration with the seafood industry" />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="background: var(--blue-light)">
+  <div class="container">
+    <div class="split reverse reveal">
+      <div>
+        <p class="section-label">Our approach</p>
+        <h2 class="section-title">Customer-Driven Innovation</h2>
+        <p class="section-body">
+          Fished is developed in close collaboration with our users, regardless of whether they are
+          large or small players in the seafood industry. Through our built-in feedback function,
+          customers can easily influence future functionality. Our roadmap for further development
+          is shaped in partnership with selected seafood companies, ensuring solutions that meet the
+          real needs of the industry.
+        </p>
+      </div>
+      <div class="split-image">
+        <img src="/assets/graphics/Innovation-rafiki.png" alt="Customer-driven development" />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">Why us</p>
+      <h2 class="section-title">Why Choose Fished?</h2>
+    </div>
+    <div class="why-grid">
+      {% for card in whyCards %}{{ whyCard(card) }}{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section testimonials-section section-dark" id="customers">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label light">What customers say</p>
+      <h2 class="section-title light">Success Stories from Our Customers</h2>
+    </div>
+    {% set featured = testimonials | selectattr("featured", "truthy") %}
+    <div class="testimonials-track testimonial-carousel" id="testimonial-carousel">
+      <div class="testimonial-slot">
+        {{ testimonialCard(featured[0], "carousel") }}
+        {{ testimonialCard(featured[3], "carousel") }}
+      </div>
+      <div class="testimonial-slot">
+        {{ testimonialCard(featured[1], "carousel") }}
+        {{ testimonialCard(featured[2], "carousel") }}
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px" class="reveal">
+      <a href="customers.html" class="btn btn-outline">See all customer stories &rarr;</a>
+    </div>
+  </div>
+</section>
+<section class="section section-sm">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">Our customers</p>
+      <h2 class="section-title dark">Trusted by Leading Seafood Companies</h2>
+      <p class="section-body" style="max-width: 520px; margin-inline: auto">
+        From major processors to boutique exporters &#8212; seafood companies across Norway run on
+        Fished.
+      </p>
+    </div>
+  </div>
+  {% include "components/logo-marquee.njk" %}
+  <div class="container">
+    <div style="text-align: center; margin-top: 40px" class="reveal">
+      <a href="customers.html" class="btn btn-outline">Read customer stories &rarr;</a>
+    </div>
+  </div>
+</section>
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label" style="color: rgba(255, 255, 255, 0.55)">Let's talk</p>
+      <h2 class="section-title light">What Could Your Business<br />Look Like with Fished?</h2>
+      <p style="color: rgba(255, 255, 255, 0.6); margin-top: 14px; max-width: 480px; margin-inline: auto; font-size: 15px">
+        Book a no-obligation chat with one of our sales representatives.
+      </p>
+    </div>
+    {% include "components/contact-form.njk" %}
+  </div>
+</section>
+{% set pageScripts %}true{% endset %}
+<script>
+  (function () {
+    const e = document.getElementById("testimonial-carousel");
+    if (!e) return;
+    const o = Array.from(e.querySelectorAll(".testimonial-slot"));
+    if (o.length < 2) return;
+    const l = o.map((t) => Array.from(t.querySelectorAll(".testimonial-card"))),
+      r = [0, 0];
+    let s = 0;
+    l.forEach((t) => t[0].classList.add("active"));
+    function a(t) {
+      const c = l[t];
+      (c[r[t]].classList.remove("active"),
+        (r[t] = (r[t] + 1) % c.length),
+        c[r[t]].classList.add("active"));
+    }
+    let i = setInterval(() => {
+      (a(s), (s = 1 - s));
+    }, 5e3);
+    (e.addEventListener("mouseenter", () => clearInterval(i)),
+      e.addEventListener("mouseleave", () => {
+        i = setInterval(() => {
+          (a(s), (s = 1 - s));
+        }, 5e3);
+      }));
+  })();
+  const n = document.querySelector(".nav"),
+    d = document.querySelector("#contact");
+  window.addEventListener("scroll", () => {
+    d && window.scrollY >= d.offsetTop
+      ? n.classList.add("hidden")
+      : (n.classList.remove("hidden"),
+        n.classList.toggle("scrolled", window.scrollY > 40));
+  });
+  function fmtPhone(v) {
+    const d = v.replace(/\D/g, "");
+    if (d.length === 10)
+      return "+" + d.slice(0, 2) + " " + d.slice(2, 5) + " " + d.slice(5, 7) + " " + d.slice(7, 10);
+    if (d.length === 8) return "+47 " + d.slice(0, 3) + " " + d.slice(3, 5) + " " + d.slice(5, 8);
+    return v.trim();
+  }
+  function fmtTitle(v) {
+    return v.trim().replace(/\s+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+  function fmtMsg(v) {
+    return v.trim().replace(/^[a-z]/, (c) => c.toUpperCase()).replace(/([.!?]\s+)([a-z])/g, (_, p, c) => p + c.toUpperCase());
+  }
+  window.handleFormSubmit = async function (event) {
+    event.preventDefault();
+    const f = event.target,
+      btn = f.querySelector('button[type="submit"]'),
+      fb = document.getElementById("form-feedback"),
+      data = {
+        name: fmtTitle(f.elements.name.value),
+        phone: fmtPhone(f.elements.phone.value),
+        email: f.elements.email.value.trim().toLowerCase(),
+        company: fmtTitle(f.elements.company.value),
+        message: fmtMsg(f.elements.message.value),
+      };
+    btn.disabled = true;
+    btn.textContent = "Sending\u2026";
+    fb.style.display = "none";
+    try {
+      await fetch(
+        "https://default6082089d91e94a8595ff1019563dbc.2e.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/08/workflows/7259ba4b4c7046768614c134a36133be/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=aFc_4j9XsP_InhkwUtP_BtdVlSbXR7TMQ6cdMKBoZY0",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
+      fb.textContent = "Thank you! We will be in touch shortly.";
+      fb.style.color = "var(--blue)";
+      fb.style.display = "block";
+      f.reset();
+    } catch (e) {
+      fb.textContent = "Something went wrong. Please try again or email us directly.";
+      fb.style.color = "#c0392b";
+      fb.style.display = "block";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Send";
+    }
+  };
+</script>
+

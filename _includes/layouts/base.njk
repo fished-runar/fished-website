@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% if extraHead %}{{ extraHead | safe }}{% endif %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:url" content="https://fished.com{{ page.url }}" />
+    <meta property="og:image" content="https://fished.com/assets/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://fished.com{{ canonical or page.url }}" />
+    <link rel="icon" type="image/svg+xml" href="/assets/fished/Fished - Logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    {% include "components/nav.njk" %}
+    {{ content | safe }}
+    {% include "components/footer.njk" %}
+  </body>
+</html>
+<script type="module">
+  const s = new IntersectionObserver(
+    (e) => {
+      e.forEach((r) => {
+        r.isIntersecting && r.target.classList.add("visible");
+      });
+    },
+    { threshold: 0.12 },
+  );
+  document.querySelectorAll(".reveal").forEach((e) => s.observe(e));
+</script>
+{% if pageScripts %}{{ pageScripts | safe }}{% endif %}

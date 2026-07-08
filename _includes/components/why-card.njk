@@ -1,0 +1,9 @@
+{% macro whyCard(card) %}
+<div class="why-card reveal">
+  <div class="why-card-media">
+    <img src="{{ card.img }}" alt="{{ card.imgAlt }}" />
+  </div>
+  <h4>{{ card.title }}</h4>
+  <p>{{ card.text }}</p>
+</div>
+{% endmacro %}

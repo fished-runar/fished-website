@@ -1,0 +1,34 @@
+<section class="section fv-wrap">
+  <div class="container">
+    <div class="fv-head">
+      <p class="section-label">Platform Capabilities</p>
+      <h2 class="section-title">Feature Overview</h2>
+      <p class="section-body">
+        Built in close collaboration with the seafood industry, every module in Fished is designed around real workflows.
+      </p>
+    </div>
+    <div class="fv-body">
+      <div class="fv-sidebar">
+        {% for panel in featurePanels %}<button class="fv-tab{% if loop.first %} fv-on{% endif %}" data-fv="{{ loop.index0 }}">{{ panel.tab }}</button>{% endfor %}
+      </div>
+      <div class="fv-content">
+        <div class="fv-panels">
+          {% for panel in featurePanels %}
+          <div class="fv-panel{% if loop.first %} fv-on{% endif %}" data-fv="{{ loop.index0 }}">
+            <div class="fv-img">
+              <img src="{{ panel.img }}" alt="{{ panel.tab }}" />
+            </div>
+            <div class="fv-text">
+              <h3 class="fv-title">{{ panel.title | safe }}</h3>
+              <p class="fv-desc">{{ panel.desc }}</p>
+              <ul class="fv-list">
+                {% for point in panel.list %}<li>{{ point }}</li>{% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

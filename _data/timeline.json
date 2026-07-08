@@ -1,0 +1,32 @@
+[
+  {
+    "year": "2018",
+    "title": "Our Founders",
+    "photo": "/assets/photos/team.png",
+    "text": "The founders of Fished, Steffen Pauschert and Even Ovnerud, had an idea back in 2018 to make seafood trading more efficient and reduce the number of manual operations involved in buying and selling seafood products. Their observations of the market led them to notice that some outdated solutions were setting the standards for an entire industry."
+  },
+  {
+    "year": "2020",
+    "title": "From Idea to Company",
+    "photo": "/assets/photos/team.png",
+    "text": "Fished AS was established as a company, and the foundation for today's Fished Order Management was laid."
+  },
+  {
+    "year": "2022",
+    "title": "Growing the Team",
+    "photo": "/assets/photos/team.png",
+    "text": "Fished expanded and hired senior profiles, both experienced profiles with a unique experience and solid track record from building software businesses within the seafood industry."
+  },
+  {
+    "year": "2023",
+    "title": "Contracts Signed, Strategy Set",
+    "photo": "/assets/photos/team.png",
+    "text": "The first two customer contracts were signed, and the final strategy to build a completely new solution for the seafood industry was decided. Fished is hiring additional resources with extensive seafood and technology experience."
+  },
+  {
+    "year": "2024",
+    "title": "From Development to Delivery",
+    "photo": "/assets/photos/team.png",
+    "text": "First customer goes live on the solution, fully integrated with accounting system, production system, customs clearance system and WMS with picking and scanning. Fished hires three new key roles — a new CEO, CTO and front-end developer."
+  }
+]

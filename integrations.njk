@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: Fished – Integrations
+description: Fished integrates with the tools and platforms your business already relies on — seamlessly and out of the box.
+canonical: /integrations
+navSolid: true
+activePage: integrations
+permalink: /integrations.html
+---
+{% from "components/logos-grid.njk" import logosGrid %}
+<section class="subhero">
+  <div class="subhero-inner">
+    <span class="subhero-tag">Integrations</span>
+    <h1>Connecting Your<br /><span>Entire Ecosystem</span></h1>
+    <p>
+      Fished integrates with the tools and platforms your business already relies on &mdash;
+      seamlessly and out of the box.
+    </p>
+  </div>
+</section>
+<section class="section section-sm customer-logos-section">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">Partners &amp; Integrations</p>
+      <h2 class="section-title dark">Our Integration Partners</h2>
+      <p class="section-body" style="max-width: 520px; margin-inline: auto">
+        From accounting and banking to logistics and government systems &mdash; Fished connects to
+        your whole stack.
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    {{ logosGrid(integrationLogos) }}
+  </div>
+</section>
+{% include "components/cta-strip.njk" %}

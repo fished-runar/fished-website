@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+title: Fished – Platform Features
+description: Explore Fished's full feature set — order management, warehouse, reporting, inbound invoice, traceability, automations and CRM — all in one platform.
+canonical: /features
+navSolid: true
+activePage: features
+permalink: /features.html
+extraHead: |
+  <style>
+    .fv-panels > .fv-panel:not(.fv-on) {
+      display: none !important;
+    }
+  </style>
+---
+<section class="subhero">
+  <div class="subhero-inner">
+    <span class="subhero-tag">Platform Capabilities</span>
+    <h1>Everything You Need,<br /><span>In One Platform</span></h1>
+    <p>
+      From purchase orders to invoicing, warehouse management to integrations &mdash; Fished
+      connects every part of your operation.
+    </p>
+  </div>
+</section>
+{% include "components/feature-tabs.njk" %}
+{% include "components/cta-strip.njk" %}
+<script>
+  (function () {
+    const tabs = document.querySelectorAll(".fv-tab"),
+      panels = document.querySelectorAll(".fv-panel");
+    function go(i) {
+      tabs.forEach((t) => t.classList.remove("fv-on"));
+      panels.forEach((p) => p.classList.remove("fv-on"));
+      tabs[i].classList.add("fv-on");
+      panels[i].classList.add("fv-on");
+    }
+    tabs.forEach((t, i) => t.addEventListener("click", () => go(i)));
+  })();
+</script>

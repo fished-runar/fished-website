@@ -1,0 +1,26 @@
+[
+  {
+    "city": "Kristiansand",
+    "lat": 58.1467,
+    "lng": 7.9956,
+    "url": "https://maps.app.goo.gl/g5k9quHyZyQuiz6m7"
+  },
+  {
+    "city": "Ålesund",
+    "lat": 62.4722,
+    "lng": 6.1495,
+    "url": "https://maps.app.goo.gl/31nCeYUzYcazEkEU8"
+  },
+  {
+    "city": "Molde",
+    "lat": 62.7375,
+    "lng": 7.1591,
+    "url": "https://maps.app.goo.gl/fX3PnRX1ULarwPV67"
+  },
+  {
+    "city": "Myre",
+    "lat": 68.8973,
+    "lng": 15.084,
+    "url": "https://maps.app.goo.gl/JbhgZcfWwxFNoqfGA"
+  }
+]

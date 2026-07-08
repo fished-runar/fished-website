@@ -1,0 +1,19 @@
+{
+  "name": "fished-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fished marketing site — Eleventy + Tailwind CSS, edited via CloudCannon",
+  "scripts": {
+    "css": "tailwindcss -i ./styles/main.css -o ./assets/css/main.css",
+    "css:watch": "tailwindcss -i ./styles/main.css -o ./assets/css/main.css --watch",
+    "eleventy:serve": "eleventy --serve",
+    "build": "npm run css -- --minify && eleventy",
+    "dev": "concurrently \"npm:css:watch\" \"npm:eleventy:serve\""
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "concurrently": "^9.0.0"
+  }
+}

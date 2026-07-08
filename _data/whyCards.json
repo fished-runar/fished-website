@@ -1,0 +1,20 @@
+[
+  {
+    "img": "/assets/graphics/Static website-rafiki.png",
+    "imgAlt": "Easy to use interface",
+    "title": "Easy to Use with Just a Few Keystrokes",
+    "text": "With an intuitive interface and a few keystrokes, you can efficiently handle purchasing, sales and inventory management."
+  },
+  {
+    "img": "/assets/graphics/Money stress-rafiki.png",
+    "imgAlt": "Low implementation costs",
+    "title": "Low Implementation Costs",
+    "text": "Fished grows with your business — with no hidden costs, and always available when you need it. No extra cost per user and full flexibility."
+  },
+  {
+    "img": "/assets/graphics/Contact us-pana.png",
+    "imgAlt": "Best customer service",
+    "title": "The Market's Best Customer Service",
+    "text": "We put our customers first and offer the best customer service in the market — close follow-up from day one."
+  }
+]

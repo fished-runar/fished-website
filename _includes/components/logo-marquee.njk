@@ -1,0 +1,14 @@
+{% set row1 = customerLogos | selectattr("marqueeRow", "equalto", 1) | list %}
+{% set row2 = customerLogos | selectattr("marqueeRow", "equalto", 2) | list %}
+<div class="logo-marquee">
+  <div class="logo-marquee-inner">
+    <div class="logo-track">
+      {% for logo in row1 %}<img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy" />{% endfor %}
+      {% for logo in row1 %}<img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy" />{% endfor %}
+    </div>
+    <div class="logo-track reverse">
+      {% for logo in row2 %}<img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy" />{% endfor %}
+      {% for logo in row2 %}<img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy" />{% endfor %}
+    </div>
+  </div>
+</div>

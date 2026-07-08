@@ -1,0 +1,19 @@
+{
+  "name": "Fished",
+  "tagline": "Cloud-based software for the seafood industry.",
+  "copyright": "© 2026 Fished AS. All rights reserved.",
+  "logoIcon": "/assets/fished/Fished - Logo.svg",
+  "logoText": "/assets/fished/Fished - Without logo - blue.svg",
+  "social": [
+    { "label": "Facebook", "value": "Fished AS", "href": "https://www.facebook.com/", "icon": "facebook" },
+    { "label": "LinkedIn", "value": "Fished AS", "href": "https://www.linkedin.com/company/fishedcom/posts/?feedView=all", "icon": "linkedin" },
+    { "label": "Email", "value": "info@fished.com", "href": "mailto:info@fished.com", "icon": "email" }
+  ],
+  "footerProductLinks": [
+    { "label": "Order Management", "href": "/features.html" },
+    { "label": "Warehouse Module", "href": "/features.html" },
+    { "label": "Reporting & Analytics", "href": "/features.html" },
+    { "label": "Automations", "href": "/features.html" },
+    { "label": "CRM", "href": "/features.html" }
+  ]
+}

@@ -1,0 +1,17 @@
+{% from "components/icons.njk" import phoneIcon, mailIcon, linkedinDark %}
+{% macro teamCard(member) %}
+<div class="team-card reveal">
+  <img class="team-card-photo" src="{{ member.photo }}" alt="{{ member.name }}" loading="lazy" />
+  <div class="team-card-body">
+    <p class="team-card-name">{{ member.name }}</p>
+    <p class="team-card-role">{{ member.role }}</p>
+    <div class="team-card-contacts">
+      <a href="tel:{{ member.phone }}">{{ phoneIcon() }}{{ member.phone }}</a>
+      <a href="mailto:{{ member.email }}">{{ mailIcon() }}{{ member.email }}</a>
+    </div>
+    <div class="team-card-linkedin">
+      <a href="{{ member.linkedin }}" target="_blank" rel="noopener">{{ linkedinDark() }}LinkedIn</a>
+    </div>
+  </div>
+</div>
+{% endmacro %}

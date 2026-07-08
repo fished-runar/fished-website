@@ -1,0 +1,14 @@
+<nav class="nav{% if navSolid %} nav-solid{% endif %}">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img class="nav-logo-icon" src="{{ site.logoIcon }}" alt="" />
+      <img class="nav-logo-text" src="{{ site.logoText }}" alt="{{ site.name }}" />
+    </a>
+    <ul class="nav-links">
+      {% for item in nav %}
+      <li><a href="{{ item.href }}"{% if activePage == item.key %} class="active"{% endif %}>{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="/#contact" class="btn btn-primary">Contact us</a>
+  </div>
+</nav>

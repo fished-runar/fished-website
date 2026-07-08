@@ -1,0 +1,178 @@
+---
+layout: layouts/base.njk
+title: Fished – About Us
+description: Built from the ground up for the seafood industry. Meet the team and find our offices across Norway.
+canonical: /about
+navSolid: true
+activePage: about
+permalink: /about.html
+---
+{% from "components/team-card.njk" import teamCard %}
+<section class="subhero">
+  <div class="subhero-inner">
+    <span class="subhero-tag">Who We Are</span>
+    <h1>Rooted in the<br /><span>Seafood Industry</span></h1>
+    <p>Built from the ground up, without technical legacy &mdash; purely for the seafood industry.</p>
+  </div>
+</section>
+{% include "components/story-timeline.njk" %}
+<section class="section story-section">
+  <div class="container">
+    <div class="split reveal">
+      <div>
+        <p class="section-label">Our approach</p>
+        <h2 class="section-title dark">By the Industry,<br />For the Industry</h2>
+        <p class="section-body">
+          Without technical heritage, Fished is developed from the ground up to meet the specific
+          needs of the seafood industry. With the vision &ldquo;by the industry &mdash; for the
+          industry&rdquo;, we work closely with our customers to continuously adapt the system to
+          new challenges and opportunities.
+        </p>
+        <p class="section-body" style="margin-top: 16px">
+          Our roadmap is shaped in partnership with selected seafood companies, ensuring that every
+          feature we build solves real problems for real people in the industry.
+        </p>
+        <div style="margin-top: 32px">
+          <a href="/#contact" class="btn btn-primary">Contact us</a>
+        </div>
+      </div>
+      <div class="split-image">
+        <img src="/assets/photos/team.png" alt="The Fished team" />
+      </div>
+    </div>
+  </div>
+</section>
+{% include "components/offices-section.njk" %}
+<section class="section" style="background: var(--white)">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">The Team</p>
+      <h2 class="section-title dark">Meet the People<br />Behind Fished</h2>
+    </div>
+    <div class="team-grid">
+      {% for member in team %}{{ teamCard(member) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% include "components/cta-strip.njk" %}
+<script>
+  (function () {
+    const tabs = document.querySelectorAll(".story-year"),
+      panels = document.querySelectorAll(".story-panel");
+    let cur = 0;
+    function checkOverflow(panel) {
+      const clamp = panel.querySelector(".story-text-clamp"),
+        btn = panel.querySelector(".story-readmore");
+      if (!clamp || !btn) return;
+      const on = clamp.scrollHeight > clamp.clientHeight + 2;
+      clamp.classList.toggle("has-more", on);
+      btn.classList.toggle("show", on);
+    }
+    function go(i) {
+      cur = (i + panels.length) % panels.length;
+      tabs.forEach((t) => t.classList.remove("story-on"));
+      panels.forEach((p) => p.classList.remove("story-on"));
+      tabs[cur].classList.add("story-on");
+      panels[cur].classList.add("story-on");
+      checkOverflow(panels[cur]);
+    }
+    tabs.forEach((t, i) => t.addEventListener("click", () => go(i)));
+    checkOverflow(panels[cur]);
+    const backdrop = document.getElementById("story-backdrop");
+    function collapseAll() {
+      document.querySelectorAll(".story-card.story-expanded").forEach((c) => {
+        c.classList.remove("story-expanded");
+        c.setAttribute("aria-expanded", "false");
+        const b = c.querySelector(".story-readmore");
+        if (b) b.textContent = "+ Read More";
+      });
+      backdrop && backdrop.classList.remove("active");
+    }
+    document.querySelectorAll(".story-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const willExpand = !card.classList.contains("story-expanded");
+        collapseAll();
+        if (willExpand) {
+          card.classList.add("story-expanded");
+          card.setAttribute("aria-expanded", "true");
+          const btn = card.querySelector(".story-readmore");
+          if (btn) btn.textContent = "\u2212 Show Less";
+          backdrop && backdrop.classList.add("active");
+        }
+      });
+    });
+    backdrop && backdrop.addEventListener("click", collapseAll);
+    document.addEventListener("keydown", (e) => {
+      e.key === "Escape" && collapseAll();
+    });
+  })();
+</script>
+<script>
+  (function () {
+    const officesData = {{ offices | json | safe }}.map((o) => ({
+      lat: o.lat,
+      lng: o.lng,
+      title: o.city,
+      url: o.url,
+    }));
+    var MAP_STYLE = [
+      { elementType: "geometry", stylers: [{ color: "#1a2340" }] },
+      { elementType: "labels.text.fill", stylers: [{ color: "#8fa0c0" }] },
+      { elementType: "labels.text.stroke", stylers: [{ color: "#1a2340" }] },
+      { featureType: "water", elementType: "geometry", stylers: [{ color: "#0d1726" }] },
+      { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#3d6b9f" }] },
+      { featureType: "road", elementType: "geometry", stylers: [{ color: "#2a3a5c" }] },
+      { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#1a2340" }] },
+      { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#3a4bbf" }] },
+      { featureType: "administrative", elementType: "geometry.stroke", stylers: [{ color: "#3a4bbf" }, { weight: 1 }] },
+      { featureType: "administrative.country", elementType: "labels.text.fill", stylers: [{ color: "#aab8d8" }] },
+      { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#c5d0e8" }] },
+      { featureType: "poi", stylers: [{ visibility: "off" }] },
+      { featureType: "transit", stylers: [{ visibility: "off" }] },
+      { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#1e2e4a" }] },
+    ];
+    var OFFICES = officesData;
+    window.initOfficesMap = function () {
+      var map = new google.maps.Map(document.getElementById("offices-map-canvas"), {
+        center: { lat: 65.0, lng: 10.5 },
+        zoom: 5,
+        styles: MAP_STYLE,
+        disableDefaultUI: true,
+        gestureHandling: "cooperative",
+      });
+      var canvas = document.getElementById("offices-map-canvas");
+      canvas.addEventListener(
+        "wheel",
+        function (e) {
+          if (!e.ctrlKey) {
+            e.stopPropagation();
+          }
+        },
+        { capture: true, passive: true },
+      );
+      OFFICES.forEach(function (office) {
+        var marker = new google.maps.Marker({
+          position: { lat: office.lat, lng: office.lng },
+          map: map,
+          title: office.title,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 9,
+            fillColor: "#5060db",
+            fillOpacity: 1,
+            strokeColor: "#ffffff",
+            strokeWeight: 2,
+          },
+        });
+        marker.addListener("click", function () {
+          window.open(office.url, "_blank", "noopener");
+        });
+      });
+    };
+  })();
+</script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaiKtqveJbTdJCZKE9IzvD-K9S67Ic_fA&callback=initOfficesMap"
+  async
+  defer
+></script>

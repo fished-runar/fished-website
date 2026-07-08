@@ -1,0 +1,40 @@
+{% from "components/icons.njk" import checkmark %}
+<section class="section" style="background: var(--blue-light); padding-top: 56px; padding-bottom: 56px">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">Our journey</p>
+      <h2 class="section-title dark">Our Story</h2>
+    </div>
+    <div class="story-wrap" style="margin-top: 32px">
+      <div class="story-timeline">
+        {% for item in timeline %}
+        <button class="story-year{% if loop.first %} story-on{% endif %}" data-story="{{ loop.index0 }}">
+          <span class="story-dot">{{ checkmark() }}</span>
+          <span class="story-year-label"><span class="story-year-num">{{ item.year }}</span><span class="story-year-title">{{ item.title }}</span></span>
+        </button>
+        {% endfor %}
+      </div>
+      <div class="story-panels">
+        {% for item in timeline %}
+        <div class="story-panel{% if loop.first %} story-on{% endif %}" data-story="{{ loop.index0 }}">
+          <div class="story-card">
+            <div class="story-card-body">
+              <p class="story-card-label">Milestone</p>
+              <h3 class="story-card-year">{{ item.year }}</h3>
+              <div class="story-text-clamp">
+                <p class="story-panel-text">{{ item.text }}</p>
+                <div class="story-text-fade"></div>
+              </div>
+              <button class="story-readmore" type="button">+ Read More</button>
+            </div>
+            <div class="story-card-media">
+              <img src="{{ item.photo }}" alt="" />
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<div class="story-backdrop" id="story-backdrop"></div>

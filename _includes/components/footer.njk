@@ -1,0 +1,65 @@
+{% from "components/icons.njk" import pin, facebook, linkedin, emailIcon %}
+<div class="footer-wave" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 90" preserveAspectRatio="none">
+    <path d="M0,40 C180,90 360,0 540,45 C720,90 900,10 1080,50 C1260,85 1350,20 1440,40 L1440,90 L0,90 Z" fill="#1a2340"></path>
+  </svg>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-col-brand">
+        <a href="/" class="nav-logo footer-brand-logo">
+          <img class="nav-logo-icon" src="{{ site.logoIcon }}" alt="" />
+          <img class="nav-logo-text" src="{{ site.logoText }}" alt="{{ site.name }}" />
+        </a>
+        <p class="footer-tagline">{{ site.tagline }}</p>
+        <div class="footer-contact-list">
+          {% for item in site.social %}
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">
+              {% if item.icon == "facebook" %}{{ facebook() }}{% elif item.icon == "linkedin" %}{{ linkedin() }}{% else %}{{ emailIcon() }}{% endif %}
+            </div>
+            <div class="footer-contact-info">
+              <span class="footer-contact-label">{{ item.label }}</span>
+              <a href="{{ item.href }}"{% if item.icon != 'email' %} target="_blank" rel="noopener"{% endif %} class="footer-contact-value">{{ item.value }}</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          {% for item in nav %}
+          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+          {% endfor %}
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          {% for item in site.footerProductLinks %}
+          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Locations</h5>
+        <div class="footer-location">
+          {% for office in offices %}
+          <div class="footer-location-item">
+            <a href="{{ office.url }}" target="_blank" rel="noopener">
+              {{ pin() }}
+              <span>{{ office.city }}</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>{{ site.copyright }}</span>
+    </div>
+  </div>
+</footer>

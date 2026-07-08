@@ -1,0 +1,19 @@
+{% from "components/icons.njk" import pin %}
+<section class="offices-section">
+  <div id="offices-map-canvas"></div>
+  <div class="offices-overlay">
+    <p class="section-label light">Our offices</p>
+    <h2 class="section-title" style="color: #fff">Where We Are</h2>
+    <p class="section-body" style="color: rgba(255, 255, 255, 0.75); margin-top: 8px; max-width: 320px">
+      Fished operates across Norway, strategically located in key seafood regions.
+    </p>
+    <div class="offices-list">
+      {% for office in offices %}
+      <a class="office-item" href="{{ office.url }}" target="_blank" rel="noopener">
+        <div class="office-pin">{{ pin() }}</div>
+        <strong>{{ office.city }}</strong>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

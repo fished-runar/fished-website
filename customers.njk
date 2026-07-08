@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+title: Fished – Customer Stories
+description: Seafood companies across Norway trust Fished to run their daily operations. Read their stories.
+canonical: /customers
+navSolid: true
+activePage: customers
+permalink: /customers.html
+---
+{% from "components/logos-grid.njk" import logosGrid %}
+{% from "components/testimonial-card.njk" import testimonialCard %}
+<section class="subhero">
+  <div class="subhero-inner">
+    <span class="subhero-tag">Customer Stories</span>
+    <h1>Success Stories from<br /><span>Our Customers</span></h1>
+    <p>Seafood companies across Norway trust Fished to run their daily operations. Here is what they say.</p>
+  </div>
+</section>
+<section class="section customer-logos-section">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">Our customers</p>
+      <h2 class="section-title">Companies That Trust Fished</h2>
+    </div>
+    {{ logosGrid(customerLogos) }}
+  </div>
+</section>
+<section class="section testimonials-section">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
+      <p class="section-label">What customers say</p>
+      <h2 class="section-title">Trusted by the Industry</h2>
+    </div>
+    <div class="testimonials-track three-col">
+      {% for item in testimonials %}{{ testimonialCard(item, "grid") }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% include "components/testimonial-modal.njk" %}
+{% include "components/cta-strip.njk" %}
+<script>
+  const s = document.getElementById("t-modal-overlay"),
+    l = document.getElementById("t-modal-logo"),
+    o = document.getElementById("t-modal-photo"),
+    m = document.getElementById("t-modal-quote"),
+    u = document.getElementById("t-modal-authors");
+  function y(e) {
+    ((l.src = e.dataset.logo || ""), (l.alt = e.dataset.logoAlt || ""));
+    const t = e.dataset.photo;
+    (t ? ((o.src = t), (o.alt = e.dataset.photoAlt || ""), (o.style.display = "")) : (o.style.display = "none"),
+      (m.innerHTML = e.dataset.quote || ""));
+    const d = (e.dataset.authors || "").split(";;");
+    ((u.innerHTML = d
+      .map((a) => {
+        const [c, r] = a.split("|");
+        return `<div class="t-modal-author"><strong>${c}</strong><span>${r || ""}</span></div>`;
+      })
+      .join("")),
+      s.classList.add("open"),
+      (document.body.style.overflow = "hidden"));
+  }
+  function n() {
+    (s.classList.remove("open"), (document.body.style.overflow = ""));
+  }
+  document.querySelectorAll(".btn-read-more").forEach((e) => {
+    e.addEventListener("click", () => y(e.closest(".testimonial-card")));
+  });
+  document.getElementById("t-modal-close").addEventListener("click", n);
+  s.addEventListener("click", (e) => {
+    e.target === s && n();
+  });
+  document.addEventListener("keydown", (e) => {
+    e.key === "Escape" && n();
+  });
+</script>

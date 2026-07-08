@@ -1,4 +1,8 @@
 @echo off
 cd /d "%~dp0"
-start http://localhost:3031
-python -m http.server 3031
+if not exist node_modules (
+  echo Installing dependencies...
+  call npm install
+)
+start http://localhost:8080
+call npm run dev
