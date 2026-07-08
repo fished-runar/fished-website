@@ -438,16 +438,15 @@
       background: var(--white);
       border-radius: var(--radius);
       padding: 48px 32px;
-      border: 1px solid rgba(80,96,221,0.12);
+      border: 2px solid rgba(80,96,219,0.16);
       text-align: center;
-      transition: background 0.25s, box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
     }
 
     .why-card:hover {
-      background: #5060db;
-      box-shadow: 0 12px 40px rgba(80,96,221,0.28);
+      border-color: var(--blue);
+      box-shadow: 0 16px 44px rgba(26,35,64,0.16);
       transform: translateY(-6px);
-      border-color: #5060db;
     }
 
     .why-card-media {
@@ -469,7 +468,7 @@
       transition: background 0.25s;
     }
 
-    .why-card:hover .why-card-media::before { background: rgba(255,255,255,0.15); }
+    .why-card:hover .why-card-media::before { background: rgba(80,96,219,0.24); }
 
     .why-card-media img {
       position: relative;
@@ -490,7 +489,7 @@
 
     .why-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; transition: color 0.25s; }
 
-    .why-card:hover h4, .why-card:hover p { color: #fff; }
+    .why-card:hover h4 { color: var(--blue); }
 
     /* &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; Testimonials &#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364;&#226;&#8221;&#8364; */
     /* .testimonials-section has no background: index.html adds .section-dark
