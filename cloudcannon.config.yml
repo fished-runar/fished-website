@@ -6,6 +6,10 @@
 
 source: .
 output: _site
+timezone: Europe/Oslo
+markdown:
+  engine: commonmark
+  options: {}
 
 paths:
   uploads: assets/uploads
@@ -14,6 +18,14 @@ paths:
 # Build settings (mirrors package.json's "build" script).
 build:
   script: npm run build
+
+# Page templates themselves, editable as CloudCannon "Pages".
+collections_config:
+  pages:
+    path: .
+    glob: ["*.njk"]
+    icon: wysiwyg
+
 
 # ------------------------------------------------------------------
 # Global design tokens — edited once, cascades everywhere via Tailwind's
