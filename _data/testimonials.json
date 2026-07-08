@@ -6,7 +6,7 @@
     "photoAlt": "Hofseth team",
     "excerpt": "\"We couldn't be more pleased! Short story, the solution is developed by the users, for the users. That's why we are so pleased.\"",
     "quote": "\"We couldn't be more pleased! Short story, the solution is developed by the users, for the users. That's why we are so pleased. Because the system meets the needs of the individual customer!\"",
-    "authors": [{ "name": "Roger Hofseth", "role": "CCO, Hofseth" }],
+    "authors": [{ "name": "Roger Hofseth", "role": "CCO, Hofseth", "headshot": "" }],
     "featured": true
   },
   {
@@ -16,7 +16,7 @@
     "photoAlt": "Siguna team",
     "excerpt": "\"We have chosen Fished as our order management provider because they offer a modern and flexible solution tailored to the needs of the seafood industry.\"",
     "quote": "\"We have chosen Fished as our order management provider because they offer a modern and flexible solution tailored to the needs of the seafood industry, while also giving us better oversight, traceability, and more efficient work processes.\"",
-    "authors": [{ "name": "Evgenia Kozlova", "role": "CEO, Siguna" }],
+    "authors": [{ "name": "Evgenia Kozlova", "role": "CEO, Siguna", "headshot": "" }],
     "featured": true
   },
   {
@@ -29,7 +29,8 @@
     "authors": [
       {
         "name": "Elisabeth Myklebust",
-        "role": "Logistics & Export Coordinator, Nordic Wildfish"
+        "role": "Logistics & Export Coordinator, Nordic Wildfish",
+        "headshot": ""
       }
     ],
     "featured": true
@@ -42,7 +43,7 @@
     "excerpt": "\"We are very satisfied with the entire planning and implementation of Fished. The team at Fished has very good insight and experience to understand and solve our needs.\"",
     "quote": "\"We are very satisfied with the entire planning and implementation of Fished. The team at Fished has very good insight and experience to understand and solve our needs.\"",
     "authors": [
-      { "name": "Jon Hallvard Roaldsnes", "role": "CEO, Nordic Wildfish" }
+      { "name": "Jon Hallvard Roaldsnes", "role": "CEO, Nordic Wildfish", "headshot": "" }
     ],
     "featured": true
   },
@@ -54,7 +55,7 @@
     "excerpt": "\"Fished has many options and is very user-friendly, which makes our everyday life more efficient. All companies in need of good inventory management should consider Fished — we simply couldn't have done without it.\"",
     "quote": "\"Fished has many options and is very user-friendly, which makes our everyday life more efficient. All companies in need of good inventory management should consider Fished — we simply couldn't have done without it. After we started using Fished, we have gained better cost control and greater focus on internal routines, which has led to a more streamlined workday. In addition, Fished delivers the best customer service on the market — they are fast, helpful and solution-oriented, which gives us peace of mind in our everyday lives.\"",
     "authors": [
-      { "name": "Beate Lid", "role": "Logistics Manager and Sales, Bluewild" }
+      { "name": "Beate Lid", "role": "Logistics Manager and Sales, Bluewild", "headshot": "" }
     ],
     "featured": false
   },
@@ -66,7 +67,7 @@
     "excerpt": "\"We needed a new and modern system for our seafood trade, and Fished delivered. The flow of information has improved and the system is almost intuitively self-explanatory.\"",
     "quote": "\"We needed a new and modern system for our seafood trade, and Fished delivered. We have a brand new engine. It works very well and it's funny to think that we changed the system while production was going on as usual. There is always a risk when replacing the entire software system, but it has actually gone very well! I would say that all the information related to our seafood trade has been made more accessible to everyone in the company. In a simple and clear way, we can access the information we request. The flow of information internally has improved and the system is almost intuitively self-explanatory. The cloud-based solution has made seafood trading easier and more efficient.\"",
     "authors": [
-      { "name": "Knut Andreas Blankholm", "role": "CFO, Jangaard" }
+      { "name": "Knut Andreas Blankholm", "role": "CFO, Jangaard", "headshot": "" }
     ],
     "featured": false
   },
@@ -78,9 +79,9 @@
     "excerpt": "\"Fished is a highly user-friendly system with almost endless possibilities. What impresses us the most is how receptive the team is to feedback, and how quickly they work to further develop solutions.\"",
     "quote": "\"Fished is a highly user-friendly system with almost endless possibilities. What impresses us the most is how receptive the team is to feedback, and how quickly they work to further develop solutions. The search functions and overviews make it easy to find information quickly, which significantly streamlines everyday work. The transition to Fished has been a very positive experience, and it is a decision we are very happy with. We look forward to what's ahead.\"",
     "authors": [
-      { "name": "Marina Thomassen", "role": "Logistics Backoffice, Nordic Group" },
-      { "name": "Stefan Hansen", "role": "Økonomisjef og leder backoffice, Nordic Group" },
-      { "name": "Erling Johannes Strøm", "role": "Logistics, Nordic Group" }
+      { "name": "Marina Thomassen", "role": "Logistics Backoffice, Nordic Group", "headshot": "" },
+      { "name": "Stefan Hansen", "role": "Økonomisjef og leder backoffice, Nordic Group", "headshot": "" },
+      { "name": "Erling Johannes Strøm", "role": "Logistics, Nordic Group", "headshot": "" }
     ],
     "featured": false
   },
@@ -92,7 +93,7 @@
     "excerpt": "\"More and more features are coming that make my everyday life easier, and we like that. It looks like it's going to be an extremely hectic year, so the fact that we're already starting to find a good flow in Fished is crucial\"",
     "quote": "\"More and more features are coming that make my everyday life easier, and we like that. It looks like it's going to be an extremely hectic year, so the fact that we're already starting to find a good flow in Fished is crucial\"",
     "authors": [
-      { "name": "Kristian Alfredsen Fossum", "role": "Operational Manager, Golden Atlantic" }
+      { "name": "Kristian Alfredsen Fossum", "role": "Operational Manager, Golden Atlantic", "headshot": "" }
     ],
     "featured": false
   },
@@ -104,7 +105,7 @@
     "excerpt": "\"We have gone from a system that did not function optimally to one that gives us significantly better control over the cold storage.\"",
     "quote": "\"We have gone from a system that did not function optimally to one that gives us significantly better control over the cold storage, everything from what is in stock, where it is located and when it was produced. In addition to good features and improvements in our operations, we feel that we are in very safe and competent hands — an important, but not so easily measurable factor!\"",
     "authors": [
-      { "name": "Bjarki C. a Lag", "role": "Sales Manager, Hofseth Europe" }
+      { "name": "Bjarki C. a Lag", "role": "Sales Manager, Hofseth Europe", "headshot": "" }
     ],
     "featured": false
   }

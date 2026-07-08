@@ -4,9 +4,8 @@
   class="testimonial-card reveal"
   data-logo="{{ item.logo }}"
   data-logo-alt="{{ item.logoAlt }}"
-  {% if item.photo %}data-photo="{{ item.photo }}" data-photo-alt="{{ item.photoAlt }}"{% endif %}
   data-quote="{{ item.quote }}"
-  data-authors="{% for a in item.authors %}{{ a.name }}|{{ a.role }}{% if not loop.last %};;{% endif %}{% endfor %}"
+  data-authors="{{ item.authors | json }}"
 >
   <img class="testimonial-logo" src="{{ item.logo }}" alt="{{ item.logoAlt }}" />
   <p class="testimonial-quote">{{ item.excerpt | safe }}</p>

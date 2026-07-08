@@ -41,23 +41,27 @@ permalink: /customers.html
 <script>
   const s = document.getElementById("t-modal-overlay"),
     l = document.getElementById("t-modal-logo"),
-    o = document.getElementById("t-modal-photo"),
     m = document.getElementById("t-modal-quote"),
     u = document.getElementById("t-modal-authors");
   function y(e) {
     ((l.src = e.dataset.logo || ""), (l.alt = e.dataset.logoAlt || ""));
-    const t = e.dataset.photo;
-    (t ? ((o.src = t), (o.alt = e.dataset.photoAlt || ""), (o.style.display = "")) : (o.style.display = "none"),
-      (m.innerHTML = e.dataset.quote || ""));
-    const d = (e.dataset.authors || "").split(";;");
-    ((u.innerHTML = d
+    m.innerHTML = e.dataset.quote || "";
+    let authors = [];
+    try {
+      authors = JSON.parse(e.dataset.authors || "[]");
+    } catch (err) {
+      authors = [];
+    }
+    u.innerHTML = authors
       .map((a) => {
-        const [c, r] = a.split("|");
-        return `<div class="t-modal-author"><strong>${c}</strong><span>${r || ""}</span></div>`;
+        const headshot = a.headshot
+          ? `<img src="${a.headshot}" alt="${a.name}" />`
+          : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"></path></svg>`;
+        return `<div class="t-modal-author"><div class="t-modal-headshot">${headshot}</div><div class="t-modal-author-info"><strong>${a.name}</strong><span>${a.role || ""}</span></div></div>`;
       })
-      .join("")),
-      s.classList.add("open"),
-      (document.body.style.overflow = "hidden"));
+      .join("");
+    s.classList.add("open");
+    document.body.style.overflow = "hidden";
   }
   function n() {
     (s.classList.remove("open"), (document.body.style.overflow = ""));
