@@ -26,72 +26,84 @@ permalink: /media.html
         Conferences, trade shows and industry events we&rsquo;re attending or hosting.
       </p>
     </div>
-    <div class="event-grid">
-      {% set sortedEvents = events | sort(false, false, "date") %}
-      {% for item in sortedEvents %}
-      <a class="event-card reveal" data-event-date="{{ item.date }}" href="{{ item.link or '#' }}"{% if item.link %} target="_blank" rel="noopener"{% endif %}>
-        <div class="ticket">
-          <div class="t-main">
-            <div class="t-content">
-              <div class="t-header">
-                <div class="t-logo">
-                  <img src="/assets/fished/logo_White.png" alt="Fished" />
+    {% set sortedEvents = events | sort(false, false, "date") %}
+    <div class="event-carousel reveal">
+      {% if sortedEvents.length > 3 %}
+      <button type="button" class="event-carousel-btn event-carousel-prev" aria-label="Previous events">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      {% endif %}
+      <div class="event-carousel-viewport">
+        <div class="event-grid" id="event-carousel-track">
+          {% for item in sortedEvents %}
+          <a class="event-card" data-event-date="{{ item.date }}" href="{{ item.link or '#' }}"{% if item.link %} target="_blank" rel="noopener"{% endif %}>
+            <div class="ticket">
+              <div class="t-main">
+                <div class="t-content">
+                  <div class="t-header">
+                    <div class="t-logo">
+                      <img src="/assets/fished/logo_White.png" alt="Fished" />
+                    </div>
+                    <div class="t-type">Event</div>
+                  </div>
+                  <div class="t-title">{{ item.title }}</div>
+                  <p class="t-subtitle">{{ item.description }}</p>
+                  <div class="t-details">
+                    <div class="t-detail-item">
+                      <span class="t-label">Date</span>
+                      <span class="t-value">{{ item.displayDate }}</span>
+                    </div>
+                    <div class="t-detail-item">
+                      <span class="t-label">Venue</span>
+                      <span class="t-value">{{ item.location }}</span>
+                    </div>
+                    {% if item.stand %}
+                    <div class="t-detail-item">
+                      <span class="t-label">Stand</span>
+                      <span class="t-value">{{ item.stand }}</span>
+                    </div>
+                    {% endif %}
+                  </div>
                 </div>
-                <div class="t-type">Event</div>
               </div>
-              <div class="t-title">{{ item.title }}</div>
-              <p class="t-subtitle">{{ item.description }}</p>
-              <div class="t-details">
-                <div class="t-detail-item">
-                  <span class="t-label">Date</span>
-                  <span class="t-value">{{ item.displayDate }}</span>
+              <div class="t-perforation"><div class="t-perf-line"></div></div>
+              <div class="t-stub">
+                <div class="t-barcode-full"></div>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          {% for i in range(0, 3 - sortedEvents.length) %}
+          <div class="event-card event-card--placeholder">
+            <div class="ticket">
+              <div class="t-main">
+                <div class="t-content">
+                  <div class="t-header">
+                    <div class="t-logo">
+                      <img src="/assets/fished/logo_White.png" alt="Fished" />
+                    </div>
+                    <div class="t-type">Soon</div>
+                  </div>
+                  <div class="t-title">More Events Coming</div>
+                  <p class="t-subtitle">
+                    We&rsquo;re planning upcoming appearances &mdash; check back soon for details.
+                  </p>
                 </div>
-                <div class="t-detail-item">
-                  <span class="t-label">Venue</span>
-                  <span class="t-value">{{ item.location }}</span>
-                </div>
-                {% if item.stand %}
-                <div class="t-detail-item">
-                  <span class="t-label">Stand</span>
-                  <span class="t-value">{{ item.stand }}</span>
-                </div>
-                {% endif %}
+              </div>
+              <div class="t-perforation"><div class="t-perf-line"></div></div>
+              <div class="t-stub">
+                <div class="t-barcode-full"></div>
               </div>
             </div>
           </div>
-          <div class="t-perforation"><div class="t-perf-line"></div></div>
-          <div class="t-stub">
-            <div class="t-barcode-full"></div>
-            <div class="t-barcode-caption">01000110 01001001 01010011 01001000 01000101 01000100</div>
-          </div>
-        </div>
-      </a>
-      {% endfor %}
-      {% for i in range(0, 3 - sortedEvents.length) %}
-      <div class="event-card event-card--placeholder reveal">
-        <div class="ticket">
-          <div class="t-main">
-            <div class="t-content">
-              <div class="t-header">
-                <div class="t-logo">
-                  <img src="/assets/fished/logo_White.png" alt="Fished" />
-                </div>
-                <div class="t-type">Soon</div>
-              </div>
-              <div class="t-title">More Events Coming</div>
-              <p class="t-subtitle">
-                We&rsquo;re planning upcoming appearances &mdash; check back soon for details.
-              </p>
-            </div>
-          </div>
-          <div class="t-perforation"><div class="t-perf-line"></div></div>
-          <div class="t-stub">
-            <div class="t-barcode-full"></div>
-            <div class="t-barcode-caption">01000110 01001001 01010011 01001000 01000101 01000100</div>
-          </div>
+          {% endfor %}
         </div>
       </div>
-      {% endfor %}
+      {% if sortedEvents.length > 3 %}
+      <button type="button" class="event-carousel-btn event-carousel-next" aria-label="Next events">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -146,12 +158,13 @@ permalink: /media.html
 </section>
 {% include "components/cta-strip.njk" %}
 <script>
-  (function () {
-    const track = document.getElementById("news-carousel-track");
+  function initCarousel(trackId, prevSelector, nextSelector) {
+    const track = document.getElementById(trackId);
     if (!track) return;
+    const prevBtn = document.querySelector(prevSelector);
+    const nextBtn = document.querySelector(nextSelector);
+    if (!prevBtn || !nextBtn) return;
     const cards = Array.from(track.children);
-    const prevBtn = document.querySelector(".news-carousel-prev");
-    const nextBtn = document.querySelector(".news-carousel-next");
     let index = 0;
     function step() {
       const gap = parseFloat(getComputedStyle(track).gap) || 0;
@@ -188,7 +201,10 @@ permalink: /media.html
       index = Math.min(index, maxIndex());
       render();
     });
-  })();
+  }
+
+  initCarousel("news-carousel-track", ".news-carousel-prev", ".news-carousel-next");
+  initCarousel("event-carousel-track", ".event-carousel-prev", ".event-carousel-next");
 
   (function () {
     const today = new Date();

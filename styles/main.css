@@ -1373,13 +1373,48 @@
 
 /* ═══ Media page: events (boarding-pass / ticket style) ═══════════════════ */
 
-.event-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+.event-carousel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-top: 40px;
-  justify-items: center;
 }
+
+.event-carousel-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.event-grid {
+  display: flex;
+  gap: 28px;
+  margin-top: 0;
+  transition: transform 0.5s ease;
+}
+
+.event-grid .event-card {
+  flex: 0 0 calc((100% - 2 * 28px) / 3);
+  min-width: 0;
+}
+
+.event-carousel-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(80, 96, 221, 0.2);
+  background: var(--white);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.event-carousel-btn:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.event-carousel-btn svg { width: 20px; height: 20px; }
 
 .event-card {
   --t-bg: var(--navy);
@@ -1390,7 +1425,6 @@
   --t-text-muted: #9aa3c0;
   display: block;
   width: 100%;
-  max-width: 300px;
   font-size: 10px;
   perspective: 1000px;
   transition: opacity 0.25s, filter 0.25s;
@@ -1498,7 +1532,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 1.6em;
+  height: 1.1em;
 }
 
 .t-logo img {
@@ -1509,16 +1543,16 @@
 }
 
 .t-type {
-  height: 1.6em;
+  height: 1.8em;
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--t-accent);
   border: 1px solid var(--t-accent);
-  padding: 0 0.8em;
+  padding: 0 1em;
   border-radius: 99em;
   font-weight: 700;
   flex-shrink: 0;
@@ -1526,7 +1560,7 @@
 
 .t-title {
   font-family: var(--font-head);
-  font-size: 2.8em;
+  font-size: 3.4em;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 0.3em;
@@ -1618,20 +1652,15 @@
     #fff 15px, #fff 16px, transparent 16px, transparent 18px
   );
   opacity: 0.8;
-  margin-bottom: 0.8em;
 }
 
-.t-barcode-caption {
-  font-family: monospace;
-  font-size: 0.7em;
-  color: var(--t-text-muted);
-  letter-spacing: 0.15em;
-  text-align: center;
-  word-spacing: 0.6em;
+@media (max-width: 900px) {
+  .event-grid .event-card { flex-basis: calc((100% - 28px) / 2); }
 }
 
 @media (max-width: 700px) {
-  .event-grid { grid-template-columns: 1fr; }
+  .event-grid .event-card { flex-basis: 100%; }
+  .event-carousel-btn { width: 36px; height: 36px; }
 }
 
 
