@@ -38,4 +38,16 @@
     { threshold: 0.12 },
   );
   document.querySelectorAll(".reveal").forEach((e) => s.observe(e));
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".t-more-toggle");
+    if (!btn) return;
+    const row = btn.closest(".t-authors-row");
+    const extra = row && row.nextElementSibling;
+    if (!extra || !extra.classList.contains("t-authors-extra")) return;
+    const expanded = btn.getAttribute("data-expanded") === "true";
+    extra.style.display = expanded ? "none" : "flex";
+    btn.textContent = expanded ? btn.dataset.moreLabel : btn.dataset.lessLabel;
+    btn.setAttribute("data-expanded", expanded ? "false" : "true");
+  });
 </script>

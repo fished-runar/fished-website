@@ -1,3 +1,30 @@
+{% macro authorHeadshot(author) %}
+<div class="t-headshot">
+  {% if author.headshot %}<img src="{{ author.headshot }}" alt="{{ author.name }}" />{% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"></path></svg>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro authorRow(author) %}
+<div class="t-author">
+  {{ authorHeadshot(author) }}
+  <div class="t-author-info"><strong>{{ author.name }}</strong><span>{{ author.role }}</span></div>
+</div>
+{% endmacro %}
+
+{% macro authorsBlock(authors) %}
+<div class="t-authors">
+  <div class="t-authors-row">
+    {{ authorRow(authors[0]) }}
+    {% if authors.length > 1 %}<button type="button" class="t-more-toggle" data-expanded="false" data-more-label="+{{ authors.length - 1 }} more" data-less-label="Show less">+{{ authors.length - 1 }} more</button>{% endif %}
+  </div>
+  {% if authors.length > 1 %}
+  <div class="t-authors-extra">
+    {% for a in authors %}{% if not loop.first %}{{ authorRow(a) }}{% endif %}{% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endmacro %}
+
 {% macro testimonialCard(item, variant) %}
 {% if variant == "grid" %}
 <div
@@ -8,20 +35,17 @@
   data-authors="{{ item.authors | json }}"
 >
   <img class="testimonial-logo" src="{{ item.logo }}" alt="{{ item.logoAlt }}" />
-  <p class="testimonial-quote">{{ item.excerpt | safe }}</p>
+  <span class="t-quote-mark" aria-hidden="true">&ldquo;</span>
+  <p class="t-quote t-quote--clamp">{{ item.excerpt | safe }}</p>
   <button class="btn-read-more">Read more &rarr;</button>
-  <div class="testimonial-author">
-    <div><strong>{{ item.authors[0].name }}</strong><span>{{ item.authors[0].role }}</span></div>
-  </div>
+  {{ authorsBlock(item.authors) }}
 </div>
 {% else %}
 <div class="testimonial-card">
   <img class="testimonial-logo" src="{{ item.logo }}" alt="{{ item.logoAlt }}" />
-  {% if item.photo %}<img class="testimonial-photo" src="{{ item.photo }}" alt="{{ item.photoAlt }}" />{% endif %}
-  <p class="testimonial-quote">{{ item.quote | safe }}</p>
-  <div class="testimonial-author">
-    <div><strong>{{ item.authors[0].name }}</strong><span>{{ item.authors[0].role }}</span></div>
-  </div>
+  <span class="t-quote-mark" aria-hidden="true">&ldquo;</span>
+  <p class="t-quote">{{ item.quote | safe }}</p>
+  {{ authorsBlock(item.authors) }}
 </div>
 {% endif %}
 {% endmacro %}

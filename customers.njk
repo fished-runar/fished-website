@@ -47,7 +47,7 @@ permalink: /customers.html
     const headshot = a.headshot
       ? `<img src="${a.headshot}" alt="${a.name}" />`
       : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"></path></svg>`;
-    return `<div class="t-modal-author"><div class="t-modal-headshot">${headshot}</div><div class="t-modal-author-info"><strong>${a.name}</strong><span>${a.role || ""}</span></div></div>`;
+    return `<div class="t-author"><div class="t-headshot">${headshot}</div><div class="t-author-info"><strong>${a.name}</strong><span>${a.role || ""}</span></div></div>`;
   }
   function y(e) {
     ((l.src = e.dataset.logo || ""), (l.alt = e.dataset.logoAlt || ""));
@@ -61,10 +61,10 @@ permalink: /customers.html
     if (!authors.length) {
       u.innerHTML = "";
     } else if (authors.length === 1) {
-      u.innerHTML = `<div class="t-modal-authors-row">${renderAuthor(authors[0])}</div>`;
+      u.innerHTML = `<div class="t-authors-row">${renderAuthor(authors[0])}</div>`;
     } else {
       const moreCount = authors.length - 1;
-      u.innerHTML = `<div class="t-modal-authors-row">${renderAuthor(authors[0])}<button type="button" class="t-modal-more-toggle" data-expanded="false" data-more-label="+${moreCount} more" data-less-label="Show less">+${moreCount} more</button></div><div class="t-modal-authors-extra">${authors.slice(1).map(renderAuthor).join("")}</div>`;
+      u.innerHTML = `<div class="t-authors-row">${renderAuthor(authors[0])}<button type="button" class="t-more-toggle" data-expanded="false" data-more-label="+${moreCount} more" data-less-label="Show less">+${moreCount} more</button></div><div class="t-authors-extra">${authors.slice(1).map(renderAuthor).join("")}</div>`;
     }
     s.classList.add("open");
     document.body.style.overflow = "hidden";
@@ -72,15 +72,6 @@ permalink: /customers.html
   function n() {
     (s.classList.remove("open"), (document.body.style.overflow = ""));
   }
-  u.addEventListener("click", (e) => {
-    const btn = e.target.closest(".t-modal-more-toggle");
-    if (!btn) return;
-    const extra = u.querySelector(".t-modal-authors-extra");
-    const expanded = btn.getAttribute("data-expanded") === "true";
-    extra.style.display = expanded ? "none" : "flex";
-    btn.textContent = expanded ? btn.dataset.moreLabel : btn.dataset.lessLabel;
-    btn.setAttribute("data-expanded", expanded ? "false" : "true");
-  });
   document.querySelectorAll(".btn-read-more").forEach((e) => {
     e.addEventListener("click", () => y(e.closest(".testimonial-card")));
   });
