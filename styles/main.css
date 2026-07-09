@@ -553,6 +553,10 @@
 
     .testimonial-logo { width: 160px; height: 52px; object-fit: contain; object-position: center; align-self: center; margin-bottom: 20px; }
 
+    /* Hofseth's wordmark renders visually larger than other logos at the same
+       box size — scale it down without affecting the card's layout footprint. */
+    .testimonial-logo[src*="hofseth.png"] { transform: scale(0.808); }
+
     .t-quote-mark {
       display: block;
       font-family: var(--font-head);
