@@ -28,14 +28,13 @@ permalink: /media.html
     </div>
     <div class="event-grid">
       {% for item in events %}
-      <div class="event-card reveal" data-event-date="{{ item.date }}">
+      <a class="event-card reveal" data-event-date="{{ item.date }}" href="{{ item.link or '#' }}"{% if item.link %} target="_blank" rel="noopener"{% endif %}>
         <div class="ticket">
           <div class="t-main">
             <div class="t-content">
               <div class="t-header">
                 <div class="t-logo">
-                  <img src="/assets/fished/logo_White.png" alt="" />
-                  FISHED
+                  <img src="/assets/fished/logo_White.png" alt="Fished" />
                 </div>
                 <div class="t-type">Event</div>
               </div>
@@ -50,17 +49,22 @@ permalink: /media.html
                   <span class="t-label">Venue</span>
                   <span class="t-value">{{ item.location }}</span>
                 </div>
+                {% if item.stand %}
+                <div class="t-detail-item">
+                  <span class="t-label">Stand</span>
+                  <span class="t-value">{{ item.stand }}</span>
+                </div>
+                {% endif %}
               </div>
-              {% if item.link %}<a class="t-cta" href="{{ item.link }}" target="_blank" rel="noopener">{{ item.linkLabel or "Learn more" }} &rarr;</a>{% endif %}
             </div>
-            <div class="t-perforation"><div class="t-perf-line"></div></div>
           </div>
+          <div class="t-perforation"><div class="t-perf-line"></div></div>
           <div class="t-stub">
             <div class="t-barcode-full"></div>
             <div class="t-barcode-caption">01000110 01001001 01010011 01001000 01000101 01000100</div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %}
     </div>
   </div>

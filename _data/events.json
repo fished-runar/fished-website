@@ -4,9 +4,10 @@
     "date": "2026-08-18",
     "displayDate": "18\u201320 August 2026",
     "location": "Trondheim, Norway",
+    "stand": "A-137",
     "description": "Come visit our stand and see the latest updates to Fished in person.",
     "image": "/assets/photos/team.png",
-    "link": "",
+    "link": "https://www.aquanor.no/",
     "linkLabel": "Learn more"
   },
   {
@@ -14,9 +15,10 @@
     "date": "2026-04-21",
     "displayDate": "21\u201323 April 2026",
     "location": "Barcelona, Spain",
+    "stand": "5G501",
     "description": "We exhibited alongside buyers, sellers and industry innovators from across the world.",
     "image": "/assets/photos/team.png",
-    "link": "",
+    "link": "https://www.seafoodexpo.com/global/",
     "linkLabel": "Learn more"
   }
 ]

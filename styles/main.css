@@ -1378,6 +1378,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   margin-top: 40px;
+  justify-items: center;
 }
 
 .event-card {
@@ -1387,6 +1388,9 @@
   --t-accent-glow: rgba(80, 96, 219, 0.5);
   --t-text-main: #f8fafc;
   --t-text-muted: #9aa3c0;
+  display: block;
+  width: 100%;
+  max-width: 300px;
   font-size: 10px;
   perspective: 1000px;
   transition: opacity 0.25s, filter 0.25s;
@@ -1433,8 +1437,8 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at bottom left, transparent 1em, var(--t-bg) 1.05em),
-    radial-gradient(circle at bottom right, transparent 1em, var(--t-bg) 1.05em);
+    radial-gradient(circle at bottom left, var(--white) 1em, var(--t-bg) 1.05em),
+    radial-gradient(circle at bottom right, var(--white) 1em, var(--t-bg) 1.05em);
   background-size: 51% 100%;
   background-position: bottom left, bottom right;
   background-repeat: no-repeat;
@@ -1474,19 +1478,14 @@
 .t-logo {
   display: flex;
   align-items: center;
-  gap: 0.5em;
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.2em;
-  letter-spacing: 0.02em;
-  color: #fff;
+  justify-content: center;
 }
 
 .t-logo img {
-  width: 1.5em;
-  height: 1.5em;
+  height: 2.6em;
+  width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 5px var(--t-accent-glow));
+  filter: drop-shadow(0 0 6px var(--t-accent-glow));
 }
 
 .t-type {
@@ -1555,8 +1554,8 @@
 
 .t-perforation {
   display: flex;
-  height: 1em;
   align-items: center;
+  height: 0;
   position: relative;
   z-index: 2;
 }
@@ -1571,8 +1570,8 @@
 .t-stub {
   padding: 1.6em 2em 2em;
   background:
-    radial-gradient(circle at top left, transparent 1em, var(--t-bg-light) 1.05em),
-    radial-gradient(circle at top right, transparent 1em, var(--t-bg-light) 1.05em);
+    radial-gradient(circle at top left, var(--white) 1em, var(--t-bg-light) 1.05em),
+    radial-gradient(circle at top right, var(--white) 1em, var(--t-bg-light) 1.05em);
   background-size: 51% 100%;
   background-position: top left, top right;
   background-repeat: no-repeat;
