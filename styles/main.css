@@ -580,6 +580,8 @@
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      flex: none;
+      max-height: 6.4em;
     }
 
     .btn-read-more {
