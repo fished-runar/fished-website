@@ -508,9 +508,13 @@
     }
 
     /* Carousel variant — index.html only: two slots side by side,
-       cards stack within each slot, one swap per 5s alternating L/R */
+       cards stack within each slot, one swap per 5s alternating L/R.
+       Capped narrower than a full grid column so it reads as a card,
+       not a wide banner, and centered within the section. */
     .testimonial-carousel {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 420px));
+      justify-content: center;
+      gap: 40px;
     }
 
     .testimonial-slot {
