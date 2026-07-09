@@ -139,20 +139,17 @@ permalink: /index.html
     let s = 0;
     l.forEach((t) => t[0].classList.add("active"));
     function a(t) {
-      const c = l[t];
-      (c[r[t]].classList.remove("active"),
-        (r[t] = (r[t] + 1) % c.length),
-        c[r[t]].classList.add("active"));
+      const c = l[t],
+        outgoing = c[r[t]];
+      outgoing.classList.add("leaving");
+      outgoing.classList.remove("active");
+      setTimeout(() => outgoing.classList.remove("leaving"), 800);
+      r[t] = (r[t] + 1) % c.length;
+      c[r[t]].classList.add("active");
     }
-    let i = setInterval(() => {
+    setInterval(() => {
       (a(s), (s = 1 - s));
     }, 5e3);
-    (e.addEventListener("mouseenter", () => clearInterval(i)),
-      e.addEventListener("mouseleave", () => {
-        i = setInterval(() => {
-          (a(s), (s = 1 - s));
-        }, 5e3);
-      }));
   })();
   const n = document.querySelector(".nav"),
     d = document.querySelector("#contact");

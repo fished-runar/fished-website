@@ -528,21 +528,40 @@
     .testimonial-slot .testimonial-card {
       grid-row: 1;
       grid-column: 1;
+      position: relative;
       opacity: 0;
-      transform: translateY(22px);
       pointer-events: none;
-      transition: opacity 0.65s ease, transform 0.65s ease, box-shadow 0.25s;
+      transition: opacity 0.7s ease;
     }
 
     .testimonial-slot .testimonial-card.active {
       opacity: 1;
-      transform: translateY(0);
       pointer-events: auto;
     }
 
-    .testimonial-slot .testimonial-card.active:hover {
-      box-shadow: 0 20px 56px rgba(0,0,0,0.22);
-      transform: translateY(-4px);
+    /* Sonar-ping swap effect: a ring pulses outward (fading in) as a card
+       becomes active, and pulses inward (fading out) as it leaves. */
+    .testimonial-slot .testimonial-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      border: 2px solid var(--blue);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .testimonial-slot .testimonial-card.active::after {
+      animation: sonar-ping 0.8s ease-out;
+    }
+
+    .testimonial-slot .testimonial-card.leaving::after {
+      animation: sonar-ping 0.8s ease-out reverse;
+    }
+
+    @keyframes sonar-ping {
+      0% { opacity: 0.7; transform: scale(0.94); }
+      100% { opacity: 0; transform: scale(1.18); }
     }
 
     /* Slightly taller than the grid variant for a bit more breathing room */
@@ -562,6 +581,12 @@
     .testimonial-card:hover {
       box-shadow: 0 12px 36px rgba(0,0,0,0.16);
       transform: translateY(-3px);
+    }
+
+    /* No hover lift on the auto-rotating carousel cards (index.html) */
+    .testimonial-carousel .testimonial-card:hover {
+      box-shadow: none;
+      transform: none;
     }
 
     .testimonial-logo { width: 160px; height: 52px; object-fit: contain; object-position: center; align-self: center; margin-bottom: 20px; }
