@@ -1453,11 +1453,21 @@
 }
 
 .news-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--blue);
+}
+
+.news-card-meta-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--blue);
+  flex-shrink: 0;
 }
 
 .news-card-title {
@@ -1471,6 +1481,12 @@
 .news-card-desc {
   font-size: 14px;
   color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.news-card-text {
+  font-size: 15px;
+  color: var(--text);
   line-height: 1.6;
 }
 
