@@ -1,6 +1,8 @@
 [
+  { "key": "home", "label": "Home", "href": "/" },
   { "key": "features", "label": "Features", "href": "/features.html" },
   { "key": "customers", "label": "Customers", "href": "/customers.html" },
   { "key": "integrations", "label": "Integrations", "href": "/integrations.html" },
+  { "key": "media", "label": "Media", "href": "/media.html" },
   { "key": "about", "label": "About us", "href": "/about.html" }
 ]
