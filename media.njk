@@ -50,19 +50,10 @@ permalink: /media.html
         The latest updates and posts from Fished on LinkedIn.
       </p>
     </div>
-    <div
-      class="reveal"
-      style="
-        border: 2px dashed rgba(26, 35, 64, 0.15);
-        border-radius: var(--radius);
-        padding: 64px 24px;
-        text-align: center;
-        color: var(--text-muted);
-        margin-top: 40px;
-        background: var(--white);
-      "
-    >
-      LinkedIn feed placeholder &mdash; embed to be added.
+    <div class="reveal" style="margin-top: 40px">
+      <!-- Elfsight LinkedIn Feed | Fished LinkedIn Feed -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-3f72c5f9-8a72-4e53-9bac-0b2cdd0a0d17" data-elfsight-app-lazy></div>
     </div>
   </div>
 </section>
@@ -75,18 +66,73 @@ permalink: /media.html
         Announcements and press coverage from Fished.
       </p>
     </div>
-    <div class="news-grid">
-      {% for item in news %}
-      <a class="news-card reveal" href="{{ item.link }}" target="_blank" rel="noopener">
-        {% if item.image %}<img class="news-card-image" src="{{ item.image }}" alt="" />{% endif %}
-        <div class="news-card-body">
-          <span class="news-card-meta">{{ item.source }} &middot; {{ item.displayDate }}</span>
-          <h3 class="news-card-title">{{ item.title }}</h3>
-          <p class="news-card-desc">{{ item.description }}</p>
+    <div class="news-carousel reveal">
+      <button type="button" class="news-carousel-btn news-carousel-prev" aria-label="Previous articles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      <div class="news-carousel-viewport">
+        <div class="news-grid news-carousel-track" id="news-carousel-track">
+          {% for item in news %}
+          <a class="news-card" href="{{ item.link }}" target="_blank" rel="noopener">
+            {% if item.image %}<img class="news-card-image" src="{{ item.image }}" alt="" />{% endif %}
+            <div class="news-card-body">
+              <span class="news-card-meta">{{ item.source }} &middot; {{ item.displayDate }}</span>
+              <h3 class="news-card-title">{{ item.title }}</h3>
+              <p class="news-card-desc">{{ item.description }}</p>
+            </div>
+          </a>
+          {% endfor %}
         </div>
-      </a>
-      {% endfor %}
+      </div>
+      <button type="button" class="news-carousel-btn news-carousel-next" aria-label="Next articles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
     </div>
   </div>
 </section>
 {% include "components/cta-strip.njk" %}
+<script>
+  (function () {
+    const track = document.getElementById("news-carousel-track");
+    if (!track) return;
+    const cards = Array.from(track.children);
+    const prevBtn = document.querySelector(".news-carousel-prev");
+    const nextBtn = document.querySelector(".news-carousel-next");
+    let index = 0;
+    function step() {
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return cards[0].getBoundingClientRect().width + gap;
+    }
+    function maxIndex() {
+      const visible = Math.max(1, Math.round(track.parentElement.clientWidth / step()));
+      return Math.max(0, cards.length - visible);
+    }
+    function render() {
+      track.style.transform = `translateX(${-index * step()}px)`;
+    }
+    function go(delta) {
+      const max = maxIndex();
+      index += delta;
+      if (index > max) index = 0;
+      if (index < 0) index = max;
+      render();
+    }
+    let timer = setInterval(() => go(1), 5000);
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(() => go(1), 5000);
+    }
+    prevBtn.addEventListener("click", () => {
+      go(-1);
+      restart();
+    });
+    nextBtn.addEventListener("click", () => {
+      go(1);
+      restart();
+    });
+    window.addEventListener("resize", () => {
+      index = Math.min(index, maxIndex());
+      render();
+    });
+  })();
+</script>
