@@ -75,18 +75,17 @@ permalink: /media.html
         Announcements and press coverage from Fished.
       </p>
     </div>
-    <div
-      class="reveal"
-      style="
-        border: 2px dashed rgba(26, 35, 64, 0.15);
-        border-radius: var(--radius);
-        padding: 64px 24px;
-        text-align: center;
-        color: var(--text-muted);
-        margin-top: 40px;
-      "
-    >
-      News feed placeholder &mdash; source to be connected.
+    <div class="news-grid">
+      {% for item in news %}
+      <a class="news-card reveal" href="{{ item.link }}" target="_blank" rel="noopener">
+        {% if item.image %}<img class="news-card-image" src="{{ item.image }}" alt="" />{% endif %}
+        <div class="news-card-body">
+          <span class="news-card-meta">{{ item.source }} &middot; {{ item.displayDate }}</span>
+          <h3 class="news-card-title">{{ item.title }}</h3>
+          <p class="news-card-desc">{{ item.description }}</p>
+        </div>
+      </a>
+      {% endfor %}
     </div>
   </div>
 </section>

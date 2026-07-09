@@ -1,0 +1,22 @@
+---
+permalink: /news-feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+  <title>Fished AS - Media Coverage</title>
+  <link>https://fished.com</link>
+  <description>Official press mentions and industry news for Fished AS</description>
+  <language>no</language>
+{% for item in news %}
+  <item>
+    <title>{{ item.title }}</title>
+    <link>{{ item.link }}</link>
+    <description>{{ item.description }}</description>
+    <pubDate>{{ item.pubDate }}</pubDate>
+    {% if item.image %}<media:content url="{{ item.image }}" medium="image" type="image/jpeg" />{% endif %}
+  </item>
+{% endfor %}
+</channel>
+</rss>
