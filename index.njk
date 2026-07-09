@@ -147,8 +147,10 @@ permalink: /index.html
       slotEl.classList.remove("pinging");
       void slotEl.offsetWidth;
       slotEl.classList.add("pinging");
-      setTimeout(() => slotEl.classList.remove("pinging"), 1000);
     }
+    document.getElementById("testimonial-carousel").addEventListener("animationend", (ev) => {
+      ev.target.closest(".testimonial-slot") && ev.target.closest(".testimonial-slot").classList.remove("pinging");
+    });
     setInterval(() => {
       (a(s), (s = 1 - s));
     }, 5e3);
