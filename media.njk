@@ -29,13 +29,36 @@ permalink: /media.html
     <div class="event-grid">
       {% for item in events %}
       <div class="event-card reveal" data-event-date="{{ item.date }}">
-        {% if item.image %}<img class="event-card-image" src="{{ item.image }}" alt="" />{% endif %}
-        <div class="event-card-body">
-          <span class="event-card-date">{{ item.displayDate }}</span>
-          <h3 class="event-card-title">{{ item.title }}</h3>
-          <span class="event-card-location">{{ item.location }}</span>
-          <p class="event-card-desc">{{ item.description }}</p>
-          {% if item.link %}<a class="event-card-link" href="{{ item.link }}" target="_blank" rel="noopener">{{ item.linkLabel or "Learn more" }} &rarr;</a>{% endif %}
+        <div class="ticket">
+          <div class="t-main">
+            <div class="t-content">
+              <div class="t-header">
+                <div class="t-logo">
+                  <img src="/assets/fished/logo_White.png" alt="" />
+                  FISHED
+                </div>
+                <div class="t-type">Event</div>
+              </div>
+              <div class="t-title">{{ item.title }}</div>
+              <p class="t-subtitle">{{ item.description }}</p>
+              <div class="t-details">
+                <div class="t-detail-item">
+                  <span class="t-label">Date</span>
+                  <span class="t-value">{{ item.displayDate }}</span>
+                </div>
+                <div class="t-detail-item">
+                  <span class="t-label">Venue</span>
+                  <span class="t-value">{{ item.location }}</span>
+                </div>
+              </div>
+              {% if item.link %}<a class="t-cta" href="{{ item.link }}" target="_blank" rel="noopener">{{ item.linkLabel or "Learn more" }} &rarr;</a>{% endif %}
+            </div>
+            <div class="t-perforation"><div class="t-perf-line"></div></div>
+          </div>
+          <div class="t-stub">
+            <div class="t-barcode-full"></div>
+            <div class="t-barcode-caption">01000110 01001001 01010011 01001000 01000101 01000100</div>
+          </div>
         </div>
       </div>
       {% endfor %}
