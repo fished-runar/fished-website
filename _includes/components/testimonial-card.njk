@@ -44,7 +44,7 @@
 <div class="testimonial-card">
   <img class="testimonial-logo" src="{{ item.logo }}" alt="{{ item.logoAlt }}" />
   <span class="t-quote-mark" aria-hidden="true">&ldquo;</span>
-  <p class="t-quote">{{ item.quote | safe }}</p>
+  <p class="t-quote t-quote--clamp">{{ item.quote | safe }}</p>
   {{ authorsBlock(item.authors) }}
 </div>
 {% endif %}
