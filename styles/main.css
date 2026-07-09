@@ -551,7 +551,7 @@
       transform: translateY(-3px);
     }
 
-    .testimonial-logo { height: 40px; width: auto; max-width: 160px; object-fit: contain; margin-bottom: 16px; }
+    .testimonial-logo { height: 52px; width: auto; max-width: 200px; object-fit: contain; align-self: center; margin-bottom: 20px; }
 
     .t-quote-mark {
       display: block;
