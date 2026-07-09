@@ -1389,13 +1389,13 @@
 .event-grid {
   display: flex;
   justify-content: center;
-  gap: 56px;
+  gap: 75px;
   margin-top: 0;
   transition: transform 0.5s ease;
 }
 
 .event-grid .event-card {
-  flex: 0 0 220px;
+  flex: 0 0 225px;
   min-width: 0;
 }
 
