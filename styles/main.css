@@ -1491,7 +1491,9 @@
   padding: 2em;
   position: relative;
   overflow: hidden;
-  background: var(--t-bg);
+  background:
+    linear-gradient(180deg, rgba(10, 15, 35, 0.45), rgba(10, 15, 35, 0.85)),
+    url('/assets/photos/underwater.jpg') center/cover no-repeat;
   mask-image:
     radial-gradient(circle at bottom left, transparent 1em, black 1.05em),
     radial-gradient(circle at bottom right, transparent 1em, black 1.05em);
