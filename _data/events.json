@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Aqua Nor 2026",
+    "date": "2026-08-18",
+    "displayDate": "18\u201320 August 2026",
+    "location": "Trondheim, Norway",
+    "description": "Come visit our stand and see the latest updates to Fished in person.",
+    "image": "/assets/photos/team.png",
+    "link": "",
+    "linkLabel": "Learn more"
+  },
+  {
+    "title": "Seafood Expo Global",
+    "date": "2026-04-21",
+    "displayDate": "21\u201323 April 2026",
+    "location": "Barcelona, Spain",
+    "description": "We exhibited alongside buyers, sellers and industry innovators from across the world.",
+    "image": "/assets/photos/team.png",
+    "link": "",
+    "linkLabel": "Learn more"
+  }
+]

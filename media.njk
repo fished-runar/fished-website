@@ -26,18 +26,19 @@ permalink: /media.html
         Conferences, trade shows and industry events we&rsquo;re attending or hosting.
       </p>
     </div>
-    <div
-      class="reveal"
-      style="
-        border: 2px dashed rgba(26, 35, 64, 0.15);
-        border-radius: var(--radius);
-        padding: 64px 24px;
-        text-align: center;
-        color: var(--text-muted);
-        margin-top: 40px;
-      "
-    >
-      Event listings placeholder &mdash; layout to be designed.
+    <div class="event-grid">
+      {% for item in events %}
+      <div class="event-card reveal" data-event-date="{{ item.date }}">
+        {% if item.image %}<img class="event-card-image" src="{{ item.image }}" alt="" />{% endif %}
+        <div class="event-card-body">
+          <span class="event-card-date">{{ item.displayDate }}</span>
+          <h3 class="event-card-title">{{ item.title }}</h3>
+          <span class="event-card-location">{{ item.location }}</span>
+          <p class="event-card-desc">{{ item.description }}</p>
+          {% if item.link %}<a class="event-card-link" href="{{ item.link }}" target="_blank" rel="noopener">{{ item.linkLabel or "Learn more" }} &rarr;</a>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -133,6 +134,17 @@ permalink: /media.html
     window.addEventListener("resize", () => {
       index = Math.min(index, maxIndex());
       render();
+    });
+  })();
+
+  (function () {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    document.querySelectorAll(".event-card[data-event-date]").forEach((card) => {
+      const eventDate = new Date(card.dataset.eventDate);
+      if (!isNaN(eventDate) && eventDate < today) {
+        card.classList.add("event-card--past");
+      }
     });
   })();
 </script>
