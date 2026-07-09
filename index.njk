@@ -85,15 +85,12 @@ permalink: /index.html
       <p class="section-label light">What customers say</p>
       <h2 class="section-title light">Success Stories from Our Customers</h2>
     </div>
-    {% set featured = testimonials | selectattr("featured", "truthy") %}
     <div class="testimonials-track testimonial-carousel" id="testimonial-carousel">
       <div class="testimonial-slot">
-        {{ testimonialCard(featured[0], "carousel") }}
-        {{ testimonialCard(featured[3], "carousel") }}
+        {% for item in testimonials %}{% if loop.index0 % 2 == 0 %}{{ testimonialCard(item, "carousel") }}{% endif %}{% endfor %}
       </div>
       <div class="testimonial-slot">
-        {{ testimonialCard(featured[1], "carousel") }}
-        {{ testimonialCard(featured[2], "carousel") }}
+        {% for item in testimonials %}{% if loop.index0 % 2 == 1 %}{{ testimonialCard(item, "carousel") }}{% endif %}{% endfor %}
       </div>
     </div>
     <div style="text-align: center; margin-top: 40px" class="reveal">
