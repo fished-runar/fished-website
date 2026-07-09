@@ -1401,6 +1401,22 @@
   filter: grayscale(0.7);
 }
 
+.event-card.event-card--placeholder {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.event-card--placeholder .t-title {
+  background: none;
+  -webkit-text-fill-color: var(--t-text-muted);
+  color: var(--t-text-muted);
+}
+
+.event-card--placeholder:hover .ticket {
+  transform: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
 .ticket {
   position: relative;
   color: var(--t-text-main);
@@ -1436,12 +1452,15 @@
   padding: 2em;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at bottom left, var(--white) 1em, var(--t-bg) 1.05em),
-    radial-gradient(circle at bottom right, var(--white) 1em, var(--t-bg) 1.05em);
-  background-size: 51% 100%;
-  background-position: bottom left, bottom right;
-  background-repeat: no-repeat;
+  background: var(--t-bg);
+  mask-image:
+    radial-gradient(circle at bottom left, transparent 1em, black 1.05em),
+    radial-gradient(circle at bottom right, transparent 1em, black 1.05em);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    radial-gradient(circle at bottom left, transparent 1em, black 1.05em),
+    radial-gradient(circle at bottom right, transparent 1em, black 1.05em);
+  -webkit-mask-composite: source-in, source-in;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
 }
@@ -1471,7 +1490,7 @@
 .t-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 2em;
 }
 
@@ -1479,22 +1498,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 1.6em;
 }
 
 .t-logo img {
-  height: 2.6em;
+  height: 100%;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 6px var(--t-accent-glow));
 }
 
 .t-type {
+  height: 1.6em;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
   font-size: 0.6em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--t-accent);
   border: 1px solid var(--t-accent);
-  padding: 0.4em 0.8em;
+  padding: 0 0.8em;
   border-radius: 99em;
   font-weight: 700;
   flex-shrink: 0;
@@ -1502,9 +1526,9 @@
 
 .t-title {
   font-family: var(--font-head);
-  font-size: 2.2em;
+  font-size: 2.8em;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.1;
   margin-bottom: 0.3em;
   text-transform: uppercase;
   background: linear-gradient(135deg, #fff 0%, #a8b3f5 100%);
@@ -1569,12 +1593,15 @@
 
 .t-stub {
   padding: 1.6em 2em 2em;
-  background:
-    radial-gradient(circle at top left, var(--white) 1em, var(--t-bg-light) 1.05em),
-    radial-gradient(circle at top right, var(--white) 1em, var(--t-bg-light) 1.05em);
-  background-size: 51% 100%;
-  background-position: top left, top right;
-  background-repeat: no-repeat;
+  background: var(--t-bg-light);
+  mask-image:
+    radial-gradient(circle at top left, transparent 1em, black 1.05em),
+    radial-gradient(circle at top right, transparent 1em, black 1.05em);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    radial-gradient(circle at top left, transparent 1em, black 1.05em),
+    radial-gradient(circle at top right, transparent 1em, black 1.05em);
+  -webkit-mask-composite: source-in, source-in;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   position: relative;
