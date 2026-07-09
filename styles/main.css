@@ -1389,7 +1389,7 @@
 .event-grid {
   display: flex;
   justify-content: center;
-  gap: 28px;
+  gap: 56px;
   margin-top: 0;
   transition: transform 0.5s ease;
 }
@@ -1449,7 +1449,7 @@
 
 .event-card--placeholder:hover .ticket {
   transform: none;
-  filter: drop-shadow(0 20px 24px rgba(0,0,0,0.35)) drop-shadow(0 0 1px rgba(255,255,255,0.15));
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,0.22)) drop-shadow(0 0 1px rgba(255,255,255,0.15));
 }
 
 .ticket {
@@ -1461,13 +1461,13 @@
   font-family: var(--font-body);
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), filter 0.6s ease;
-  filter: drop-shadow(0 20px 24px rgba(0,0,0,0.35)) drop-shadow(0 0 1px rgba(255,255,255,0.15));
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,0.22)) drop-shadow(0 0 1px rgba(255,255,255,0.15));
   border-radius: 1em;
 }
 
 .event-card:hover .ticket {
   transform: rotateX(4deg) rotateY(-6deg) scale(1.015);
-  filter: drop-shadow(10px 14px 18px rgba(0,0,0,0.3)) drop-shadow(0 0 1px rgba(255,255,255,0.2)) drop-shadow(-5px -5px 14px var(--t-accent-glow));
+  filter: drop-shadow(6px 10px 12px rgba(0,0,0,0.2)) drop-shadow(0 0 1px rgba(255,255,255,0.2)) drop-shadow(-3px -3px 10px var(--t-accent-glow));
 }
 
 .ticket::after {
