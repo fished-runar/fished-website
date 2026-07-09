@@ -555,7 +555,7 @@
 
     /* Hofseth's wordmark renders visually larger than other logos at the same
        box size — scale it down without affecting the card's layout footprint. */
-    .testimonial-logo[src*="hofseth.png"] { transform: scale(0.808); }
+    .testimonial-logo[src*="hofseth.png"] { transform: scale(0.962); }
 
     .t-quote-mark {
       display: block;
