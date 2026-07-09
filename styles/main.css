@@ -687,6 +687,26 @@
     .t-modal-authors { border-top: 1px solid rgba(26,35,64,0.14); padding-top: 20px; display: flex; flex-direction: column; gap: 16px; }
     .t-modal-author { display: flex; align-items: center; gap: 14px; }
 
+    .t-modal-authors-row { display: flex; align-items: center; gap: 14px; }
+    .t-modal-authors-row .t-modal-author { flex: 1; min-width: 0; }
+
+    .t-modal-more-toggle {
+      flex-shrink: 0;
+      background: rgba(80,96,219,0.14);
+      color: var(--blue);
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .t-modal-more-toggle:hover { background: rgba(80,96,219,0.24); }
+
+    .t-modal-authors-extra { display: none; flex-direction: column; gap: 16px; }
+
     .t-modal-headshot {
       flex-shrink: 0;
       width: 56px;
