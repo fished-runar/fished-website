@@ -523,6 +523,7 @@
 
     .testimonial-slot {
       display: grid;
+      position: relative;
     }
 
     .testimonial-slot .testimonial-card {
@@ -539,29 +540,33 @@
       pointer-events: auto;
     }
 
-    /* Sonar-ping swap effect: a ring pulses outward (fading in) as a card
-       becomes active, and pulses inward (fading out) as it leaves. */
-    .testimonial-slot .testimonial-card::after {
+    /* Sonar-ping swap effect: a ring starts small at the slot's center and
+       visibly expands outward while fading. Lives on the slot (not the
+       card) so its own opacity isn't dimmed by the card's fade transition. */
+    .testimonial-slot::after {
       content: "";
       position: absolute;
-      inset: 0;
-      border-radius: var(--radius);
-      border: 2px solid var(--blue);
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      margin: -30px 0 0 -30px;
+      border-radius: 50%;
+      border: 4px solid var(--blue);
+      box-shadow: 0 0 0 6px rgba(80, 96, 219, 0.15);
       opacity: 0;
       pointer-events: none;
+      z-index: 2;
     }
 
-    .testimonial-slot .testimonial-card.active::after {
-      animation: sonar-ping 0.8s ease-out;
-    }
-
-    .testimonial-slot .testimonial-card.leaving::after {
-      animation: sonar-ping 0.8s ease-out reverse;
+    .testimonial-slot.pinging::after {
+      animation: sonar-ping 1s cubic-bezier(0.15, 0.65, 0.35, 1);
     }
 
     @keyframes sonar-ping {
-      0% { opacity: 0.7; transform: scale(0.94); }
-      100% { opacity: 0; transform: scale(1.18); }
+      0% { opacity: 0.85; transform: scale(0.3); }
+      40% { opacity: 0.6; transform: scale(2.2); }
+      100% { opacity: 0; transform: scale(6); }
     }
 
     /* Slightly taller than the grid variant for a bit more breathing room */

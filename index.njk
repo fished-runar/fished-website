@@ -139,13 +139,15 @@ permalink: /index.html
     let s = 0;
     l.forEach((t) => t[0].classList.add("active"));
     function a(t) {
-      const c = l[t],
-        outgoing = c[r[t]];
-      outgoing.classList.add("leaving");
-      outgoing.classList.remove("active");
-      setTimeout(() => outgoing.classList.remove("leaving"), 800);
+      const c = l[t];
+      c[r[t]].classList.remove("active");
       r[t] = (r[t] + 1) % c.length;
       c[r[t]].classList.add("active");
+      const slotEl = o[t];
+      slotEl.classList.remove("pinging");
+      void slotEl.offsetWidth;
+      slotEl.classList.add("pinging");
+      setTimeout(() => slotEl.classList.remove("pinging"), 1000);
     }
     setInterval(() => {
       (a(s), (s = 1 - s));
