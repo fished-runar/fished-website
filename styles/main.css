@@ -1723,14 +1723,15 @@
   flex-direction: column;
   background: var(--white);
   border-radius: var(--radius);
-  border: 1px solid rgba(80,96,221,0.12);
+  border: 1.5px solid rgba(80,96,221,0.3);
   overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
 }
 
 .news-card:hover {
   box-shadow: 0 12px 36px rgba(80,96,219,0.14);
   transform: translateY(-4px);
+  border-color: rgba(80,96,221,0.5);
 }
 
 .news-card-image {
