@@ -509,13 +509,17 @@
 
     /* Carousel variant — index.html only: two slots side by side,
        cards stack within each slot, one swap per 5s alternating L/R.
-       Capped narrower than a full grid column so it reads as a card,
-       not a wide banner, and centered within the section. */
+       Capped narrower than a full grid column so it reads as a card, not a
+       wide banner. The three 1fr tracks (left margin, middle gap, right
+       margin) share the leftover space equally, so the gap between cards
+       always matches the outer margins. */
     .testimonial-carousel {
-      grid-template-columns: repeat(2, minmax(0, 420px));
-      justify-content: center;
-      gap: 40px;
+      grid-template-columns: 1fr minmax(0, 460px) 1fr minmax(0, 460px) 1fr;
+      gap: 0;
     }
+
+    .testimonial-carousel .testimonial-slot:nth-child(1) { grid-column: 2; }
+    .testimonial-carousel .testimonial-slot:nth-child(2) { grid-column: 4; }
 
     .testimonial-slot {
       display: grid;
@@ -539,6 +543,11 @@
     .testimonial-slot .testimonial-card.active:hover {
       box-shadow: 0 20px 56px rgba(0,0,0,0.22);
       transform: translateY(-4px);
+    }
+
+    /* Slightly taller than the grid variant for a bit more breathing room */
+    .testimonial-carousel .testimonial-card {
+      padding: 34px;
     }
 
     .testimonial-card {
@@ -1175,6 +1184,8 @@
       .split.reverse { direction: ltr; }
       .why-grid { grid-template-columns: 1fr 1fr; }
       .testimonials-track, .testimonials-track.three-col { grid-template-columns: 1fr; }
+      .testimonial-carousel .testimonial-slot:nth-child(1),
+      .testimonial-carousel .testimonial-slot:nth-child(2) { grid-column: auto; }
       .nav-links { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
       .contact-card { padding: 40px 32px; }
