@@ -1530,7 +1530,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 
 .t-logo {
@@ -1568,7 +1568,8 @@
   font-size: 3.4em;
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 0.3em;
+  min-height: 2.2em;
+  margin-bottom: 1.6em;
   text-transform: uppercase;
   background: linear-gradient(135deg, #fff 0%, #a8b3f5 100%);
   -webkit-background-clip: text;
@@ -1576,28 +1577,17 @@
   -webkit-text-fill-color: transparent;
 }
 
-.t-subtitle {
-  color: var(--t-text-muted);
-  font-size: 0.95em;
-  line-height: 1.6;
-  margin-bottom: 2em;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 .t-details {
   display: flex;
   flex-direction: column;
-  gap: 0.9em;
+  gap: 1.8em;
   margin-bottom: 1.5em;
 }
 
 .t-detail-item { display: flex; flex-direction: column; gap: 0.2em; }
 
 .t-label {
-  font-size: 0.65em;
+  font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--t-text-muted);
