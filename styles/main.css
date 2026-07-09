@@ -1474,6 +1474,13 @@
   line-height: 1.6;
 }
 
+.news-card-desc--clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @media (max-width: 900px) {
   .news-carousel-track .news-card { flex-basis: calc((100% - 28px) / 2); }
 }

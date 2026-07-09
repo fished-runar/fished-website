@@ -50,10 +50,16 @@ permalink: /media.html
         The latest updates and posts from Fished on LinkedIn.
       </p>
     </div>
-    <div class="reveal" style="margin-top: 40px">
-      <!-- Elfsight LinkedIn Feed | Fished LinkedIn Feed -->
-      <script src="https://elfsightcdn.com/platform.js" async></script>
-      <div class="elfsight-app-3f72c5f9-8a72-4e53-9bac-0b2cdd0a0d17" data-elfsight-app-lazy></div>
+    <div class="news-carousel reveal" id="linkedin-carousel">
+      <button type="button" class="news-carousel-btn linkedin-carousel-prev" aria-label="Previous posts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      <div class="news-carousel-viewport">
+        <div class="news-grid news-carousel-track" id="linkedin-carousel-track"></div>
+      </div>
+      <button type="button" class="news-carousel-btn linkedin-carousel-next" aria-label="Next posts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -93,46 +99,107 @@ permalink: /media.html
 {% include "components/cta-strip.njk" %}
 <script>
   (function () {
-    const track = document.getElementById("news-carousel-track");
-    if (!track) return;
-    const cards = Array.from(track.children);
-    const prevBtn = document.querySelector(".news-carousel-prev");
-    const nextBtn = document.querySelector(".news-carousel-next");
-    let index = 0;
-    function step() {
-      const gap = parseFloat(getComputedStyle(track).gap) || 0;
-      return cards[0].getBoundingClientRect().width + gap;
+    function initCarousel(trackId, prevSelector, nextSelector) {
+      const track = document.getElementById(trackId);
+      if (!track) return;
+      const cards = Array.from(track.children);
+      if (!cards.length) return;
+      const prevBtn = document.querySelector(prevSelector);
+      const nextBtn = document.querySelector(nextSelector);
+      let index = 0;
+      function step() {
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        return cards[0].getBoundingClientRect().width + gap;
+      }
+      function maxIndex() {
+        const visible = Math.max(1, Math.round(track.parentElement.clientWidth / step()));
+        return Math.max(0, cards.length - visible);
+      }
+      function render() {
+        track.style.transform = `translateX(${-index * step()}px)`;
+      }
+      function go(delta) {
+        const max = maxIndex();
+        index += delta;
+        if (index > max) index = 0;
+        if (index < 0) index = max;
+        render();
+      }
+      let timer = setInterval(() => go(1), 5000);
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(() => go(1), 5000);
+      }
+      prevBtn.addEventListener("click", () => {
+        go(-1);
+        restart();
+      });
+      nextBtn.addEventListener("click", () => {
+        go(1);
+        restart();
+      });
+      window.addEventListener("resize", () => {
+        index = Math.min(index, maxIndex());
+        render();
+      });
     }
-    function maxIndex() {
-      const visible = Math.max(1, Math.round(track.parentElement.clientWidth / step()));
-      return Math.max(0, cards.length - visible);
+
+    function escapeHtml(s) {
+      return (s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     }
-    function render() {
-      track.style.transform = `translateX(${-index * step()}px)`;
+
+    function fmtDate(iso) {
+      const d = new Date(iso);
+      if (isNaN(d)) return "";
+      return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
     }
-    function go(delta) {
-      const max = maxIndex();
-      index += delta;
-      if (index > max) index = 0;
-      if (index < 0) index = max;
-      render();
+
+    function pickImage(post) {
+      const m = post.media && post.media[0];
+      if (!m) return "";
+      if (m.type === "image") return (m.standard && m.standard.url) || (m.thumbnail && m.thumbnail.url) || (m.original && m.original.url) || "";
+      if (m.type === "video") return (m.cover && m.cover.original && m.cover.original.url) || "";
+      if (m.type === "article") return (m.image && ((m.image.standard && m.image.standard.url) || (m.image.original && m.image.original.url))) || "";
+      if (m.type === "document") return (m.images && m.images[0] && ((m.images[0].standard && m.images[0].standard.url) || (m.images[0].thumbnail && m.images[0].thumbnail.url))) || "";
+      return "";
     }
-    let timer = setInterval(() => go(1), 5000);
-    function restart() {
-      clearInterval(timer);
-      timer = setInterval(() => go(1), 5000);
+
+    function proxyImage(url) {
+      return url ? "/api/linkedin-image?url=" + encodeURIComponent(url) : "";
     }
-    prevBtn.addEventListener("click", () => {
-      go(-1);
-      restart();
-    });
-    nextBtn.addEventListener("click", () => {
-      go(1);
-      restart();
-    });
-    window.addEventListener("resize", () => {
-      index = Math.min(index, maxIndex());
-      render();
-    });
+
+    function renderLinkedInCard(post) {
+      const img = proxyImage(pickImage(post));
+      const caption = escapeHtml(post.caption || "");
+      const date = fmtDate(post.publishedAt);
+      return (
+        `<a class="news-card" href="${post.link}" target="_blank" rel="noopener">` +
+        (img ? `<img class="news-card-image" src="${img}" alt="" loading="lazy" />` : "") +
+        `<div class="news-card-body">` +
+        `<span class="news-card-meta">Fished on LinkedIn &middot; ${date}</span>` +
+        `<p class="news-card-desc news-card-desc--clamp">${caption}</p>` +
+        `</div></a>`
+      );
+    }
+
+    async function loadLinkedInFeed() {
+      const track = document.getElementById("linkedin-carousel-track");
+      if (!track) return;
+      try {
+        const res = await fetch("/api/linkedin-feed");
+        if (!res.ok) throw new Error("bad response");
+        const data = await res.json();
+        const posts = (data && data.payload) || [];
+        if (!posts.length) throw new Error("no posts");
+        track.innerHTML = posts.map(renderLinkedInCard).join("");
+        initCarousel("linkedin-carousel-track", ".linkedin-carousel-prev", ".linkedin-carousel-next");
+      } catch (err) {
+        const carousel = document.getElementById("linkedin-carousel");
+        if (carousel) carousel.style.display = "none";
+      }
+    }
+
+    initCarousel("news-carousel-track", ".news-carousel-prev", ".news-carousel-next");
+    loadLinkedInFeed();
   })();
 </script>
