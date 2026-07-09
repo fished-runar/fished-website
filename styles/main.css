@@ -1388,13 +1388,14 @@
 
 .event-grid {
   display: flex;
+  justify-content: center;
   gap: 28px;
   margin-top: 0;
   transition: transform 0.5s ease;
 }
 
 .event-grid .event-card {
-  flex: 0 0 calc((100% - 2 * 28px) / 3);
+  flex: 0 0 220px;
   min-width: 0;
 }
 
@@ -1453,6 +1454,9 @@
 
 .ticket {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 480px;
   color: var(--t-text-main);
   font-family: var(--font-body);
   transform-style: preserve-3d;
@@ -1483,6 +1487,7 @@
 .event-card:hover .ticket::after { background-position: 0% 0%; }
 
 .t-main {
+  flex: 1 1 auto;
   padding: 2em;
   position: relative;
   overflow: hidden;
@@ -1576,6 +1581,10 @@
   font-size: 0.95em;
   line-height: 1.6;
   margin-bottom: 2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .t-details {
@@ -1588,14 +1597,14 @@
 .t-detail-item { display: flex; flex-direction: column; gap: 0.2em; }
 
 .t-label {
-  font-size: 0.6em;
+  font-size: 0.65em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--t-text-muted);
 }
 
 .t-value {
-  font-size: 1.1em;
+  font-size: 1.6em;
   font-weight: 700;
   color: var(--t-text-main);
 }
@@ -1626,7 +1635,8 @@
 }
 
 .t-stub {
-  padding: 1.6em 2em 2em;
+  flex: 0 0 auto;
+  padding: 2.4em 2em 3em;
   background: var(--t-bg-light);
   mask-image:
     radial-gradient(circle at top left, transparent 1em, black 1.05em),
@@ -1643,7 +1653,7 @@
 
 .t-barcode-full {
   width: 100%;
-  height: 3em;
+  height: 4.5em;
   background: repeating-linear-gradient(
     90deg,
     #fff 0, #fff 2px, transparent 2px, transparent 4px,
