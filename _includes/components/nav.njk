@@ -8,7 +8,6 @@
       {% for item in nav %}
       <li><a href="{{ item.href }}"{% if activePage == item.key %} class="active"{% endif %}>{{ item.label }}</a></li>
       {% endfor %}
-      <li class="nav-links-cta"><a href="/#contact" class="btn btn-primary">Contact us</a></li>
     </ul>
     <a href="/#contact" class="btn btn-primary nav-cta-desktop">Contact us</a>
     <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
