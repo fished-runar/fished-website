@@ -1444,6 +1444,8 @@
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
 }
 
 .event-grid {
