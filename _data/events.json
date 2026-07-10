@@ -5,10 +5,7 @@
     "displayDate": "18\u201320 August 2026",
     "location": "Trondheim, Norway",
     "stand": "D-356",
-    "description": "Come visit our stand and see the latest updates to Fished in person.",
-    "image": "/assets/photos/team.png",
-    "link": "https://nor-fishing.no/en/",
-    "linkLabel": "Learn more"
+    "link": "https://nor-fishing.no/en/"
   },
   {
     "title": "Seafood Expo Global",
@@ -16,9 +13,6 @@
     "displayDate": "21\u201323 April 2026",
     "location": "Barcelona, Spain",
     "stand": "5G501",
-    "description": "We exhibited alongside buyers, sellers and industry innovators from across the world.",
-    "image": "/assets/photos/team.png",
-    "link": "https://www.seafoodexpo.com/global/",
-    "linkLabel": "Learn more"
+    "link": "https://www.seafoodexpo.com/global/"
   }
 ]
