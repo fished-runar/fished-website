@@ -27,8 +27,14 @@ permalink: /media.html
       </p>
     </div>
     {% set sortedEvents = events | sort(false, false, "date") %}
+    {% if sortedEvents.length < 2 %}
+      {% set placeholderCount = 3 - sortedEvents.length %}
+    {% else %}
+      {% set placeholderCount = 1 %}
+    {% endif %}
+    {% set totalEventCards = sortedEvents.length + placeholderCount %}
     <div class="event-carousel reveal">
-      {% if sortedEvents.length > 3 %}
+      {% if totalEventCards > 3 %}
       <button type="button" class="event-carousel-btn event-carousel-prev" aria-label="Previous events">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
       </button>
@@ -72,7 +78,7 @@ permalink: /media.html
             </div>
           </a>
           {% endfor %}
-          {% for i in range(0, 3 - sortedEvents.length) %}
+          {% for i in range(0, placeholderCount) %}
           <div class="event-card event-card--placeholder">
             <div class="ticket">
               <div class="t-main">
@@ -95,7 +101,7 @@ permalink: /media.html
           {% endfor %}
         </div>
       </div>
-      {% if sortedEvents.length > 3 %}
+      {% if totalEventCards > 3 %}
       <button type="button" class="event-carousel-btn event-carousel-next" aria-label="Next events">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
       </button>
@@ -154,14 +160,13 @@ permalink: /media.html
 </section>
 {% include "components/cta-strip.njk" %}
 <script>
-  function initCarousel(trackId, prevSelector, nextSelector) {
+  function initCarousel(trackId, prevSelector, nextSelector, getInitialIndex) {
     const track = document.getElementById(trackId);
     if (!track) return;
     const prevBtn = document.querySelector(prevSelector);
     const nextBtn = document.querySelector(nextSelector);
     if (!prevBtn || !nextBtn) return;
     const cards = Array.from(track.children);
-    let index = 0;
     function step() {
       const gap = parseFloat(getComputedStyle(track).gap) || 0;
       return cards[0].getBoundingClientRect().width + gap;
@@ -170,6 +175,8 @@ permalink: /media.html
       const visible = Math.max(1, Math.round(track.parentElement.clientWidth / step()));
       return Math.max(0, cards.length - visible);
     }
+    let index = typeof getInitialIndex === "function" ? getInitialIndex(cards) : 0;
+    index = Math.max(0, Math.min(index, maxIndex()));
     function render() {
       track.style.transform = `translateX(${-index * step()}px)`;
     }
@@ -180,6 +187,7 @@ permalink: /media.html
       if (index < 0) index = max;
       render();
     }
+    render();
     let timer = setInterval(() => go(1), 5000);
     function restart() {
       clearInterval(timer);
@@ -199,9 +207,6 @@ permalink: /media.html
     });
   }
 
-  initCarousel("news-carousel-track", ".news-carousel-prev", ".news-carousel-next");
-  initCarousel("event-carousel-track", ".event-carousel-prev", ".event-carousel-next");
-
   (function () {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -212,4 +217,14 @@ permalink: /media.html
       }
     });
   })();
+
+  function eventInitialIndex(cards) {
+    // Placeholder cards (no data-event-date) are always treated as "upcoming".
+    let pivot = cards.findIndex((card) => !card.dataset.eventDate || !card.classList.contains("event-card--past"));
+    if (pivot === -1) pivot = cards.length - 1;
+    return pivot > 0 ? pivot - 1 : 0;
+  }
+
+  initCarousel("news-carousel-track", ".news-carousel-prev", ".news-carousel-next");
+  initCarousel("event-carousel-track", ".event-carousel-prev", ".event-carousel-next", eventInitialIndex);
 </script>
