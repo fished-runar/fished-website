@@ -1486,15 +1486,16 @@
   --t-text-main: #f8fafc;
   --t-text-muted: #9aa3c0;
   display: block;
+  position: relative;
   width: 100%;
   font-size: 10px;
   perspective: 1000px;
-  transition: opacity 0.25s, filter 0.25s;
 }
 
-.event-card.event-card--past {
+.event-card.event-card--past .ticket {
   opacity: 0.5;
   filter: grayscale(0.7);
+  transition: opacity 0.25s, filter 0.25s;
 }
 
 .t-stamp {
@@ -1502,9 +1503,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 70%;
-  max-width: 220px;
-  transform: translate(-50%, -50%);
+  width: 92%;
+  max-width: 300px;
+  transform: translate(-50%, -50%) rotate(-8deg);
   z-index: 15;
   pointer-events: none;
   mix-blend-mode: multiply;
