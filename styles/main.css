@@ -1213,6 +1213,10 @@
       .split.reverse { direction: ltr; }
       .why-grid { grid-template-columns: 1fr 1fr; }
       .testimonials-track, .testimonials-track.three-col { grid-template-columns: 1fr; }
+      .testimonial-carousel {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
       .testimonial-carousel .testimonial-slot:nth-child(1),
       .testimonial-carousel .testimonial-slot:nth-child(2) { grid-column: auto; }
       .nav-links { display: none; }
