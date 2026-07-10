@@ -1388,7 +1388,6 @@
 
 .event-grid {
   display: flex;
-  justify-content: center;
   gap: 100px;
   margin-top: 0;
   transition: transform 0.5s ease;

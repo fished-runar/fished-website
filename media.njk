@@ -175,10 +175,20 @@ permalink: /media.html
       const visible = Math.max(1, Math.round(track.parentElement.clientWidth / step()));
       return Math.max(0, cards.length - visible);
     }
+    function contentWidth() {
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return cards.reduce((sum, c) => sum + c.getBoundingClientRect().width, 0) + gap * (cards.length - 1);
+    }
     let index = typeof getInitialIndex === "function" ? getInitialIndex(cards) : 0;
     index = Math.max(0, Math.min(index, maxIndex()));
     function render() {
-      track.style.transform = `translateX(${-index * step()}px)`;
+      const viewportWidth = track.parentElement.clientWidth;
+      const content = contentWidth();
+      if (content <= viewportWidth) {
+        track.style.transform = `translateX(${(viewportWidth - content) / 2}px)`;
+      } else {
+        track.style.transform = `translateX(${-index * step()}px)`;
+      }
     }
     function go(delta) {
       const max = maxIndex();
