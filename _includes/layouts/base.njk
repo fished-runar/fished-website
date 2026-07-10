@@ -50,4 +50,24 @@
     btn.textContent = expanded ? btn.dataset.moreLabel : btn.dataset.lessLabel;
     btn.setAttribute("data-expanded", expanded ? "false" : "true");
   });
+
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  if (navToggle && navLinks) {
+    function closeNav() {
+      navToggle.setAttribute("aria-expanded", "false");
+      navLinks.classList.remove("open");
+    }
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+      navLinks.classList.toggle("open", !isOpen);
+    });
+    navLinks.addEventListener("click", (e) => {
+      if (e.target.closest("a")) closeNav();
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) closeNav();
+    });
+  }
 </script>
