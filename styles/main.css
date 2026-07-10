@@ -1497,6 +1497,21 @@
   filter: grayscale(0.7);
 }
 
+.t-stamp {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  max-width: 220px;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.event-card--past .t-stamp { display: block; }
+
 .event-card.event-card--placeholder {
   cursor: default;
   opacity: 0.6;

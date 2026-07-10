@@ -44,6 +44,7 @@ permalink: /media.html
           {% for item in sortedEvents %}
           <a class="event-card" data-event-date="{{ item.date }}" href="{{ item.link or '#' }}"{% if item.link %} target="_blank" rel="noopener"{% endif %}>
             <div class="ticket">
+              <img class="t-stamp" src="/assets/graphics/stamp-completed.png" alt="Completed" />
               <div class="t-main">
                 <div class="t-content">
                   <div class="t-header">
