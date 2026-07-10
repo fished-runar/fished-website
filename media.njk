@@ -187,7 +187,11 @@ permalink: /media.html
       if (content <= viewportWidth) {
         track.style.transform = `translateX(${(viewportWidth - content) / 2}px)`;
       } else {
-        track.style.transform = `translateX(${-index * step()}px)`;
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const visible = Math.max(1, Math.round(viewportWidth / step()));
+        const windowWidth = Math.min(content, visible * step() - gap);
+        const centerOffset = Math.max(0, (viewportWidth - windowWidth) / 2);
+        track.style.transform = `translateX(${centerOffset - index * step()}px)`;
       }
     }
     function go(delta) {
