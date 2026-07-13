@@ -2,7 +2,7 @@
   "name": "fished-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Fished marketing site — Eleventy + Tailwind CSS, edited via CloudCannon",
+  "description": "Fished marketing site — Eleventy + Tailwind CSS",
   "engines": {
     "node": ">=20"
   },
