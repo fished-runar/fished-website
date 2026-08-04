@@ -11,8 +11,10 @@
   ],
   "footerProductLinks": [
     { "label": "Order Management", "href": "/features.html" },
-    { "label": "Warehouse Module", "href": "/features.html" },
+    { "label": "Warehouse", "href": "/features.html" },
     { "label": "Reporting & Analytics", "href": "/features.html" },
+    { "label": "Inbound Invoice", "href": "/features.html" },
+    { "label": "Traceability", "href": "/features.html" },
     { "label": "Automations", "href": "/features.html" },
     { "label": "CRM", "href": "/features.html" }
   ]
