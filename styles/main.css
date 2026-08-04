@@ -1340,9 +1340,12 @@
 }
 
 /* &#9472;&#9472;&#9472; Nav: active page link &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.nav-links a.active { color: var(--blue); }
+.nav-links a.active {
+  color: var(--blue);
+  text-shadow: 0 0 8px rgba(80, 96, 219, 0.7), 0 0 16px rgba(80, 96, 219, 0.4);
+}
 .nav-links a.active::after { width: 100%; }
-.nav.scrolled .nav-links a.active { color: var(--blue); }
+.nav.scrolled .nav-links a.active { color: var(--blue); text-shadow: none; }
 
 /* on sub-pages nav starts scrolled (page has no dark video hero) */
 .nav.nav-solid {
@@ -1352,7 +1355,7 @@
   -webkit-backdrop-filter: blur(14px);
 }
 .nav.nav-solid .nav-links a { color: var(--text); }
-.nav.nav-solid .nav-links a.active { color: var(--blue); }
+.nav.nav-solid .nav-links a.active { color: var(--blue); text-shadow: none; }
 
 /* &#9472;&#9472;&#9472; CTA strip &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .cta-strip {
