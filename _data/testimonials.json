@@ -20,16 +20,16 @@
     "featured": true
   },
   {
-    "logo": "/assets/customers/png/nordic-wildfish.png",
-    "logoAlt": "Nordic Wildfish",
-    "photo": "/assets/photos/testimonial-nordicwildfish.webp",
-    "photoAlt": "Nordic Wildfish team",
+    "logo": "/assets/customers/png/hofseth.png",
+    "logoAlt": "Hofseth",
+    "photo": "/assets/photos/testimonial-hofseth.webp",
+    "photoAlt": "Hofseth team",
     "excerpt": "\"Fished works great — it's both intuitive and functional. My favourite features are the universal search field, pallet tracking and the ability to easily correct my own mistakes.\"",
     "quote": "\"Fished works great — it's both intuitive and functional. My favourite features are the universal search field, pallet tracking and the ability to easily correct my own mistakes — all of which make my daily work more efficient.\"",
     "authors": [
       {
         "name": "Elisabeth Myklebust",
-        "role": "Logistics & Export Coordinator, Nordic Wildfish",
+        "role": "Logistics & Export Coordinator, Hofseth",
         "headshot": ""
       }
     ],
