@@ -711,7 +711,7 @@
     .t-headshot img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .t-headshot svg { width: 28px; height: 28px; }
 
-    .t-author-info { display: flex; flex-direction: column; justify-content: center; min-height: 56px; }
+    .t-author-info { display: flex; flex-direction: column; justify-content: center; }
     .t-author-info strong { font-size: 15px; font-weight: 700; color: var(--navy); }
     .t-author-info span { font-size: 13px; color: var(--text-muted); }
 
