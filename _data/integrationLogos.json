@@ -24,5 +24,9 @@
   { "src": "/assets/integrations/png/power-bi.png", "alt": "Power BI" },
   { "src": "/assets/integrations/svg/catch-certificate.svg", "alt": "Catch Certificate" },
   { "src": "/assets/integrations/png/oslo-seafood-center.png", "alt": "Oslo Seafood Center" },
-  { "src": "/assets/integrations/png/tradeblock.png", "alt": "Tradeblock" }
+  { "src": "/assets/integrations/png/tradeblock.png", "alt": "Tradeblock" },
+  { "src": "/assets/integrations/png/CodeIT.png", "alt": "CodeIT" },
+  { "src": "/assets/integrations/png/Maritech.png", "alt": "Maritech" },
+  { "src": "/assets/integrations/svg/Norges Sildesalgslag.svg", "alt": "Norges Sildesalgslag" },
+  { "src": "/assets/integrations/svg/Prisrådet.svg", "alt": "Prisrådet" }
 ]
