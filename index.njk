@@ -129,6 +129,7 @@ activePage: home
     {% include "components/contact-form.njk" %}
   </div>
 </section>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
   (function () {
     const e = document.getElementById("testimonial-carousel");
@@ -188,6 +189,8 @@ activePage: home
         email: f.elements.email.value.trim().toLowerCase(),
         company: fmtTitle(f.elements.company.value),
         message: fmtMsg(f.elements.message.value),
+        website: f.elements.website ? f.elements.website.value : "",
+        turnstileToken: f.elements["cf-turnstile-response"] ? f.elements["cf-turnstile-response"].value : "",
       };
     btn.disabled = true;
     btn.textContent = "Sending\u2026";
@@ -210,6 +213,7 @@ activePage: home
     } finally {
       btn.disabled = false;
       btn.textContent = "Send";
+      if (window.turnstile) window.turnstile.reset();
     }
   };
 </script>

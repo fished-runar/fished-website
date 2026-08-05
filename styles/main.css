@@ -983,6 +983,23 @@
 
     .form-field textarea { resize: vertical; min-height: 130px; }
 
+    /* Honeypot — invisible to real users, catches bots that auto-fill every field */
+    .hp-field {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      left: -9999px;
+    }
+
+    .cf-turnstile {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
     .form-submit-row {
       display: flex;
       flex-direction: column;
