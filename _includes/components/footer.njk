@@ -27,34 +27,36 @@
           {% endfor %}
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Navigation</h5>
-        <ul>
-          {% for item in nav %}
-          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
-          {% endfor %}
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Features</h5>
-        <ul>
-          {% for item in site.footerProductLinks %}
-          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Locations</h5>
-        <div class="footer-location">
-          {% for office in offices %}
-          <div class="footer-location-item">
-            <a href="{{ office.url }}" target="_blank" rel="noopener">
-              {{ pin() }}
-              <span>{{ office.city }}</span>
-            </a>
+      <div class="footer-nav-group">
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            {% for item in nav %}
+            <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+            {% endfor %}
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Features</h5>
+          <ul>
+            {% for item in site.footerProductLinks %}
+            <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Locations</h5>
+          <div class="footer-location">
+            {% for office in offices %}
+            <div class="footer-location-item">
+              <a href="{{ office.url }}" target="_blank" rel="noopener">
+                {{ pin() }}
+                <span>{{ office.city }}</span>
+              </a>
+            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
       </div>
     </div>

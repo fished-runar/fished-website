@@ -1067,12 +1067,19 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      grid-template-columns: 1.6fr 3fr;
       gap: 64px;
       padding-bottom: 56px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 32px;
       align-items: end;
+    }
+
+    .footer-nav-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 64px;
+      align-items: start;
     }
 
     .footer-col-brand img { height: 44px; width: auto; margin-bottom: 18px; }
@@ -1293,7 +1300,8 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       }
       .nav-links a::after { display: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-grid { grid-template-columns: 1fr; align-items: start; gap: 36px; }
+      .footer-nav-group { gap: 36px; }
       .contact-card { padding: 40px 32px; }
       .features-layout { grid-template-columns: 1fr; gap: 48px; }
       .features-img-card { position: static; }
@@ -1303,6 +1311,7 @@
       .why-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
+      .footer-nav-group { grid-template-columns: 1fr; gap: 28px; }
       .nav-inner { padding: 12px 20px; }
       .hero-content { padding: 60px 0; }
       .contact-card { padding: 32px 20px; }
