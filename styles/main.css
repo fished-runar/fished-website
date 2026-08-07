@@ -1883,6 +1883,7 @@
   position: relative;
   height: 740px;
   overflow: hidden;
+  border-radius: var(--radius);
 }
 
 #offices-map-canvas {

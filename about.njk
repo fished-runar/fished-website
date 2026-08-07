@@ -133,14 +133,25 @@ permalink: /about.html
     ];
     var OFFICES = officesData;
     window.initOfficesMap = function () {
-      var map = new google.maps.Map(document.getElementById("offices-map-canvas"), {
-        center: { lat: 65.0, lng: 10.5 },
-        zoom: 5,
+      var canvas = document.getElementById("offices-map-canvas");
+      var map = new google.maps.Map(canvas, {
         styles: MAP_STYLE,
         disableDefaultUI: true,
         gestureHandling: "cooperative",
       });
-      var canvas = document.getElementById("offices-map-canvas");
+      // Fit the viewport to the actual office locations (rather than a fixed
+      // center/zoom) so all markers stay visible regardless of the map box's
+      // width, and pad around the side/bottom overlay panel so pins aren't
+      // hidden behind it.
+      var bounds = new google.maps.LatLngBounds();
+      OFFICES.forEach(function (office) {
+        bounds.extend({ lat: office.lat, lng: office.lng });
+      });
+      var isStacked = window.innerWidth <= 700;
+      var padding = isStacked
+        ? { top: 40, right: 40, bottom: Math.round(canvas.clientHeight * 0.55), left: 40 }
+        : { top: 60, right: 60, bottom: 60, left: Math.round(canvas.clientWidth * 0.4) };
+      map.fitBounds(bounds, padding);
       canvas.addEventListener(
         "wheel",
         function (e) {
