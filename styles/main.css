@@ -2297,11 +2297,11 @@
 
 @keyframes logo-scroll-left {
   0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(calc(-50% - 28px), 0, 0); }
 }
 
 @keyframes logo-scroll-right {
-  0%   { transform: translate3d(-50%, 0, 0); }
+  0%   { transform: translate3d(calc(-50% - 28px), 0, 0); }
   100% { transform: translate3d(0, 0, 0); }
 }
 
