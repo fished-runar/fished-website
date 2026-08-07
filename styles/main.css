@@ -1188,11 +1188,11 @@
 
     .footer-col h5 {
       font-family: var(--font-body);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #8b93a8;
+      color: #fff;
       margin-bottom: 24px;
     }
 
