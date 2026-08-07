@@ -1892,6 +1892,14 @@
   height: 100%;
 }
 
+/* Google Maps' default (vector) rendering can apply its own rounded-corner
+   styling to the map's internal wrapper divs — force it back to a plain
+   rectangle that fills the section edge-to-edge. */
+#offices-map-canvas,
+#offices-map-canvas * {
+  border-radius: 0 !important;
+}
+
 .offices-overlay {
   position: absolute;
   inset: 0;

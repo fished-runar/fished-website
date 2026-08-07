@@ -141,16 +141,27 @@ permalink: /about.html
       });
       // Fit the viewport to the actual office locations (rather than a fixed
       // center/zoom) so all markers stay visible regardless of the map box's
-      // width, and pad around the side/bottom overlay panel so pins aren't
-      // hidden behind it.
+      // width. Padding is measured from the ACTUAL rendered overlay text
+      // panel (not a guessed percentage of the full-bleed canvas width) so
+      // the visible map area is centered on Norway instead of zooming out
+      // to compensate for an oversized assumed obstruction.
       var bounds = new google.maps.LatLngBounds();
       OFFICES.forEach(function (office) {
         bounds.extend({ lat: office.lat, lng: office.lng });
       });
+      var section = canvas.closest(".offices-section");
+      var contentEl = section && section.querySelector(".offices-overlay .container");
       var isStacked = window.innerWidth <= 700;
       var padding = isStacked
-        ? { top: 40, right: 40, bottom: Math.round(canvas.clientHeight * 0.55), left: 40 }
-        : { top: 60, right: 60, bottom: 60, left: Math.round(canvas.clientWidth * 0.4) };
+        ? { top: 32, right: 32, bottom: 220, left: 32 }
+        : { top: 64, right: 64, bottom: 64, left: 460 };
+      if (contentEl) {
+        var canvasRect = canvas.getBoundingClientRect();
+        var contentRect = contentEl.getBoundingClientRect();
+        padding = isStacked
+          ? { top: 32, right: 32, bottom: Math.round(canvasRect.bottom - contentRect.top) + 24, left: 32 }
+          : { top: 64, right: 64, bottom: 64, left: Math.round(contentRect.right - canvasRect.left) + 40 };
+      }
       map.fitBounds(bounds, padding);
       canvas.addEventListener(
         "wheel",
