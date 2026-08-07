@@ -7,9 +7,13 @@
 // Requires environment variables set in the Cloudflare Pages project settings
 // (Settings → Environment variables, for both Production and Preview):
 //   POWER_AUTOMATE_WEBHOOK_URL — see README for setup steps.
-//   TURNSTILE_SECRET_KEY — Cloudflare Turnstile secret key, used to verify the
-//   anti-bot token submitted alongside the form (see the Turnstile setup step
-//   in the project notes).
+//   TURNSTILE_SECRET_KEY — Cloudflare Turnstile secret key for the "Fished
+//   Contact Form" widget (sitekey 0x4AAAAAAEHBPJcfUQoav6hD), used to verify
+//   the anti-bot token submitted alongside the form via siteverify. Required
+//   in Production — the request is rejected if this isn't set, rather than
+//   silently skipping verification. Not currently set in Preview, so contact
+//   form submissions on the Preview/dev branch will 500 until/unless it's
+//   added there too.
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -34,30 +38,31 @@ export async function onRequestPost(context) {
   }
 
   const turnstileSecret = env.TURNSTILE_SECRET_KEY;
-  if (turnstileSecret) {
-    if (!turnstileToken) {
-      return jsonResponse({ error: "Missing anti-bot verification" }, 400);
-    }
-    const verifyBody = new URLSearchParams();
-    verifyBody.append("secret", turnstileSecret);
-    verifyBody.append("response", turnstileToken);
-    const clientIp = request.headers.get("CF-Connecting-IP");
-    if (clientIp) verifyBody.append("remoteip", clientIp);
+  if (!turnstileSecret) {
+    return jsonResponse({ error: "Server misconfigured: missing Turnstile secret" }, 500);
+  }
+  if (!turnstileToken) {
+    return jsonResponse({ error: "Missing anti-bot verification" }, 400);
+  }
+  const verifyBody = new URLSearchParams();
+  verifyBody.append("secret", turnstileSecret);
+  verifyBody.append("response", turnstileToken);
+  const clientIp = request.headers.get("CF-Connecting-IP");
+  if (clientIp) verifyBody.append("remoteip", clientIp);
 
-    let verified = false;
-    try {
-      const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-        method: "POST",
-        body: verifyBody,
-      });
-      const verifyJson = await verifyRes.json();
-      verified = verifyJson.success === true;
-    } catch {
-      verified = false;
-    }
-    if (!verified) {
-      return jsonResponse({ error: "Anti-bot verification failed" }, 403);
-    }
+  let verified = false;
+  try {
+    const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: verifyBody,
+    });
+    const verifyJson = await verifyRes.json();
+    verified = verifyJson.success === true;
+  } catch {
+    verified = false;
+  }
+  if (!verified) {
+    return jsonResponse({ error: "Anti-bot verification failed" }, 403);
   }
 
   const webhookUrl = env.POWER_AUTOMATE_WEBHOOK_URL;
