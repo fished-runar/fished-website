@@ -6,7 +6,7 @@
     <p class="team-card-name">{{ member.name }}</p>
     <p class="team-card-role">{{ member.role }}</p>
     <div class="team-card-contacts">
-      <a href="tel:{{ member.phone }}">{{ phoneIcon() }}{{ member.phone }}</a>
+      <a href="tel:{{ member.phone }}">{{ phoneIcon() }}{{ member.phone | phoneFormat }}</a>
       <a href="mailto:{{ member.email }}">{{ mailIcon() }}{{ member.email }}</a>
     </div>
     <div class="team-card-linkedin">
