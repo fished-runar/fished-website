@@ -129,6 +129,41 @@ permalink: /media.html
 <section class="section section-sm">
   <div class="container">
     <div style="text-align: center" class="reveal">
+      <p class="section-label">Recordings</p>
+      <h2 class="section-title dark">Watch Us in Action</h2>
+      <p class="section-body" style="max-width: 520px; margin-inline: auto">
+        Highlights and recordings from events we&rsquo;ve attended or hosted.
+      </p>
+    </div>
+    <div class="video-carousel reveal" style="margin-top: 40px">
+      {% if videos.length > 1 %}
+      <button type="button" class="video-carousel-btn video-carousel-prev" aria-label="Previous video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      {% endif %}
+      <div class="video-frame" id="video-carousel-frame">
+        {% for item in videos %}
+        <div class="video-slide{% if loop.first %} video-slide-on{% endif %}" data-video="{{ loop.index0 }}">
+          <iframe
+            src="{{ item.src }}"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+            allowfullscreen
+          ></iframe>
+        </div>
+        {% endfor %}
+      </div>
+      {% if videos.length > 1 %}
+      <button type="button" class="video-carousel-btn video-carousel-next" aria-label="Next video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<section class="section section-sm" style="background: var(--blue-light)">
+  <div class="container">
+    <div style="text-align: center" class="reveal">
       <p class="section-label">News</p>
       <h2 class="section-title dark">Latest News</h2>
       <p class="section-body" style="max-width: 520px; margin-inline: auto">
@@ -243,4 +278,21 @@ permalink: /media.html
 
   initCarousel("news-carousel-track", ".news-carousel-prev", ".news-carousel-next");
   initCarousel("event-carousel-track", ".event-carousel-prev", ".event-carousel-next", eventInitialIndex, false);
+
+  (function () {
+    const frame = document.getElementById("video-carousel-frame");
+    if (!frame) return;
+    const slides = Array.from(frame.querySelectorAll(".video-slide"));
+    const prevBtn = document.querySelector(".video-carousel-prev");
+    const nextBtn = document.querySelector(".video-carousel-next");
+    if (slides.length < 2 || !prevBtn || !nextBtn) return;
+    let index = 0;
+    function go(delta) {
+      slides[index].classList.remove("video-slide-on");
+      index = (index + delta + slides.length) % slides.length;
+      slides[index].classList.add("video-slide-on");
+    }
+    prevBtn.addEventListener("click", () => go(-1));
+    nextBtn.addEventListener("click", () => go(1));
+  })();
 </script>
