@@ -1888,6 +1888,22 @@
 
 /* ═══ Event recordings video carousel ═════════════════════════════════════ */
 
+.video-titles {
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.video-title {
+  display: none;
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.video-title.video-title-on { display: block; }
+
 .video-carousel {
   display: flex;
   align-items: center;

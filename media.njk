@@ -135,7 +135,12 @@ permalink: /media.html
         Highlights and recordings from events we&rsquo;ve attended or hosted.
       </p>
     </div>
-    <div class="video-carousel reveal" style="margin-top: 40px">
+    <div class="video-titles" style="margin-top: 40px">
+      {% for item in videos %}
+      <p class="video-title{% if loop.first %} video-title-on{% endif %}" data-video="{{ loop.index0 }}">{{ item.title }}</p>
+      {% endfor %}
+    </div>
+    <div class="video-carousel reveal" style="margin-top: 16px">
       {% if videos.length > 1 %}
       <button type="button" class="video-carousel-btn video-carousel-prev" aria-label="Previous video">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
@@ -283,14 +288,17 @@ permalink: /media.html
     const frame = document.getElementById("video-carousel-frame");
     if (!frame) return;
     const slides = Array.from(frame.querySelectorAll(".video-slide"));
+    const titles = Array.from(document.querySelectorAll(".video-title"));
     const prevBtn = document.querySelector(".video-carousel-prev");
     const nextBtn = document.querySelector(".video-carousel-next");
     if (slides.length < 2 || !prevBtn || !nextBtn) return;
     let index = 0;
     function go(delta) {
       slides[index].classList.remove("video-slide-on");
+      titles[index] && titles[index].classList.remove("video-title-on");
       index = (index + delta + slides.length) % slides.length;
       slides[index].classList.add("video-slide-on");
+      titles[index] && titles[index].classList.add("video-title-on");
     }
     prevBtn.addEventListener("click", () => go(-1));
     nextBtn.addEventListener("click", () => go(1));
