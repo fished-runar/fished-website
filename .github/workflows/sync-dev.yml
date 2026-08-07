@@ -1,0 +1,26 @@
+name: Sync dev branch with main
+
+# Keeps the `dev` branch (Cloudflare Pages preview environment) an exact
+# mirror of `main` (production) after every deploy, so dev never drifts out
+# of sync again. Force-pushes main's tip onto dev - dev is not meant to carry
+# any commits of its own.
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  sync-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Fast-forward dev to match main
+        run: git push origin main:dev --force
