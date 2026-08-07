@@ -1883,7 +1883,6 @@
   position: relative;
   height: 740px;
   overflow: hidden;
-  border-radius: var(--radius);
 }
 
 #offices-map-canvas {
@@ -1899,7 +1898,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 56px 5%;
+  padding: 56px 0;
   pointer-events: none;
 }
 
@@ -1923,11 +1922,14 @@
   pointer-events: none;
 }
 
-.offices-overlay > * {
+.offices-overlay .container {
   position: relative;
   z-index: 1;
-  max-width: 440px;
   pointer-events: auto;
+}
+
+.offices-overlay .container > * {
+  max-width: 440px;
 }
 
 .offices-overlay .section-label.light { color: rgba(255,255,255,0.55); margin-bottom: 8px; }
@@ -2000,13 +2002,12 @@
     position: absolute;
     inset: auto 0 0 0;
     display: block;
-    max-width: 100%;
-    padding: 32px 24px 28px;
+    padding: 32px 0 28px;
     background: linear-gradient(to top, #1a2340 0%, #1a2340 55%, rgba(26,35,64,0.85) 80%, transparent 100%);
   }
   .offices-overlay::before,
   .offices-overlay::after { display: none; }
-  .offices-overlay > * { max-width: 100%; }
+  .offices-overlay .container > * { max-width: 100%; }
 }
 
 @media (max-width: 900px) {
