@@ -161,7 +161,7 @@ permalink: /media.html
 </section>
 {% include "components/cta-strip.njk" %}
 <script>
-  function initCarousel(trackId, prevSelector, nextSelector, getInitialIndex) {
+  function initCarousel(trackId, prevSelector, nextSelector, getInitialIndex, autoScroll = true) {
     const track = document.getElementById(trackId);
     if (!track) return;
     const prevBtn = document.querySelector(prevSelector);
@@ -203,8 +203,9 @@ permalink: /media.html
       render();
     }
     render();
-    let timer = setInterval(() => go(1), 5000);
+    let timer = autoScroll ? setInterval(() => go(1), 5000) : null;
     function restart() {
+      if (!autoScroll) return;
       clearInterval(timer);
       timer = setInterval(() => go(1), 5000);
     }
@@ -241,5 +242,5 @@ permalink: /media.html
   }
 
   initCarousel("news-carousel-track", ".news-carousel-prev", ".news-carousel-next");
-  initCarousel("event-carousel-track", ".event-carousel-prev", ".event-carousel-next", eventInitialIndex);
+  initCarousel("event-carousel-track", ".event-carousel-prev", ".event-carousel-next", eventInitialIndex, false);
 </script>
