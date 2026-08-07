@@ -1,4 +1,4 @@
-{% from "components/icons.njk" import pin, facebook, linkedin, emailIcon %}
+{% from "components/icons.njk" import pin, facebook, linkedin, emailIcon, phoneIcon %}
 <div class="footer-wave" aria-hidden="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 90" preserveAspectRatio="none">
     <path d="M0,40 C180,90 360,0 540,45 C720,90 900,10 1080,50 C1260,85 1350,20 1440,40 L1440,90 L0,90 Z" fill="#1a2340"></path>
@@ -17,11 +17,11 @@
           {% for item in site.social %}
           <div class="footer-contact-item">
             <div class="footer-contact-icon">
-              {% if item.icon == "facebook" %}{{ facebook() }}{% elif item.icon == "linkedin" %}{{ linkedin() }}{% else %}{{ emailIcon() }}{% endif %}
+              {% if item.icon == "facebook" %}{{ facebook() }}{% elif item.icon == "linkedin" %}{{ linkedin() }}{% elif item.icon == "phone" %}{{ phoneIcon() }}{% else %}{{ emailIcon() }}{% endif %}
             </div>
             <div class="footer-contact-info">
               <span class="footer-contact-label">{{ item.label }}</span>
-              <a href="{{ item.href }}"{% if item.icon != 'email' %} target="_blank" rel="noopener"{% endif %} class="footer-contact-value">{{ item.value }}</a>
+              <a href="{{ item.href }}"{% if item.icon != 'email' and item.icon != 'phone' %} target="_blank" rel="noopener"{% endif %} class="footer-contact-value">{% if item.icon == "phone" %}{{ item.value | phoneFormat }}{% else %}{{ item.value }}{% endif %}</a>
             </div>
           </div>
           {% endfor %}

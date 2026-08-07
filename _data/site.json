@@ -7,7 +7,8 @@
   "social": [
     { "label": "Facebook", "value": "Fished AS", "href": "https://www.facebook.com/", "icon": "facebook" },
     { "label": "LinkedIn", "value": "Fished AS", "href": "https://www.linkedin.com/company/fishedcom/posts/?feedView=all", "icon": "linkedin" },
-    { "label": "Email", "value": "info@fished.com", "href": "mailto:info@fished.com", "icon": "email" }
+    { "label": "Email", "value": "info@fished.com", "href": "mailto:info@fished.com", "icon": "email" },
+    { "label": "Phone", "value": "+4738091000", "href": "tel:+4738091000", "icon": "phone" }
   ],
   "footerProductLinks": [
     { "label": "Order Management", "href": "/features.html" },
