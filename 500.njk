@@ -1,9 +1,9 @@
 ---
 layout: layouts/bare.njk
-title: Fished – Page Not Found
-description: The page you're looking for doesn't exist. Head back to the Fished homepage.
+title: Fished – Server Error
+description: Something went wrong on our end. Please try again shortly.
 navSolid: true
-permalink: /404.html
+permalink: /500.html
 extraHead: |
   <meta name="robots" content="noindex" />
 ---
@@ -11,18 +11,17 @@ extraHead: |
   <div class="container">
     <div class="split">
       <div>
-        <p class="section-label">404</p>
-        <h1 class="section-title dark">Looks Like This<br />Catch Got Away</h1>
+        <p class="section-label">500</p>
+        <h1 class="section-title dark">Something Went<br />Adrift on Our End</h1>
         <p class="section-body">
-          The page you're looking for doesn't exist or may have moved. Let's get you back on
-          course.
+          We hit a snag processing your request. Please try again in a moment, or head back home.
         </p>
         <div style="margin-top: 32px">
           <a href="/" class="btn btn-primary">Back to Home</a>
         </div>
       </div>
       <div class="split-image" style="background: transparent">
-        <img src="/assets/graphics/404 Error-bro.png" alt="Page not found" />
+        <img src="/assets/graphics/500 Internal Server Error-cuate.svg" alt="Server error" />
       </div>
     </div>
   </div>
